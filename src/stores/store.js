@@ -1,11 +1,10 @@
 'use-strict'
 
 /**
-  ==================================================================
-  * Vue Project Imports
+  * Documentation of third party
   * Docs for Vue: https://vuejs.org/
   * Docs for VueRouter: https://router.vuejs.org/en/
-  ==================================================================
+  *
 */
 
 import Vue from 'vue'
@@ -16,17 +15,15 @@ import actions from './actions'
 import getters from './getters'
 
 /**
-  ==================================================================
   * Vue Project Uses
-  ==================================================================
+  *
 */
 
 Vue.use(Vuex)
 
 /**
-  ==================================================================
   * Vuex Exports
-  ==================================================================
+  *
 */
 
 export default new Vuex.Store({
