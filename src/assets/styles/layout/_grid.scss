@@ -1,4 +1,10 @@
-.container {
-  margin: 0 auto;
-  width: 992px;
+@for $i from 1 through 12 {
+  .flex#{$i} {
+    flex: #{$i};
+  }
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
 }

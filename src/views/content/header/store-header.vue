@@ -3,11 +3,23 @@
 </style>
 
 <template>
-  <div>#header</div>
+  <div class="header-advertisement flex-center">
+    <div class="advertisement-contents container">
+      <div>#ads content</div>
+    </div>
+  </div>
 </template>
 
 <script>
+
+  import eng from '../../../models/languages/eng';
+
   export default {
-    name: 'StoreHeader'
+    name: 'StoreHeader',
+    data () {
+      return {
+        lang: eng
+      }
+    }
   }
 </script>

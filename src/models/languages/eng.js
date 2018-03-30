@@ -10,6 +10,7 @@ const eng = (() => {
 
   return {
     TITLES: {
+      advertisement: 'Advertisement',
       welcome: 'Welcome',
       account: 'My Account',
       buy: 'Buy',
@@ -25,7 +26,6 @@ const eng = (() => {
       'empty-stock': 'This product has out of stock!',
     },
     ERRORS: {
-
       purchase: 'There was an error completing your purchase!',
     },
     SUCCESS: {
