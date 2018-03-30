@@ -5,7 +5,7 @@
 <template>
   <div class="header-advertisement flex-center">
     <div class="advertisement-contents container">
-      <div>#ads content</div>
+      <div class="advertisement-banner">#ads content</div>
     </div>
   </div>
 </template>
