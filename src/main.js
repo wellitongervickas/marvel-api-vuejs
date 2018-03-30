@@ -1,7 +1,7 @@
 /**
   * Vue Project
   *
-  * To design patterns of this project use airbnb
+  * The style guide of this project is Airbnb
   * -> https://github.com/airbnb/javascript
   *
   * Documentation of third party
