@@ -1,3 +1,5 @@
+'use-strict'
+
 /**
   ==================================================================
   * Vue Project Imports
@@ -7,11 +9,11 @@
 */
 
 import Vue from 'vue'
-import VueRouter from 'vue-router'
-
-//Others Imports
-import routes from './models/helpers/router-helper'
-import stores from './stores/store'
+import Vuex from 'vuex'
+import state from './state'
+import mutations from './mutations'
+import actions from './actions'
+import getters from './getters'
 
 /**
   ==================================================================
@@ -19,27 +21,18 @@ import stores from './stores/store'
   ==================================================================
 */
 
-Vue.use(VueRouter)
+Vue.use(Vuex)
 
 /**
   ==================================================================
-  * Router Configuration
+  * Vuex Exports
   ==================================================================
 */
 
-const router = new VueRouter({
-  mode: 'history',
-  linkExactActiveClass: 'active',
-  routes,
+export default new Vuex.Store({
+  state,
+  mutations,
+  actions,
+  getters,
+  modules: {}
 })
-
-/**
-  ==================================================================
-  * Initialize Vue Framework
-  ==================================================================
-*/
-
-const app = new Vue({
-  router,
-  stores
-}).$mount('#app')
