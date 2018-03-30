@@ -1,15 +1,27 @@
-.font-white {
+.text-white {
   color: #fff;
 }
 
-.font-black {
+.text-black {
   color: #000;
 }
 
-.font-gray {
-  color: #ccc;
+.text-gray {
+  color: #959595;
 }
 
-.font-ligth-gray {
+.text-ligth-gray {
   color: #eee;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.align-left {
+  text-align: left;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
 }
