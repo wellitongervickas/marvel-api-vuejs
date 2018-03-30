@@ -3,9 +3,11 @@
 const ptBr = (() => {
 
   return {
-    title: 'Marvel Store'
+    TITLES: {
+      greetings: 'Olá, %s seja bem-vindo',
+    },
   };
 
 })();
 
-export default ptBr
+export default ptBr;
