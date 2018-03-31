@@ -28,9 +28,7 @@
     },
     computed: {
       ...mapState({
-        menu (state) {
-          return state.menu.list;
-        }
+        menu: state => state.menu.list
       }),
     },
     created () {},

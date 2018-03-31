@@ -11,6 +11,7 @@
     </section>
     <section>
       <main>
+        <store-slideshow></store-slideshow>
         <div>Marvel Store</div>
       </main>
     </section>
@@ -27,12 +28,14 @@
 
   import StoreHeader from '../content/header/store-header.vue';
   import StoreFooter from '../content/footer/store-footer.vue';
+  import StoreSlideshow from '../content/slideshow/store-slideshow.vue';
 
   export default {
     name: 'Home',
     components: {
       StoreHeader,
-      StoreFooter
+      StoreFooter,
+      StoreSlideshow
     }
   }
 </script>
