@@ -1,3 +1,15 @@
 .top-menu {
   min-height: 50px;
+
+  li {
+    font-size: 20px;
+
+    a {
+      font-size: 18px;
+    }
+
+    &:first-of-type {
+      font-weight: bold;
+    }
+  }
 }
