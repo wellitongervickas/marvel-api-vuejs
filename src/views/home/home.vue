@@ -11,7 +11,7 @@
     </section>
     <section>
       <main>
-        <div class="container">Marvel Store</div>
+        <div>Marvel Store</div>
       </main>
     </section>
     </section>

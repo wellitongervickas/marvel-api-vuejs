@@ -45,7 +45,7 @@ const router = new VueRouter({
 })
 
 /**
-  * Initialize Vue Language
+  * Initialize Vue Configuration
   *
 */
 
