@@ -24,4 +24,18 @@ $ads-width: 60%;
 
 .header-top {
   padding-top: 30px;
+
+  .header-top-logo {}
+
+  .header-top-social {
+    .header-top-social-icons {
+      position: relative;
+      height: 100%;
+
+      img {
+        max-width: 22px;
+        padding-right: 15px;
+      }
+    }
+  }
 }
