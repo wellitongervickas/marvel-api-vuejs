@@ -1,5 +1,6 @@
 a {
   color: #515151;
+  @extend .unstyled-link;
 
   &:hover {
     color: #666;

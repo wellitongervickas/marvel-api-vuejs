@@ -1,5 +1,12 @@
+'use-strict'
+
+/**
+  * Returns every list from the main menu
+  *
+*/
+
 export default {
-  menu: [
+  list: [
     {
       name: 'New',
       link: '#',

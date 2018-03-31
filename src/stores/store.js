@@ -17,7 +17,7 @@ import actions from './actions';
 import getters from './getters';
 
 // Main Menu
-import headerMenu from './modules/header-menu/main';
+import menu from './modules/header-menu/main';
 
 /**
   * Vue Project Uses
@@ -37,6 +37,6 @@ export default new Vuex.Store({
   actions,
   getters,
   modules: {
-    headerMenu
+    menu
   }
 });
