@@ -53,9 +53,7 @@
       </div>
     </div>
     <div class="header-top-menu text-white">
-      <div class="container">
-        #Main menu
-      </div>
+      <store-menu></store-menu>
     </div>
   </div>
 </template>
@@ -63,11 +61,13 @@
 <script>
 
   import StoreAds from '../ads/store-ads.vue';
+  import StoreMenu from './menu/store-menu.vue';
 
   export default {
     name: 'StoreHeader',
     components: {
       StoreAds,
+      StoreMenu,
     },
     data () {
       return {

@@ -9,10 +9,15 @@
 
 import Vue from 'vue';
 import Vuex from 'vuex';
+
+// Local
 import state from './state';
 import mutations from './mutations';
 import actions from './actions';
 import getters from './getters';
+
+// Main Menu
+import headerMenu from './modules/header-menu/main';
 
 /**
   * Vue Project Uses
@@ -31,5 +36,7 @@ export default new Vuex.Store({
   mutations,
   actions,
   getters,
-  modules: {}
+  modules: {
+    headerMenu
+  }
 });
