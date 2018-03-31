@@ -18,7 +18,7 @@ import VueAxios from 'vue-axios';
 
 // External js
 import routes from './models/helpers/router-helper';
-import stores from './stores/store';
+import store from './stores/store';
 import eng from './models/languages/eng';
 
 // External css
@@ -60,7 +60,7 @@ Vue.prototype.$appConfig = {
 
 const app = new Vue({
   router,
-  stores
+  store
 }).$mount('#app');
 
 

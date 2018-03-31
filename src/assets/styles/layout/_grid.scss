@@ -34,12 +34,12 @@
 }
 
 .flex-end-items {
-  display: flex;
+  @extend .flex;
   align-items: flex-end;
 }
 
 .flex-end-content {
-  display: flex;
+  @extend .flex;
   justify-content: flex-end;
 }
 
@@ -47,4 +47,10 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+.flex-around-center {
+  @extend .flex;
+  align-items: center;
+  justify-content: space-around;
 }

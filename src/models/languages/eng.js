@@ -1,4 +1,4 @@
-'use strict'
+'use-strict'
 
 /**
   * This content block is responsible for
