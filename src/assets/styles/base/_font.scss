@@ -1,3 +1,11 @@
+a {
+  color: #515151;
+
+  &:hover {
+    color: #666;
+  }
+}
+
 .text-white {
   color: #fff;
 }
@@ -24,4 +32,8 @@
 
 .text-uppercase {
   text-transform: uppercase;
+}
+
+.unstyled-link {
+  text-decoration: none;
 }
