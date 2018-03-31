@@ -3,7 +3,7 @@
 </style>
 
 <template>
-  <div>#slideshow</div>
+  <div class="slideshow-content">#slideshow</div>
 </template>
 
 <script>
