@@ -19,8 +19,10 @@ const eng = (() => {
       add: 'Add',
       finish: 'Finish',
       search: 'Search',
+      searchStore: 'Search Marvel Shop',
       loadMore: 'Load more',
       userGreetings: 'Hi, %s welcome!',
+      cart: 'Cart',
     },
     WARNINGS: {
       emptyCart: 'Your shopping cart is empty!',

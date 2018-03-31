@@ -4,24 +4,20 @@
 
 <template>
   <div>
-    <div class="header-advertisement flex-center">
-      <div class="advertisement-contents container flex-column-center">
-        <div class="advertisement-titles align-right text-gray text-uppercase">{{advertisement}}</div>
-        <div class="advertisement-figure transition-slow"></div>
-      </div>
+    <div class="header-advertisement">
+      <store-ads></store-ads>
     </div>
-    <div class="header-top container flex-between">
-      <div class="flex3 header-top-logo user-select">
-        <a href="#">
+    <div class="header-top container flex-between user-select">
+      <div class="flex3 header-top-logo">
+        <a class="flex" href="#">
           <img src="/images/layout/logo.jpg" :title="storeName" :alt="storeName">
         </a>
       </div>
       <div class="flex5 header-top-social">
-        <ul class="unstyled-list top-social-icons flex-end-items user-select">
+        <ul class="unstyled-list top-social-icons flex-end-items">
           <li>
             <a href="#">
-              <img src="/images/icons/social/facebook.png" :alt="facebook" :title="facebook">
-            </a>
+              <img src="/images/icons/social/facebook.png" :alt="facebook" :title="facebook"></a>
           </li>
           <li>
             <a href="#">
@@ -35,7 +31,7 @@
           </li>
         </ul>
       </div>
-      <div class="flex4 header-top-bar">
+      <div class="flex4 header-top-bar flex-column-between">
         <div class="top-bar-nav-top">
           <ul class="unstyled-list flex-end-content">
             <li>
@@ -46,27 +42,40 @@
             </li>
           </ul>
         </div>
-        <div class="top-bar-nav-bottom">
-          <div>#Search</div>
-          <div>#Cart</div>
+        <div class="top-bar-nav-bottom flex-end-content">
+          <div>
+            <input type="text" :placeholder="searchStore">
+          </div>
+          <div>
+            <img src="/images/icons/cart/shopping-cart.png" :alt="cart">
+          </div>
         </div>
       </div>
     </div>
-    <div class="header-top-menu">
-      #Main menu
+    <div class="header-top-menu text-white">
+      <div class="container">
+        #Main menu
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+
+  import StoreAds from '../ads/store-ads.vue';
+
   export default {
     name: 'StoreHeader',
+    components: {
+      StoreAds,
+    },
     data () {
       return {
-        advertisement: this.$appConfig.lang.TITLES.advertisement,
         storeName: this.$appConfig.lang.TITLES.storeName,
         account: this.$appConfig.lang.TITLES.account,
         welcome: this.$appConfig.lang.TITLES.welcome,
+        searchStore: this.$appConfig.lang.TITLES.searchStore,
+        cart: this.$appConfig.lang.TITLES.cart,
         facebook: this.$appConfig.lang.SOCIAL.facebook,
         youtube: this.$appConfig.lang.SOCIAL.youtube,
         twitter: this.$appConfig.lang.SOCIAL.twitter,
