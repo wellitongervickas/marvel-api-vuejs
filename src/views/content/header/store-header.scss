@@ -2,28 +2,6 @@ $ads-width: 60%;
 
 .header-advertisement {
   background-color: #515151;
-  .advertisement-contents {
-    margin: 20px 0;
-    padding: 10px 0px 20px 0px;
-    background-image: url(/images/layout/ads-background.png);
-
-    .advertisement-titles {
-      width: $ads-width;
-      font-size: 10px;
-      font-weigth: 800;
-    }
-
-    .advertisement-figure {
-      height: 90px;
-      width: $ads-width;
-      background-color: #6f6f6f;
-
-      &:hover {
-        cursor: pointer;
-        opacity: 0.8;
-      }
-    }
-  }
 }
 
 .header-top {
@@ -32,6 +10,8 @@ $ads-width: 60%;
   .header-top-logo {}
 
   .header-top-social {
+    padding-bottom: 20px;
+
     .top-social-icons {
       position: relative;
       height: 100%;
@@ -45,7 +25,6 @@ $ads-width: 60%;
 
   .top-bar-nav-top {
     ul {
-
       li {
         &:nth-child(1) {
           padding-right: 20px;
@@ -56,4 +35,13 @@ $ads-width: 60%;
       }
     }
   }
+
+  .top-bar-nav-bottom {
+    padding-bottom: 20px;
+  }
+}
+
+.header-top-menu {
+  background-color: #1f1f1f;
+  min-height: 50px;
 }

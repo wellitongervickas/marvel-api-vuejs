@@ -1,3 +1,8 @@
+.container {
+  margin: 0 auto;
+  width: 1200px;
+}
+
 @for $i from 1 through 12 {
   .flex#{$i} {
     flex: #{$i};
@@ -32,4 +37,10 @@
 .flex-end-content {
   display: flex;
   justify-content: flex-end;
+}
+
+.flex-column-between {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
