@@ -29,7 +29,7 @@ $ads-width: 60%;
         &:nth-child(1) {
           padding-right: 20px;
           margin-right: 20px;
-          border-right: 2px dotted #515151;
+          background: no-repeat url(/images/layout/separator-small.jpg) right center;
         }
       }
     }
@@ -41,7 +41,7 @@ $ads-width: 60%;
     .top-bar-search {
       padding-right: 20px;
       margin-right: 20px;
-      border-right: 2px dotted #515151;
+      background: no-repeat url(/images/layout/separator-medium.jpg) right center;
 
       input {
         padding-left: 15px;
@@ -54,8 +54,6 @@ $ads-width: 60%;
         font-size: 16px;
         text-transform: uppercase;
         background: no-repeat url(/images/icons/store/search.png) right center;
-
-
       }
     }
   }
