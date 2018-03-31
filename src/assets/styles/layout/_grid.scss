@@ -4,18 +4,27 @@
   }
 }
 
-.flex-center {
+.flex {
   display: flex;
+}
+
+.flex-center {
+  @extend .flex;
   justify-content: center;
 }
 
 .flex-column-center {
-  display: flex;
+  @extend .flex;
   flex-direction: column;
   align-items: center;
 }
 
 .flex-between {
-  display: flex;
+  @extend .flex;
   justify-content: space-between;
+}
+
+.flex-end {
+  display: flex;
+  align-items: flex-end;
 }

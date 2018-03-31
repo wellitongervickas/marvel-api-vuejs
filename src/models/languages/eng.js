@@ -33,6 +33,11 @@ const eng = (() => {
       purchase: 'Your Purchase is successfully!',
       productAddPurchase: 'You have added %s to your shopping cart!',
     },
+    SOCIAL: {
+      facebook: 'Facebook',
+      youtube: 'Youtube',
+      twitter: 'Twitter',
+    },
   };
 
 })();
