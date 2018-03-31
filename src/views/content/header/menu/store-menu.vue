@@ -8,7 +8,7 @@
       <ul class="top-menu flex-around-center unstyled-list">
         <li class="align-center text-uppercase">{{shop}}</li>
         <li class="align-center " v-for="(item, index) in menu" :key="index">
-          <a class="text-white" :href="item.link">{{item.name}}</a>
+          <a class="text-white inline-flex-center" :href="item.link">{{item.name}}</a>
         </li>
       </ul>
     </div>

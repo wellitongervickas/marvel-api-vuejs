@@ -5,7 +5,15 @@
     font-size: 20px;
 
     a {
+      border-bottom: 5px solid transparent;
       font-size: 18px;
+      height: 45px;
+      padding: 0px 10px;
+
+      &:hover {
+        color: #ccc;
+        border-bottom: 5px solid #f0141e;
+      }
     }
 
     &:first-of-type {
