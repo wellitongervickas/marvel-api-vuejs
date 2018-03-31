@@ -9,7 +9,7 @@
 
 const languageHeper = (() => {
 
-  function parse() {};
+  function parse(...arrayValues, text) {};
 });
 
 export default languageHelper;

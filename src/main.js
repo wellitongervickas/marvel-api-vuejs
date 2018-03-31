@@ -11,27 +11,27 @@
   *
 */
 
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import axios from 'axios'
-import VueAxios from 'vue-axios'
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import axios from 'axios';
+import VueAxios from 'vue-axios';
 
 // External js
-import routes from './models/helpers/router-helper'
-import stores from './stores/store'
+import routes from './models/helpers/router-helper';
+import stores from './stores/store';
 import eng from './models/languages/eng';
 
 // External css
-import 'normalize.css/normalize.css'
-import './assets/styles/main.scss'
+import 'normalize.css/normalize.css';
+import './assets/styles/main.scss';
 
 /**
   * Vue Project Uses
   *
 */
 
-Vue.use(VueRouter)
-Vue.use(VueAxios, axios)
+Vue.use(VueRouter);
+Vue.use(VueAxios, axios);
 
 /**
   * Router Configuration
@@ -42,7 +42,7 @@ const router = new VueRouter({
   mode: 'history',
   linkExactActiveClass: 'active',
   routes,
-})
+});
 
 /**
   * Initialize Vue Configuration
@@ -61,6 +61,6 @@ Vue.prototype.$appConfig = {
 const app = new Vue({
   router,
   stores
-}).$mount('#app')
+}).$mount('#app');
 
 

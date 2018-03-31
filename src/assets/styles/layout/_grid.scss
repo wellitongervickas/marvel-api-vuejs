@@ -13,6 +13,10 @@
   display: flex;
 }
 
+.inline-flex {
+  display: inline-flex;
+}
+
 .flex-center {
   @extend .flex;
   justify-content: center;

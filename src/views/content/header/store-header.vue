@@ -43,10 +43,10 @@
           </ul>
         </div>
         <div class="top-bar-nav-bottom flex-end-content">
-          <div>
+          <div class="top-bar-search flex11 inline-flex">
             <input type="text" :placeholder="searchStore">
           </div>
-          <div>
+          <div class="top-bar-cart flex1">
             <img src="/images/icons/cart/shopping-cart.png" :alt="cart">
           </div>
         </div>

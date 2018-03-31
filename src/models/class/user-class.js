@@ -18,4 +18,4 @@ class User {
   set userName (name) {
    this.name = name;
   }
-}
+};

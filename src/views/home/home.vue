@@ -27,18 +27,12 @@
 
   import StoreHeader from '../content/header/store-header.vue';
   import StoreFooter from '../content/footer/store-footer.vue';
-  import eng from '../../models/languages/eng';
 
   export default {
     name: 'Home',
     components: {
       StoreHeader,
       StoreFooter
-    },
-    data () {
-      return {
-        lang: eng
-      }
     }
   }
 </script>

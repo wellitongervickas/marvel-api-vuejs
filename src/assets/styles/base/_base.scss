@@ -1,8 +1,10 @@
 @import 'reuse';
 @import 'transition';
 @import 'font';
+@import 'reset';
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto Condensed', sans-serif;
+  /* font-family: 'Roboto', sans-serif; */
   font-size: 12px;
 }
