@@ -19,7 +19,7 @@
     name: 'StoreHeader',
     data () {
       return {
-        lang: eng
+        lang: this.$appConfig.lang,
       }
     }
   }

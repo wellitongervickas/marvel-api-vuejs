@@ -19,6 +19,7 @@ import VueAxios from 'vue-axios'
 // External js
 import routes from './models/helpers/router-helper'
 import stores from './stores/store'
+import eng from './models/languages/eng';
 
 // External css
 import 'normalize.css/normalize.css'
@@ -44,6 +45,15 @@ const router = new VueRouter({
 })
 
 /**
+  * Initialize Vue Language
+  *
+*/
+
+Vue.prototype.$appConfig = {
+  lang: eng
+};
+
+/**
   * Initialize Vue Framework
   *
 */
@@ -52,3 +62,5 @@ const app = new Vue({
   router,
   stores
 }).$mount('#app')
+
+
