@@ -50,7 +50,11 @@ const router = new VueRouter({
 */
 
 Vue.prototype.$appConfig = {
-  lang: eng
+  lang: eng,
+  api: {
+    publicKey: 'xxx',
+    privateKey: 'xxx'
+  }
 };
 
 /**

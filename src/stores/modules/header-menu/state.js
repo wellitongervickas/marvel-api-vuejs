@@ -8,7 +8,7 @@
 export default {
   list: [
     {
-      name: 'New',
+      name: 'New!',
       link: '#',
     },
     {

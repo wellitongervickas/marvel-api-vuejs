@@ -6,11 +6,9 @@
   <nav>
     <div class="container">
       <ul class="top-menu flex-around-center unstyled-list">
-        <li>
-          Shop
-        </li>
-        <li v-for="(item, index) in menu" :key="index">
-          <a :href="item.link">{{item.name}}</a>
+        <li class="align-center text-uppercase">{{shop}}</li>
+        <li class="align-center " v-for="(item, index) in menu" :key="index">
+          <a class="text-white inline-flex-center" :href="item.link">{{item.name}}</a>
         </li>
       </ul>
     </div>
@@ -23,6 +21,11 @@
 
   export default {
     name: 'StoreMenu',
+    data() {
+      return {
+        shop: this.$appConfig.lang.TITLES.shop,
+      }
+    },
     computed: {
       ...mapState({
         menu (state) {

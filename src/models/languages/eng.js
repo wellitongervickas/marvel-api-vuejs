@@ -23,6 +23,7 @@ const eng = (() => {
       loadMore: 'Load more',
       userGreetings: 'Hi, %s welcome!',
       cart: 'Cart',
+      shop: 'Shop',
     },
     WARNINGS: {
       emptyCart: 'Your shopping cart is empty!',
