@@ -7,8 +7,6 @@ $ads-width: 60%;
 .header-top {
   padding-top: 30px;
 
-  .header-top-logo {}
-
   .header-top-social {
     padding-bottom: 20px;
 
@@ -26,18 +24,40 @@ $ads-width: 60%;
   .top-bar-nav-top {
     ul {
       li {
+        font-size: 15px;
+
         &:nth-child(1) {
           padding-right: 20px;
           margin-right: 20px;
           border-right: 2px dotted #515151;
         }
-        font-size: 15px;
       }
     }
   }
 
   .top-bar-nav-bottom {
     padding-bottom: 20px;
+
+    .top-bar-search {
+      padding-right: 20px;
+      margin-right: 20px;
+      border-right: 2px dotted #515151;
+
+      input {
+        padding-left: 15px;
+        padding-right: 25px;
+        height: 100%;
+        border: none;
+        border-bottom: 1px solid #515151;
+        width: 100%;
+        font-weight: 600;
+        font-size: 16px;
+        text-transform: uppercase;
+        background: no-repeat url(/images/icons/store/search.png) right center;
+
+
+      }
+    }
   }
 }
 
