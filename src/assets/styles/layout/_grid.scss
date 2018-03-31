@@ -24,7 +24,12 @@
   justify-content: space-between;
 }
 
-.flex-end {
+.flex-end-items {
   display: flex;
   align-items: flex-end;
+}
+
+.flex-end-content {
+  display: flex;
+  justify-content: flex-end;
 }
