@@ -3,15 +3,12 @@
 </style>
 
 <template>
-  <div class="slideshow-content">
+  <div class="slideshow-content" v-if="sliderList.length">
     <div class="slideshow-list container">
-      <div
-        v-if="sliderList.length"
-        v-for="(item, index) in sliderList"
-        class="slideshow-item"
-        :key="index"
-        :style="{ 'background-image': `url(${item.image})` }"
-        v-show="item.status">
+      <div v-for="(item, index) in sliderList" class="slideshow-item" :key="index">
+        <transition name="slide">
+          <img :src="item.image" :alt="item.title" v-show="item.status">
+        </transition>
         <div class="slideshow-label">
           <div class="slideshow-label-title">{{item.title}} -> Status: {{item.status}}</div>
           <div class="slideshow-label-desc">{{item.description}}</div>
@@ -21,7 +18,7 @@
         <div class="slideshow-control-prev pointer transition-slow" @click="changeActiveSlider('prev')">
           <img src="/images/layout/prev.png" :alt="prev">
         </div>
-        <div class="slideshow-control-next pointer transition-slow " @click="changeActiveSlider('next')">
+        <div class="slideshow-control-next pointer transition-slow" @click="changeActiveSlider('next')">
           <img src="/images/layout/next.png" :alt="next">
         </div>
       </div>
