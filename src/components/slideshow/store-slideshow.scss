@@ -1,39 +1,48 @@
-$slide-height: 550px;
-$negative-controls: -50px;
+$slide-height: 545px;
+$negative-controls: 0px;
 
 .slideshow-content {
-  min-height: $slide-height;
   background-color: #222;
+  position: relative;
 
   .slideshow-list {
-    min-height: $slide-height;
+    height: $slide-height;
+    overflow: hidden;
     position: relative;
 
     .slideshow-item {
-      min-height: $slide-height;
-      background-size: cover;
+      height: $slide-height;
+
+      img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right:0;
+      }
     }
 
-    .slideshow-control {
+  }
+
+  .slideshow-control {
+    position: absolute;
+    z-index: 3999;
+    width: 100%;
+    top: 45%;
+
+    div {
       position: absolute;
-      z-index: 3;
-      width: 100%;
-      top: 45%;
 
-      div {
-        position: absolute;
+      &.slideshow-control-prev {
+        left: $negative-controls;
+      }
 
-        &.slideshow-control-prev {
-          left: $negative-controls;
-        }
+      &.slideshow-control-next {
+        right:  $negative-controls;
+      }
 
-        &.slideshow-control-next {
-          right:  $negative-controls;
-        }
-
-        &:hover {
-          opacity: 0.6;
-        }
+      &:hover {
+        opacity: 0.6;
       }
     }
   }
