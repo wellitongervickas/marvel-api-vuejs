@@ -10,7 +10,7 @@
           <img :src="item.image" :alt="item.title" v-show="item.status" :key="index">
         </transition>
         <transition name="fade">
-          <div class="slideshow-label" v-show="item.status">
+          <div class="slideshow-label align-center" v-show="item.status">
             <div class="slideshow-label-title">
               <h2>{{item.title}}</h2>
             </div>
@@ -30,7 +30,17 @@
           <img src="/images/layout/next.png" :alt="next">
         </div>
       </div>
-      <div class="slideshow-control-num"></div>
+      <div class="slideshow-control-num container">
+        <ul class="unstyled-list text-white">
+          <li
+            v-for="(item, index) in sliderList"
+            :class="{'active': item.status }"
+            class="slideshow-control-num-item pointer"
+            @click="changeActiveSliderNum(index)">
+            {{index}}
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </template>
@@ -75,6 +85,20 @@
       changeActiveSlider (control) {
 
         const updatedSlideshowList = slideshowHelper.changeActiveSlider(this.sliderList, control);
+        this.sliderList = [...updatedSlideshowList];
+      },
+
+      /**
+        * Change active slide item to set
+        * a new to active in the list using
+        * a "num" of Array index
+        *
+      */
+
+      changeActiveSliderNum (num) {
+
+        // Passing null in second parameter to disable control and using number to set new active
+        const updatedSlideshowList = slideshowHelper.changeActiveSlider(this.sliderList, null, num);
         this.sliderList = [...updatedSlideshowList];
       }
     },

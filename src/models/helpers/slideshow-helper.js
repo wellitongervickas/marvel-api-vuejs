@@ -39,45 +39,53 @@ const slideshowHelper = (() => {
     *
   */
 
-  function changeActiveSlider (sliderList, control) {
+  function changeActiveSlider (sliderList, control = null, index = null) {
 
     let activedItem = sliderList.findIndex(item => item.status == true);
     let nextItem;
 
-    switch (control) {
-      case 'next':
+    // Case using control
+    if (!index && control) {
+      switch (control) {
+        case 'next':
 
-        nextItem = activedItem + 1;
-        break;
+          nextItem = activedItem + 1;
+          break;
 
-      case 'prev':
+        case 'prev':
 
-        nextItem = activedItem - 1;
-        break;
+          nextItem = activedItem - 1;
+          break;
 
-      default:
+        default:
+
+          nextItem = 0;
+          break;
+      }
+
+      if (nextItem >= 0 && nextItem < sliderList.length) {
+
+        sliderList[nextItem].status = true;
+      } else if (nextItem >= sliderList.length) {
 
         nextItem = 0;
-        break;
-    }
+      } else if (nextItem < 0) {
 
-    if (nextItem >= 0 && nextItem < sliderList.length) {
+        nextItem = (sliderList.length - 1);
+      } else {
 
+        nextItem = 0;
+        throw 'Invalid index of next slider!'
+      }
 
-      sliderList[nextItem].status = true;
-    } else if (nextItem >= sliderList.length) {
-
-      nextItem = 0;
-      sliderList[nextItem].status = true;
-    } else if (nextItem < 0) {
-
-      nextItem = (sliderList.length - 1);
-      sliderList[nextItem].status = true;
     } else {
 
-      nextItem = 0;
-      throw 'Invalid index of next slider!'
+      // Case use index of slider
+      nextItem = index;
     }
+
+    // Set a new item to show
+    sliderList[nextItem].status = true;
 
     for (let i in sliderList) {
       if (i != nextItem) sliderList[i].status = false;
