@@ -15,15 +15,15 @@
           <div class="slideshow-label-desc">{{item.description}}</div>
         </div>
       </div>
-      <div class="slideshow-control">
-        <div class="slideshow-control-prev">
+      <div class="slideshow-control" v-if="sliderList.length">
+        <div class="slideshow-control-prev pointer transition-slow">
           <img src="/images/layout/prev.png" :alt="prev">
         </div>
-        <div class="slideshow-control-next">
+        <div class="slideshow-control-next pointer transition-slow">
           <img src="/images/layout/next.png" :alt="next">
         </div>
       </div>
-      <div class="slideshow-dots">
+      <div class="slideshow-dots"v-if="sliderList.length > 1">
         <ul>
           <li>1</li>
         </ul>
@@ -43,16 +43,25 @@
       }
     },
     methods: {
+
+      /**
+        * This function is responsible for assigning
+        * service values ​​to the component
+        *
+      */
+
       getSliderList() {
         this
           .$http.get('/local-api/slideshow/slideshow.json')
           .then(response => {
             this.sliderList = response.data.sliders;
           })
-      }
+      },
     },
     created() {
-      this.getSliderList()
+
+      // On load get slider list of endpoint
+      this.getSliderList();
     }
   };
 </script>
