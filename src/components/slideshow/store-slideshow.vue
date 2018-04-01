@@ -34,6 +34,7 @@
 <script>
 
   import Slider from '../../models/class/slider-class';
+  import slideshowHelper from '../../models/helpers/slideshow-helper';
 
   export default {
     name: 'StoreSlideshow',
@@ -56,13 +57,13 @@
         this
           .$http.get('/local-api/slideshow/slideshow.json')
           .then(response => {
-            this.sliderList = response.data.sliders.map(item => {
+            const sliderList = response.data.sliders.map(item => {
 
               const sliderItem = new Slider(item);
-              const newItem = sliderItem.getSliderList;
-
-              return newItem;
+              return sliderItem.getSliderList;
             });
+
+            this.sliderList = slideshowHelper.setInitialSliderStatus(sliderList);
           })
       },
     },
