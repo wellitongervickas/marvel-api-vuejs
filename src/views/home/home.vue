@@ -12,7 +12,7 @@
     <section>
       <main>
         <store-slideshow></store-slideshow>
-        <div>Marvel Store</div>
+        <div class="store-content">Marvel Store</div>
       </main>
     </section>
     </section>

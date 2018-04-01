@@ -21,13 +21,16 @@
         </transition>
       </div>
     </div>
-    <div class="slideshow-control user-select">
-      <div class="slideshow-control-prev pointer transition-slow" @click="changeActiveSlider('prev')">
-        <img src="/images/layout/prev.png" :alt="prev">
+    <div class="slideshow-control container user-select">
+      <div class="slideshow-control-btn container">
+        <div class="slideshow-control-prev pointer transition-slow" @click="changeActiveSlider('prev')">
+          <img src="/images/layout/prev.png" :alt="prev">
+        </div>
+        <div class="slideshow-control-next pointer transition-slow" @click="changeActiveSlider('next')">
+          <img src="/images/layout/next.png" :alt="next">
+        </div>
       </div>
-      <div class="slideshow-control-next pointer transition-slow" @click="changeActiveSlider('next')">
-        <img src="/images/layout/next.png" :alt="next">
-      </div>
+      <div class="slideshow-control-num"></div>
     </div>
   </div>
 </template>
