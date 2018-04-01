@@ -5,16 +5,20 @@
 <template>
   <div class="slideshow-content">
     <div class="slideshow-list container">
-      <div
-        class="slideshow-item"
-        v-for="(item, index) in sliderList"
-        :key="index"
-        :style="{ 'background-image': `url(${item.image})` }">
-        <div class="slideshow-label">
-          <div class="slideshow-label-title">{{item.title}}</div>
-          <div class="slideshow-label-desc">{{item.description}}</div>
+      <transition-group name="fade">
+        <div
+          v-if="sliderList.length"
+          v-for="(item, index) in sliderList"
+          class="slideshow-item"
+          :key="index"
+          :style="{ 'background-image': `url(${item.image})` }"
+          v-show="item.status">
+          <div class="slideshow-label">
+            <div class="slideshow-label-title">{{item.title}} -> Status: {{item.status}}</div>
+            <div class="slideshow-label-desc">{{item.description}}</div>
+          </div>
         </div>
-      </div>
+      </transition-group>
       <div class="slideshow-control" v-if="sliderList.length">
         <div class="slideshow-control-prev pointer transition-slow">
           <img src="/images/layout/prev.png" :alt="prev">
@@ -23,16 +27,14 @@
           <img src="/images/layout/next.png" :alt="next">
         </div>
       </div>
-      <div class="slideshow-dots"v-if="sliderList.length > 1">
-        <ul>
-          <li>1</li>
-        </ul>
-      </div>
     </div>
   </div>
 </template>
 
 <script>
+
+  import Slider from '../../models/class/slider-class';
+
   export default {
     name: 'StoreSlideshow',
     data() {
@@ -54,7 +56,13 @@
         this
           .$http.get('/local-api/slideshow/slideshow.json')
           .then(response => {
-            this.sliderList = response.data.sliders;
+            this.sliderList = response.data.sliders.map(item => {
+
+              const sliderItem = new Slider(item);
+              const newItem = sliderItem.getSliderList;
+
+              return newItem;
+            });
           })
       },
     },
