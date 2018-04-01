@@ -23,7 +23,7 @@
         <div class="slideshow-control-prev pointer transition-slow">
           <img src="/images/layout/prev.png" :alt="prev">
         </div>
-        <div class="slideshow-control-next pointer transition-slow">
+        <div class="slideshow-control-next pointer transition-slow" @click="nextSlider">
           <img src="/images/layout/next.png" :alt="next">
         </div>
       </div>
@@ -66,6 +66,10 @@
             this.sliderList = slideshowHelper.setInitialSliderStatus(sliderList);
           })
       },
+      nextSlider () {
+        console.log('clicked!')
+        return slideshowHelper.changeActiveSlider(this.sliderList);
+      }
     },
     created() {
 

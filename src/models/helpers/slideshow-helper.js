@@ -1,18 +1,21 @@
 const slideshowHelper = (() => {
 
-  function setInitialSliderStatus(slider) {
+  function setInitialSliderStatus(sliderList) {
 
-    for (let i in slider) {
-      if (i == 0) {
-        slider[i].status = true;
-      }
+    for (let i in sliderList) {
+      if (i == 0) sliderList[i].status = true;
     }
 
-    return slider;
+    return sliderList;
+  };
+
+  function changeActiveSlider (sliderList) {
+    console.log(sliderList, ' ON NEXT SLIDER')
   };
 
   return {
-    setInitialSliderStatus
+    setInitialSliderStatus,
+    changeActiveSlider
   }
 })();
 
