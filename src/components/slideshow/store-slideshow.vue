@@ -5,9 +5,9 @@
 <template>
   <div class="slideshow-content" v-if="sliderList.length">
     <div class="slideshow-list container">
-      <div v-for="(item, index) in sliderList" class="slideshow-item" :key="index">
+      <div v-for="(item, index) in sliderList" class="slideshow-item">
         <transition name="slide">
-          <img :src="item.image" :alt="item.title" v-show="item.status">
+          <img :src="item.image" :alt="item.title" v-show="item.status" :key="index">
         </transition>
         <transition name="fade">
           <div class="slideshow-label" v-show="item.status">
@@ -20,13 +20,13 @@
           </div>
         </transition>
       </div>
-      <div class="slideshow-control user-select">
-        <div class="slideshow-control-prev pointer transition-slow" @click="changeActiveSlider('prev')">
-          <img src="/images/layout/prev.png" :alt="prev">
-        </div>
-        <div class="slideshow-control-next pointer transition-slow" @click="changeActiveSlider('next')">
-          <img src="/images/layout/next.png" :alt="next">
-        </div>
+    </div>
+    <div class="slideshow-control user-select">
+      <div class="slideshow-control-prev pointer transition-slow" @click="changeActiveSlider('prev')">
+        <img src="/images/layout/prev.png" :alt="prev">
+      </div>
+      <div class="slideshow-control-next pointer transition-slow" @click="changeActiveSlider('next')">
+        <img src="/images/layout/next.png" :alt="next">
       </div>
     </div>
   </div>
@@ -62,8 +62,17 @@
             this.sliderList = slideshowHelper.setInitialSliderStatus(sliderList);
           })
       },
+
+      /**
+        * Change active slide item to set
+        * a new to active in the list
+        *
+      */
+
       changeActiveSlider (control) {
-        this.sliderList = slideshowHelper.changeActiveSlider(this.sliderList, control);
+
+        const updatedSlideshowList = slideshowHelper.changeActiveSlider(this.sliderList, control);
+        this.sliderList = [...updatedSlideshowList];
       }
     },
     created() {

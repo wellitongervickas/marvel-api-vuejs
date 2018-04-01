@@ -8,8 +8,14 @@
     },
     {
       "image": "/images/slideshow/slide2.jpg",
-      "title": "AAAAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-      "description": "Aaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "title": "Spider man return of hell",
+      "description": "Kill everbody",
+      "link": "#"
+    },
+    {
+      "image": "/images/slideshow/slide3.jpg",
+      "title": "Thor, Iron Man and Captain America Return",
+      "description": "On the february for attack aliens",
       "link": "#"
     }
   ]
