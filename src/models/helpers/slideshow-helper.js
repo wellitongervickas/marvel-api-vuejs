@@ -61,7 +61,10 @@ const slideshowHelper = (() => {
         break;
     }
 
+
+
     if (nextItem >= 0 && nextItem < sliderList.length) {
+
 
       sliderList[nextItem].status = true;
     } else if (nextItem >= sliderList.length) {
@@ -74,6 +77,7 @@ const slideshowHelper = (() => {
       sliderList[nextItem].status = true;
     } else {
 
+      nextItem = 0;
       throw 'Invalid index of next slider!'
     }
 
