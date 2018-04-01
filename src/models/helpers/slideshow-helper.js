@@ -61,8 +61,6 @@ const slideshowHelper = (() => {
         break;
     }
 
-
-
     if (nextItem >= 0 && nextItem < sliderList.length) {
 
 
@@ -88,13 +86,10 @@ const slideshowHelper = (() => {
     return sliderList;
   };
 
-  function sliderConfiguration (config) {};
-
   return {
     createItem,
     setInitialSliderStatus,
-    changeActiveSlider,
-    sliderConfiguration
+    changeActiveSlider
   }
 })();
 
