@@ -5,25 +5,23 @@
 <template>
   <div class="slideshow-content">
     <div class="slideshow-list container">
-      <transition-group name="fade">
-        <div
-          v-if="sliderList.length"
-          v-for="(item, index) in sliderList"
-          class="slideshow-item"
-          :key="index"
-          :style="{ 'background-image': `url(${item.image})` }"
-          v-show="item.status">
-          <div class="slideshow-label">
-            <div class="slideshow-label-title">{{item.title}} -> Status: {{item.status}}</div>
-            <div class="slideshow-label-desc">{{item.description}}</div>
-          </div>
+      <div
+        v-if="sliderList.length"
+        v-for="(item, index) in sliderList"
+        class="slideshow-item"
+        :key="index"
+        :style="{ 'background-image': `url(${item.image})` }"
+        v-show="item.status">
+        <div class="slideshow-label">
+          <div class="slideshow-label-title">{{item.title}} -> Status: {{item.status}}</div>
+          <div class="slideshow-label-desc">{{item.description}}</div>
         </div>
-      </transition-group>
-      <div class="slideshow-control" v-if="sliderList.length">
-        <div class="slideshow-control-prev pointer transition-slow">
+      </div>
+      <div class="slideshow-control user-select">
+        <div class="slideshow-control-prev pointer transition-slow" @click="changeActiveSlider('prev')">
           <img src="/images/layout/prev.png" :alt="prev">
         </div>
-        <div class="slideshow-control-next pointer transition-slow" @click="nextSlider">
+        <div class="slideshow-control-next pointer transition-slow " @click="changeActiveSlider('next')">
           <img src="/images/layout/next.png" :alt="next">
         </div>
       </div>
@@ -57,18 +55,12 @@
         this
           .$http.get('/local-api/slideshow/slideshow.json')
           .then(response => {
-            const sliderList = response.data.sliders.map(item => {
-
-              const sliderItem = new Slider(item);
-              return sliderItem.getSliderList;
-            });
-
+            const sliderList = response.data.sliders.map(item => slideshowHelper.createItem(item));
             this.sliderList = slideshowHelper.setInitialSliderStatus(sliderList);
           })
       },
-      nextSlider () {
-        console.log('clicked!')
-        return slideshowHelper.changeActiveSlider(this.sliderList);
+      changeActiveSlider (control) {
+        this.sliderList = slideshowHelper.changeActiveSlider(this.sliderList, control);
       }
     },
     created() {
