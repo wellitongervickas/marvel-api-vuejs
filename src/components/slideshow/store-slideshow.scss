@@ -1,13 +1,40 @@
 $slide-height: 550px;
+$negative-controls: -50px;
+
 .slideshow-content {
   min-height: $slide-height;
   background-color: #222;
 
   .slideshow-list {
     min-height: $slide-height;
+    position: relative;
+
     .slideshow-item {
       min-height: $slide-height;
       background-size: cover;
+    }
+
+    .slideshow-control {
+      position: absolute;
+      z-index: 3;
+      width: 100%;
+      top: 45%;
+
+      div {
+        position: absolute;
+
+        &.slideshow-control-prev {
+          left: $negative-controls;
+        }
+
+        &.slideshow-control-next {
+          right:  $negative-controls;
+        }
+
+        &:hover {
+          opacity: 0.6;
+        }
+      }
     }
   }
 }

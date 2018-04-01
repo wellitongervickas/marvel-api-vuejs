@@ -24,6 +24,8 @@ const eng = (() => {
       userGreetings: 'Hi, %s welcome!',
       cart: 'Cart',
       shop: 'Shop',
+      next: 'Next',
+      prev: 'Preview',
     },
     WARNINGS: {
       emptyCart: 'Your shopping cart is empty!',

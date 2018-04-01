@@ -10,8 +10,23 @@
         v-for="(item, index) in sliderList"
         :key="index"
         :style="{ 'background-image': `url(${item.image})` }">
-        <div class="slideshow-item-title">{{item.title}}</div>
-        <div class="slideshow-item-desc">{{item.description}}</div>
+        <div class="slideshow-label">
+          <div class="slideshow-label-title">{{item.title}}</div>
+          <div class="slideshow-label-desc">{{item.description}}</div>
+        </div>
+      </div>
+      <div class="slideshow-control" v-if="sliderList.length">
+        <div class="slideshow-control-prev pointer transition-slow">
+          <img src="/images/layout/prev.png" :alt="prev">
+        </div>
+        <div class="slideshow-control-next pointer transition-slow">
+          <img src="/images/layout/next.png" :alt="next">
+        </div>
+      </div>
+      <div class="slideshow-dots"v-if="sliderList.length > 1">
+        <ul>
+          <li>1</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -22,20 +37,31 @@
     name: 'StoreSlideshow',
     data() {
       return {
+        next: this.$appConfig.lang.TITLES.next,
+        prev: this.$appConfig.lang.TITLES.prev,
         sliderList: [],
       }
     },
     methods: {
+
+      /**
+        * This function is responsible for assigning
+        * service values ​​to the component
+        *
+      */
+
       getSliderList() {
         this
           .$http.get('/local-api/slideshow/slideshow.json')
           .then(response => {
             this.sliderList = response.data.sliders;
           })
-      }
+      },
     },
     created() {
-      this.getSliderList()
+
+      // On load get slider list of endpoint
+      this.getSliderList();
     }
   };
 </script>
