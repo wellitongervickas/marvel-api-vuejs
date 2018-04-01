@@ -7,9 +7,6 @@
   *
 */
 
-const languageHeper = (() => {
-
-  function parse(...arrayValues, text) {};
-});
+const languageHeper = (() => {});
 
 export default languageHelper;

@@ -28,7 +28,7 @@
 
   import StoreHeader from '../content/header/store-header.vue';
   import StoreFooter from '../content/footer/store-footer.vue';
-  import StoreSlideshow from '../content/slideshow/store-slideshow.vue';
+  import StoreSlideshow from '../../components/slideshow/store-slideshow.vue';
 
   export default {
     name: 'Home',

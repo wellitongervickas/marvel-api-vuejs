@@ -60,7 +60,7 @@
 
 <script>
 
-  import StoreAds from '../ads/store-ads.vue';
+  import StoreAds from '../../../components/ads/store-ads.vue';
   import StoreMenu from './menu/store-menu.vue';
 
   export default {
