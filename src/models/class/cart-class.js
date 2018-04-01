@@ -6,11 +6,7 @@
 */
 
 class Cart () {
-  constructor (name) {
-    this.name = name;
-  }
-
-  add () {}
-  remove () {}
-  update () {}
+  constructor () {}
 };
+
+export default Cart;

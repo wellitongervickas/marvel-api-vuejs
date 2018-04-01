@@ -1,0 +1,14 @@
+$slide-height: 550px;
+.slideshow-content {
+  min-height: $slide-height;
+  background-color: #222;
+
+  .slideshow-list {
+    min-height: $slide-height;
+    .slideshow-item {
+      min-height: $slide-height;
+      background-size: cover;
+    }
+  }
+}
+
