@@ -14,14 +14,25 @@ $negative-controls: 0px;
       height: $slide-height;
 
       img {
+        width: 100%;
         position: absolute;
         top: 0;
         left: 0;
         bottom: 0;
         right:0;
       }
-    }
 
+      .slideshow-label {
+        background-color: #fff;
+        position: absolute;
+        z-index: 4;
+        bottom: 0px;
+        width: 80%;
+        margin: 0 auto;
+        left: 0px;
+        right: 0px;
+      }
+    }
   }
 
   .slideshow-control {

@@ -11,12 +11,12 @@ const slideshowHelper = (() => {
     // Destructuring
     const { image, title, description, link} = item;
 
-    return {
+    return Object.assign({}, {
       image,
       title,
       description,
       link,
-    };
+    });
   };
 
   /**

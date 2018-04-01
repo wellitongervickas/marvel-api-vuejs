@@ -9,10 +9,16 @@
         <transition name="slide">
           <img :src="item.image" :alt="item.title" v-show="item.status">
         </transition>
-        <div class="slideshow-label">
-          <div class="slideshow-label-title">{{item.title}} -> Status: {{item.status}}</div>
-          <div class="slideshow-label-desc">{{item.description}}</div>
-        </div>
+        <transition name="fade">
+          <div class="slideshow-label" v-show="item.status">
+            <div class="slideshow-label-title">
+              <h2>{{item.title}}</h2>
+            </div>
+            <div class="slideshow-label-desc">
+              <h3>{{item.description}}</h3>
+            </div>
+          </div>
+        </transition>
       </div>
       <div class="slideshow-control user-select">
         <div class="slideshow-control-prev pointer transition-slow" @click="changeActiveSlider('prev')">
