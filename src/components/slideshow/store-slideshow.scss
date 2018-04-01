@@ -32,14 +32,17 @@ $negative-controls: -50px;
         margin: 0 auto;
         left: 0px;
         right: 0px;
-        z-index: 3;
+        z-index: 4;
       }
     }
   }
 
   .slideshow-control {
-    .slideshow-control-btn {
+    .slideshow-control-btn, .slideshow-control-num {
       position: absolute;
+    }
+
+    .slideshow-control-btn {
       top: 45%;
       z-index: 3;
 
@@ -53,6 +56,27 @@ $negative-controls: -50px;
 
       .slideshow-control-next {
         right: $negative-controls;
+      }
+    }
+
+    .slideshow-control-num {
+      bottom: 0px;
+      z-index: 3;
+
+      ul {
+        position: absolute;
+        bottom: 0px;
+        right: 0px;
+      }
+
+      .slideshow-control-num-item {
+        padding: 10px 13px;
+        background-color: #1f1f1f;
+        margin-top: 5px;
+        margin-right: -15px;
+        &.active {
+          background-color: #f0141e;
+        }
       }
     }
   }
