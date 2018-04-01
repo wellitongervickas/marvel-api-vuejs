@@ -10,8 +10,23 @@
         v-for="(item, index) in sliderList"
         :key="index"
         :style="{ 'background-image': `url(${item.image})` }">
-        <div class="slideshow-item-title">{{item.title}}</div>
-        <div class="slideshow-item-desc">{{item.description}}</div>
+        <div class="slideshow-label">
+          <div class="slideshow-label-title">{{item.title}}</div>
+          <div class="slideshow-label-desc">{{item.description}}</div>
+        </div>
+      </div>
+      <div class="slideshow-control">
+        <div class="slideshow-control-prev">
+          <img src="/images/layout/prev.png" :alt="prev">
+        </div>
+        <div class="slideshow-control-next">
+          <img src="/images/layout/next.png" :alt="next">
+        </div>
+      </div>
+      <div class="slideshow-dots">
+        <ul>
+          <li>1</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -22,6 +37,8 @@
     name: 'StoreSlideshow',
     data() {
       return {
+        next: this.$appConfig.lang.TITLES.next,
+        prev: this.$appConfig.lang.TITLES.prev,
         sliderList: [],
       }
     },
