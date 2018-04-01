@@ -1,3 +1,11 @@
+'use-strict'
+
+/**
+  * This class is responsible for handling
+  * the initial slideshow data
+  *
+*/
+
 class Slider {
   constructor (slider) {
     this.image = slider.image;
