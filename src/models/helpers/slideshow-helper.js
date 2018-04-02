@@ -38,7 +38,7 @@ const slideshowHelper = (() => {
 
   function changeActiveSlider (sliderList, control = null, index = null) {
 
-    let activedItem = sliderList.findIndex(item => item.status == true);
+    const activedItem = sliderList.findIndex(item => item.status == true);
     let nextItem;
 
     // Case using control
