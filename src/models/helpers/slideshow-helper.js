@@ -16,6 +16,7 @@ const slideshowHelper = (() => {
       title,
       description,
       link,
+      status: false,
     };
   };
 
@@ -25,10 +26,10 @@ const slideshowHelper = (() => {
     *
   */
 
-  function setInitialSliderStatus(sliderList) {
-    
-    sliderList[0].status = true;
-    return sliderList;
+  function setInitialSliderStatus(list) {
+
+    list[0].status = true;
+    return list;
   };
 
   /**
@@ -36,9 +37,9 @@ const slideshowHelper = (() => {
     *
   */
 
-  function changeActiveSlider (sliderList, control = null, index = null) {
+  function changeActiveSlider (list, control = null, index = null) {
 
-    const activedItem = sliderList.findIndex(item => item.status == true);
+    const activeSlide = list.findIndex(item => item.status == true);
     let nextItem;
 
     // Case using control
@@ -46,12 +47,12 @@ const slideshowHelper = (() => {
       switch (control) {
         case 'next':
 
-          nextItem = activedItem + 1;
+          nextItem = activeSlide + 1;
           break;
 
         case 'prev':
 
-          nextItem = activedItem - 1;
+          nextItem = activeSlide - 1;
           break;
 
         default:
@@ -60,15 +61,15 @@ const slideshowHelper = (() => {
           break;
       }
 
-      if (nextItem >= 0 && nextItem < sliderList.length) {
+      if (nextItem >= 0 && nextItem < list.length) {
 
-        sliderList[nextItem].status = true;
-      } else if (nextItem >= sliderList.length) {
+        list[nextItem].status = true;
+      } else if (nextItem >= list.length) {
 
         nextItem = 0;
       } else if (nextItem < 0) {
 
-        nextItem = (sliderList.length - 1);
+        nextItem = (list.length - 1);
       } else {
 
         nextItem = 0;
@@ -82,13 +83,13 @@ const slideshowHelper = (() => {
     }
 
     // Set a new item to show
-    sliderList[nextItem].status = true;
+    list[nextItem].status = true;
 
-    for (let i in sliderList) {
-      if (i != nextItem) sliderList[i].status = false;
+    for (let i in list) {
+      if (i != nextItem) list[i].status = false;
     };
 
-    return sliderList;
+    return list;
   };
 
   return {

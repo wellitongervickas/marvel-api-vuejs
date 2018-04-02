@@ -23,17 +23,33 @@ $negative-controls: -50px;
         right:0;
         z-index: 2;
       }
+    }
+  }
 
-      .slideshow-label {
-        background-color: #fff;
-        position: absolute;
-        bottom: 0px;
-        width: 80%;
-        margin: 0 auto;
-        left: 0px;
-        right: 0px;
-        z-index: 4;
-      }
+  .slideshow-label {
+    background-color: #fff;
+    position: absolute;
+    bottom: -100px;
+    width: 70%;
+    margin: 0 auto;
+    left: 0px;
+    right: 0px;
+    z-index: 5;
+    border-bottom: 1px solid #222;
+    padding: 30px 0;
+
+    .slideshow-label-title, .slideshow-label-desc {
+      padding: 0 20px;
+    }
+
+    .slideshow-label-title {
+      font-size: 40px;
+      margin: 0 auto;
+    }
+
+    .slideshow-label-desc {
+      font-size: 20px;
+      font-weight: 400;
     }
   }
 

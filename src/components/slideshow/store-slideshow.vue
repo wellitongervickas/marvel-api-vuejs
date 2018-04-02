@@ -9,16 +9,6 @@
         <transition name="slide">
           <img :src="item.image" :alt="item.title" v-show="item.status" :key="index">
         </transition>
-        <transition name="fade">
-          <div class="slideshow-label align-center" v-show="item.status">
-            <div class="slideshow-label-title">
-              <h2>{{item.title}}</h2>
-            </div>
-            <div class="slideshow-label-desc">
-              <h3>{{item.description}}</h3>
-            </div>
-          </div>
-        </transition>
       </div>
     </div>
     <div class="slideshow-control container user-select">
@@ -42,12 +32,19 @@
         </ul>
       </div>
     </div>
+    <transition-group name="fade">
+      <div class="slideshow-label" v-for="(item, index) in sliderList" :key="index" v-show="item.status">
+        <div class="align-center text-uppercase">
+          <h2 class="slideshow-label-title">{{item.title}}</h2>
+          <h3 class="slideshow-label-desc">{{item.description}}</h3>
+        </div>
+      </div>
+    </transition-group>
   </div>
 </template>
 
 <script>
 
-  import Slider from '../../models/class/slider-class';
   import slideshowHelper from '../../models/helpers/slideshow-helper';
 
   export default {
