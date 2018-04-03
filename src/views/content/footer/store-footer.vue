@@ -20,7 +20,7 @@
       <div class="copyright-info flex10 flex-between">
         <div class="copyright-info-content flex10">
           <ul class="flex-around unstyled-list">
-            <li v-for="(item, index) in menuCopiright" :key="index">
+            <li v-for="(item, index) in menuCopyrightList" :key="index">
               <a class="text-gray" :href="item.url">{{item.name}}</a>
             </li>
           </ul>
@@ -79,7 +79,7 @@
         youtube: this.$appConfig.lang.SOCIAL.youtube,
         twitter: this.$appConfig.lang.SOCIAL.twitter,
         menuList: [],
-        menuCopiright: [],
+        menuCopyrightList: [],
       }
     },
     methods: {
@@ -109,7 +109,7 @@
       getMenuCopyrightList() {
         this.$http.get('/local-api/menu/menu-copyright.json')
         .then(response => {
-          this.menuCopiright = response.data;
+          this.menuCopyrightList = response.data;
         })
         .catch(err => {
           console.error(err)
