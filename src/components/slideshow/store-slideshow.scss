@@ -38,6 +38,16 @@ $negative-controls: -50px;
     border-bottom: 1px solid #222;
     padding: 30px 0;
 
+    .slideshow-label-content {}
+
+    .slideshow-label-btn {
+      position: absolute;
+      width: 100%;
+      a:hover {
+        color: #fff;
+      }
+    }
+
     .slideshow-label-title, .slideshow-label-desc {
       padding: 0 20px;
     }

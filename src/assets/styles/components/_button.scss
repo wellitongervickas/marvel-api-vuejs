@@ -1,0 +1,35 @@
+.btn {
+  text-transform: uppercase;
+  height: 50px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 20px;
+  position: relative;
+
+  &.btn-large {
+    font-size: 20px;
+  }
+
+  &.btn-red {
+    &, &:before, &:after {
+      background-color: #f0141e;
+    }
+  }
+
+  &:before, &:after {
+    top: 0px;
+    content: '';
+    height: 50px;
+    width: 15px;
+    position: absolute;
+    transform: skew(-10deg, 0deg);
+  }
+
+  &:before {
+    left: -10px;
+  }
+
+  &:after {
+    right: -10px;
+  }
+}

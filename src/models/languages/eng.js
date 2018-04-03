@@ -26,6 +26,7 @@ const eng = (() => {
       shop: 'Shop',
       next: 'Next',
       prev: 'Preview',
+      readUp: 'Read Up',
     },
     WARNINGS: {
       emptyCart: 'Your shopping cart is empty!',

@@ -12,7 +12,12 @@
     <section>
       <main>
         <store-slideshow></store-slideshow>
-        <div class="store-content">Marvel Store</div>
+        <div
+          class="store-content store-content-home">
+          <div class="container">
+            Marvel Store
+          </div>
+        </div>
       </main>
     </section>
     </section>

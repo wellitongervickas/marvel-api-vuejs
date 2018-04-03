@@ -34,9 +34,12 @@
     </div>
     <transition-group name="fade">
       <div class="slideshow-label" v-for="(item, index) in sliderList" :key="index" v-show="item.status">
-        <div class="align-center text-uppercase">
+        <div class="slideshow-label-content align-center text-uppercase">
           <h2 class="slideshow-label-title">{{item.title}}</h2>
           <h3 class="slideshow-label-desc">{{item.description}}</h3>
+        </div>
+        <div class="slideshow-label-btn align-center">
+          <a href="#" class="text-white btn btn-large btn-red">{{readUp}}</a>
         </div>
       </div>
     </transition-group>
@@ -53,6 +56,7 @@
       return {
         next: this.$appConfig.lang.TITLES.next,
         prev: this.$appConfig.lang.TITLES.prev,
+        readUp: this.$appConfig.lang.TITLES.readUp,
         sliderList: [],
       }
     },

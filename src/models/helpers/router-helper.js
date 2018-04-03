@@ -11,7 +11,7 @@ import Home from '../../views/home/home.vue';
 const routes = (() => {
   return [
     {
-      path: '*', component: Home
+      path: '*', component: Home, name: 'home'
     }
   ]
 })();

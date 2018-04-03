@@ -3,4 +3,8 @@
   position: relative;
   background-color: #fff;
   z-index: 4;
+
+  &.store-content-home {
+    padding-top: 150px; // fix to slider label
+  }
 }
