@@ -13,7 +13,7 @@
       <main>
         <store-slideshow></store-slideshow>
         <div
-          class="store-content store-content-home">
+          class="store-content store-content-home relative">
           <div class="container">
             Marvel Store
           </div>

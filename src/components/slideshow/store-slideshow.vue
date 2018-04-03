@@ -3,8 +3,8 @@
 </style>
 
 <template>
-  <div class="slideshow-content" v-if="sliderList.length">
-    <div class="slideshow-list container">
+  <div class="slideshow-content relative" v-if="sliderList.length">
+    <div class="slideshow-list container relative">
       <div v-for="(item, index) in sliderList" class="slideshow-item">
         <transition name="slide">
           <img :src="item.image" :alt="item.title" v-show="item.status" :key="index">
@@ -32,14 +32,14 @@
         </ul>
       </div>
     </div>
-    <transition-group name="fade">
+    <transition-group tag="div" class="container relative" name="fade">
       <div class="slideshow-label" v-for="(item, index) in sliderList" :key="index" v-show="item.status">
         <div class="slideshow-label-content align-center text-uppercase">
           <h2 class="slideshow-label-title">{{item.title}}</h2>
           <h3 class="slideshow-label-desc">{{item.description}}</h3>
         </div>
         <div class="slideshow-label-btn align-center">
-          <a href="#" class="text-white btn btn-large btn-red">{{readUp}}</a>
+          <a href="#" class="btn btn-large btn-red text-white">{{readUp}}</a>
         </div>
       </div>
     </transition-group>
@@ -101,12 +101,21 @@
         // Passing null in second parameter to disable control and using number to set new active
         const updatedSlideshowList = slideshowHelper.changeActiveSlider(this.sliderList, null, num);
         this.sliderList = [...updatedSlideshowList];
+      },
+
+      autoChangeSlider () {
+        setInterval(() => {
+          this.changeActiveSlider('next');
+        }, 5000)
       }
     },
     created() {
 
       // On load get slider list of endpoint
       this.getSliderList();
+
+      // Auto change slider
+      this.autoChangeSlider();
     }
   };
 </script>

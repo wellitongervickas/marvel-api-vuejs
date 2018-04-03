@@ -2,14 +2,14 @@ $slide-height: 545px;
 $negative-controls: -50px;
 
 .slideshow-content {
+  background-image: url(/images/layout/slideshow-background.jpg);
+  background-size: cover;
   background-color: #222;
-  position: relative;
 
   .slideshow-list {
     height: $slide-height;
     overflow: hidden;
-    position: relative;
-    box-shadow: 0px 0px 50px 10px #000;
+    box-shadow: 0px 0px 40px 20px #000;
 
     .slideshow-item {
       height: $slide-height;
@@ -43,9 +43,6 @@ $negative-controls: -50px;
     .slideshow-label-btn {
       position: absolute;
       width: 100%;
-      a:hover {
-        color: #fff;
-      }
     }
 
     .slideshow-label-title, .slideshow-label-desc {
@@ -100,6 +97,8 @@ $negative-controls: -50px;
         background-color: #1f1f1f;
         margin-top: 5px;
         margin-right: -15px;
+        font-weight: 600;
+
         &.active {
           background-color: #f0141e;
         }

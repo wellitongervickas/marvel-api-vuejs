@@ -5,6 +5,7 @@
   align-items: center;
   padding: 0 20px;
   position: relative;
+  font-weight: 600;
 
   &.btn-large {
     font-size: 20px;
@@ -31,5 +32,11 @@
 
   &:after {
     right: -10px;
+  }
+
+  &.text-white {
+    &:hover {
+      color: #fff;
+    }
   }
 }
