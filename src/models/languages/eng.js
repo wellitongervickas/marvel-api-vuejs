@@ -8,9 +8,13 @@
 
 const eng = (() => {
 
+  // To Get Dates
+  const date = new Date();
+
   return {
     TITLES: {
       storeName: 'Marvel Store',
+      storeNameShort: 'Marvel',
       advertisement: 'Advertisement',
       welcome: 'Welcome',
       account: 'My Account',
@@ -43,6 +47,9 @@ const eng = (() => {
       facebook: 'Facebook',
       youtube: 'Youtube',
       twitter: 'Twitter',
+    },
+    COPYRIGHT: {
+      info: `${date.getFullYear()} Marvel`
     },
   };
 

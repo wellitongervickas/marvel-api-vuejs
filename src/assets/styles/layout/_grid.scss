@@ -38,6 +38,12 @@
   justify-content: space-between;
 }
 
+.flex-between-center {
+  @extend .flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .flex-end-items {
   @extend .flex;
   align-items: flex-end;
@@ -54,9 +60,18 @@
   justify-content: space-between;
 }
 
+.flex-around {
+  @extend .flex;
+  justify-content: space-around;
+}
+
 .flex-around-center {
   @extend .flex;
   align-items: center;
   justify-content: space-around;
 }
 
+.flex-end {
+  @extend .flex;
+  justify-content: flex-end;
+}

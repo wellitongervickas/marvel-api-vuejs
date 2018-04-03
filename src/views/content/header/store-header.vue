@@ -4,34 +4,35 @@
 
 <template>
   <div>
-    <div class="header-advertisement">
+    <div class="store-header-advertisement">
       <store-ads></store-ads>
     </div>
-    <div class="header-top container flex-between user-select">
-      <div class="flex3 header-top-logo">
+    <div class="store-header-top container flex-between user-select">
+      <div class="flex3 store-header-top-logo">
         <a class="flex" href="#">
           <img src="/images/layout/logo.jpg" :title="storeName" :alt="storeName">
         </a>
       </div>
-      <div class="flex5 header-top-social">
+      <div class="flex5 store-header-top-social">
         <ul class="unstyled-list top-social-icons flex-end-items">
           <li>
             <a href="#">
-              <img src="/images/icons/social/facebook.png" :alt="facebook" :title="facebook"></a>
-          </li>
-          <li>
-            <a href="#">
-              <img src="/images/icons/social/youtube.png" :alt="youtube" :title="youtube">
+              <img class="brightness opacity" src="/images/icons/social/facebook.png" :alt="facebook" :title="facebook">
             </a>
           </li>
           <li>
             <a href="#">
-              <img src="/images/icons/social/twitter.png" :alt="twitter" :title="twitter">
+              <img class="brightness opacity" src="/images/icons/social/youtube.png" :alt="youtube" :title="youtube">
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <img class="brightness opacity" src="/images/icons/social/twitter.png" :alt="twitter" :title="twitter">
             </a>
           </li>
         </ul>
       </div>
-      <div class="flex4 header-top-bar flex-column-between">
+      <div class="flex4 store-header-top-bar flex-column-between">
         <div class="top-bar-nav-top">
           <ul class="unstyled-list flex-end-content">
             <li>
@@ -52,7 +53,7 @@
         </div>
       </div>
     </div>
-    <div class="header-top-menu text-white">
+    <div class="store-header-top-menu text-white">
       <store-menu></store-menu>
     </div>
   </div>

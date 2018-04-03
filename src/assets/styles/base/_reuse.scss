@@ -15,3 +15,15 @@
 .relative {
   position: relative;
 }
+
+.brightness {
+  filter: brightness(0%);
+}
+
+.grayscale {
+  filter: grayscale(100%);
+}
+
+.opacity {
+  opacity: 0.5;
+}

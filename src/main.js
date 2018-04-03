@@ -50,8 +50,10 @@ const router = new VueRouter({
 */
 
 Vue.prototype.$appConfig = {
+  base: window.location.pathname,
   lang: eng,
   api: {
+    url: '',
     publicKey: 'xxx',
     privateKey: 'xxx'
   }
