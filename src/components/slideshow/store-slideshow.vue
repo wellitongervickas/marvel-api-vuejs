@@ -39,7 +39,7 @@
           <h3 class="slideshow-label-desc">{{item.description}}</h3>
         </div>
         <div class="slideshow-label-btn align-center">
-          <a href="#" class="btn btn-large btn-red text-white">{{readUp}}</a>
+          <a href="#" class="btn btn-large btn-red text-white transition-slow">{{readUp}}</a>
         </div>
       </div>
     </transition-group>
@@ -69,12 +69,14 @@
       */
 
       getSliderList() {
-        this
-          .$http.get('/local-api/slideshow/slideshow.json')
-          .then(response => {
-            const sliderList = response.data.sliders.map(item => slideshowHelper.createItem(item));
-            this.sliderList = slideshowHelper.setInitialSliderStatus(sliderList);
-          })
+        this.$http.get('/local-api/slideshow/slideshow.json')
+        .then(response => {
+          const sliderList = response.data.sliders.map(item => slideshowHelper.createItem(item));
+          this.sliderList = slideshowHelper.setInitialSliderStatus(sliderList);
+        })
+        .catch(err => {
+          console.error(err)
+        })
       },
 
       /**
@@ -102,6 +104,12 @@
         const updatedSlideshowList = slideshowHelper.changeActiveSlider(this.sliderList, null, num);
         this.sliderList = [...updatedSlideshowList];
       },
+
+      /**
+        * On called this method change a
+        * new slider to active (next)
+        *
+      */
 
       autoChangeSlider () {
         setInterval(() => {

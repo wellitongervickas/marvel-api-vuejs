@@ -61,7 +61,7 @@
 <script>
 
   import StoreAds from '../../../components/ads/store-ads.vue';
-  import StoreMenu from './menu/store-menu.vue';
+  import StoreMenu from '../../../components/menu/store-menu.vue';
 
   export default {
     name: 'StoreHeader',

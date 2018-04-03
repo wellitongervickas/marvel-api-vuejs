@@ -1,0 +1,163 @@
+[
+  {
+    "name": "Comics",
+    "items": [
+      {
+        "name": "Comics",
+        "url": "#"
+      },
+      {
+        "name": "Release calendar",
+        "url": "#"
+      },
+      {
+        "name": "Marvel Unlimited",
+        "url": "#"
+      },
+      {
+        "name": "Redeem Digital Copy",
+        "url": "#"
+      },
+      {
+        "name": "Shop Digital Comics",
+        "url": "#"
+      },
+      {
+        "name": "Print Subscriptions",
+        "url": "#"
+      },
+      {
+        "name": "Developer portal",
+        "url": "#"
+      }
+    ]
+  },
+  {
+    "name": "Characters",
+    "items": [
+      {
+        "name": "Spider-Man",
+        "url": "#"
+      },
+      {
+        "name": "Avengers",
+        "url": "#"
+      },
+      {
+        "name": "Iron Man",
+        "url": "#"
+      },
+      {
+        "name": "Doctor Strange",
+        "url": "#"
+      },
+      {
+        "name": "Captain Americ",
+        "url": "#"
+      }
+    ]
+  },
+  {
+    "name": "Kids",
+    "items": [
+      {
+        "name": "Spider-Man",
+        "url": "#"
+      },
+      {
+        "name": "Avengers",
+        "url": "#"
+      },
+      {
+        "name": "Iron Man",
+        "url": "#"
+      },
+      {
+        "name": "Doctor Strange",
+        "url": "#"
+      },
+      {
+        "name": "Captain America",
+        "url": "#"
+      }
+    ]
+  },
+  {
+    "name": "Marvel",
+    "items": [
+      {
+        "name": "Sign Up",
+        "url": "#"
+      },
+      {
+        "name": "Marvel Mastercard®",
+        "url": "#"
+      },
+      {
+        "name": "Marvel Insider",
+        "url": "#"
+      },
+      {
+        "name": "Help / FAQs",
+        "url": "#"
+      },
+      {
+        "name": "Email Preferences",
+        "url": "#"
+      },
+      {
+        "name": "About Marvel",
+        "url": "#"
+      },
+      {
+        "name": "Advertising",
+        "url": "#"
+      },
+      {
+        "name": "Internships",
+        "url": "#"
+      },
+      {
+        "name": "Careers",
+        "url": "#"
+      }
+    ]
+  },
+  {
+    "name": "Insider",
+    "items": [
+      {
+        "name": "Insider",
+        "url": "#"
+      },
+      {
+        "name": "Join Today",
+        "url": "#"
+      },
+      {
+        "name": "Home",
+        "url": "#"
+      },
+      {
+        "name": "Activities",
+        "url": "#"
+      },
+      {
+        "name": "Rewards",
+        "url": "#"
+      },
+      {
+        "name": "Member Profile",
+        "url": "#"
+      },
+      {
+        "name": "FAQs",
+        "url": "#"
+      },
+      {
+        "name": "Marvel Insider Terms of Use",
+        "url": "#"
+      }
+    ]
+  }
+]

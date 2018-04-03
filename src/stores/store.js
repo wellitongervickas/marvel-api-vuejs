@@ -16,9 +16,6 @@ import mutations from './mutations';
 import actions from './actions';
 import getters from './getters';
 
-// Main Menu
-import menu from './modules/header-menu/main';
-
 /**
   * Vue Project Uses
   *
@@ -36,7 +33,5 @@ export default new Vuex.Store({
   mutations,
   actions,
   getters,
-  modules: {
-    menu
-  }
+  modules: {}
 });

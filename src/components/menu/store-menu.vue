@@ -1,27 +1,27 @@
 <style lang="scss">
-  @import 'store-footer';
+  @import 'store-menu';
 </style>
 
 <template>
-  <div class="store-footer">
-    <div class="flex-between container text-white">
-
-      <ul class="unstyled-list" v-for="(item, indexItem) in menuList" :key="indexItem">
-        <h4>{{item.name}}</h4>
-        <li v-for="(link, indexLink) in item.items" :key="indexLink">
-          <a :href="link.url">{{link.name}}</a>
+  <nav>
+    <div class="container">
+      <ul class="top-menu flex-around-center unstyled-list">
+        <li class="top-menu-item--hot align-center text-uppercase">{{shop}}</li>
+        <li class="align-center " v-for="(item, index) in menuList" :key="index">
+          <a class="text-white inline-flex-center" :href="item.url">{{item.name}}</a>
         </li>
       </ul>
-
     </div>
-  </div>
+  </nav>
 </template>
 
 <script>
+
   export default {
-    name: 'StoreFooter',
+    name: 'StoreMenu',
     data() {
       return {
+        shop: this.$appConfig.lang.TITLES.shop,
         menuList: []
       }
     },
@@ -34,7 +34,7 @@
       */
 
       getMenuList() {
-        this.$http.get('/local-api/menu/menu-footer.json')
+        this.$http.get('/local-api/menu/menu-header.json')
         .then(response => {
           this.menuList = response.data;
         })
@@ -48,5 +48,6 @@
       // On load this component, get menu from endpoint
       this.getMenuList();
     }
-  }
+  };
+
 </script>
