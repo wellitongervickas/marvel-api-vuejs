@@ -3,7 +3,11 @@
 </style>
 
 <template>
-  <div>#</div>
+  <div>
+    <div v-for="item in productsList">
+      {{item.title}}
+    </div>
+  </div>
 </template>
 
 <script>
@@ -20,13 +24,20 @@
     methods: {
       getProducts() {
 
-        const date = Date.now();
-        const hash = requestHelper.getHash(date, this.$appConfig.api.privateKey, this.$appConfig.api.publicKey);
-        const url = `${this.$appConfig.api.url}/v1/public/comics?ts=${date}&apikey=${this.$appConfig.api.publicKey}&hash=${hash}`;
+        const ts = Date.now();
+        const hash = requestHelper.getHash(ts, this.$appConfig.api.privateKey, this.$appConfig.api.publicKey);
+        const apikey = this.$appConfig.api.publicKey;
+        const url = `${this.$appConfig.api.url}/v1/public/comics`;
 
-        this.$http.get(url)
+        this.$http.get(url, {
+          params: {
+            ts,
+            apikey,
+            hash,
+          }
+        })
         .then(response => {
-          console.log(response)
+          this.productsList = response.data.data.results;
         })
         .catch(err => {
           console.error(err)
