@@ -1,0 +1,20 @@
+.store-products-list {
+  display: flex;
+  flex-wrap: wrap;
+
+  .products-list-item {
+    width: 25%;
+
+    .products-item-thumbnail {
+      background-color: #eee;
+      border: 1px solid #ccc;
+      width: 90%;
+      height: 410px;
+      position: relative;
+      overflow:hidden;
+      img {
+        width: 100%;
+      }
+    }
+  }
+}
