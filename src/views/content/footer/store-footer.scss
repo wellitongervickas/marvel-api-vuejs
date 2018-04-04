@@ -31,7 +31,14 @@
       padding-left: 30px;
 
       img {
-        max-width: 25px;
+
+        filter: brightness(1000%) grayscale(100%);
+        opacity: 0.5;
+
+        &:hover {
+          filter: brightness(100%) grayscale(0%);
+          opacity: 1;
+        }
       }
     }
   }

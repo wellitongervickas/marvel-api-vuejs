@@ -2,6 +2,10 @@
   transition:All 0.5s ease;
 }
 
+.transition-fast {
+  transition:All 0.3s ease;
+}
+
 .fade-enter-active, .fade-leave-active {
   transition: opacity .5s;
 }

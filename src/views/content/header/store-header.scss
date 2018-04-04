@@ -15,8 +15,9 @@ $ads-width: 60%;
       height: 100%;
 
       img {
-        max-width: 22px;
         padding-right: 15px;
+        filter: brightness(0%);
+        opacity: 0.5;
       }
     }
   }

@@ -17,17 +17,17 @@
         <ul class="unstyled-list top-social-icons flex-end-items">
           <li>
             <a href="#">
-              <img class="brightness opacity" src="/images/icons/social/facebook.png" :alt="facebook" :title="facebook">
+              <img width="25" src="/images/icons/social/facebook.svg" :alt="facebook" :title="facebook">
             </a>
           </li>
           <li>
             <a href="#">
-              <img class="brightness opacity" src="/images/icons/social/youtube.png" :alt="youtube" :title="youtube">
+              <img width="25" src="/images/icons/social/youtube.svg" :alt="youtube" :title="youtube">
             </a>
           </li>
           <li>
             <a href="#">
-              <img class="brightness opacity" src="/images/icons/social/twitter.png" :alt="twitter" :title="twitter">
+              <img width="25" src="/images/icons/social/twitter.svg" :alt="twitter" :title="twitter">
             </a>
           </li>
         </ul>

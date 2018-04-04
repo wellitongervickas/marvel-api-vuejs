@@ -32,28 +32,25 @@
           <li>
             <a href="#">
               <img
-              class="transition-slow"
-              src="/images/icons/social/facebook.png"
-              :alt="facebook"
-              :title="facebook">
+              width="25"
+              src="/images/icons/social/facebook.svg"
+              :alt="facebook">
             </a>
           </li>
           <li>
             <a href="#">
               <img
-              class="transition-slow"
-              src="/images/icons/social/youtube.png"
-              :alt="youtube"
-              :title="youtube">
+              width="25"
+              src="/images/icons/social/youtube.svg"
+              :alt="youtube">
             </a>
           </li>
           <li>
             <a href="#">
               <img
-              class="transition-slow"
-              src="/images/icons/social/twitter.png"
-              :alt="twitter"
-              :title="twitter">
+              width="25"
+              src="/images/icons/social/twitter.svg"
+              :alt="twitter">
             </a>
           </li>
         </ul>
