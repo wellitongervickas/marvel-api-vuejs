@@ -53,9 +53,9 @@ Vue.prototype.$appConfig = {
   base: window.location.pathname,
   lang: eng,
   api: {
-    url: '',
-    publicKey: 'xxx',
-    privateKey: 'xxx'
+    url: 'https://gateway.marvel.com',
+    publicKey: '0084873acb0553be578c18446bbbcd7c',
+    privateKey: '50be29f970818f112de8755b30b13cbecfb45144'
   }
 };
 

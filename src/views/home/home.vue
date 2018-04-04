@@ -15,7 +15,7 @@
         <div
           class="store-content store-content-home relative">
           <div class="container">
-            Marvel Store
+            <store-products-browse></store-products-browse>
           </div>
         </div>
       </main>
@@ -34,13 +34,15 @@
   import StoreHeader from '../content/header/store-header.vue';
   import StoreFooter from '../content/footer/store-footer.vue';
   import StoreSlideshow from '../../components/slideshow/store-slideshow.vue';
+  import StoreProductsBrowse from '../../components/products-browse/store-products-browse.vue';
 
   export default {
     name: 'Home',
     components: {
       StoreHeader,
       StoreFooter,
-      StoreSlideshow
+      StoreSlideshow,
+      StoreProductsBrowse
     }
   }
 </script>
