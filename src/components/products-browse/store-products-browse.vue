@@ -4,26 +4,24 @@
 
 <template>
   <div class="store-products-browse">
-
-
     <div class="store-products-list">
       <div class="products-list-item flex-column-center" v-for="(item, index) in productsList" :key="index">
         <div class="products-item-thumbnail flex-around-center">
-          <img :src="`${item.thumbnail.path}.${item.thumbnail.extension}`" :alt="item.title">
+          <img :src="item.image" :alt="item.title">
         </div>
-        <div class="products-item-title">
+        <div class="products-item-title align-center">
           <h3>{{item.title}}</h3>
+          <h4 v-if="item.creator">{{item.creator}}</h4>
         </div>
       </div>
     </div>
-
-
   </div>
 </template>
 
 <script>
 
   import requestHelper from '../../models/helpers/request-helper';
+  import Product from '../../models/class/product-class';
 
   export default {
     name: 'ProductsBrowse',
@@ -52,7 +50,11 @@
         })
         .then(response => {
           console.log(response)
-          this.productsList = response.data.data.results;
+          this.productsList = response.data.data.results.map(item => {
+            return new Product(item);
+          });
+
+          console.log(this.productsList)
         })
         .catch(err => {
           console.error(err)
