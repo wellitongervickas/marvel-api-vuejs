@@ -11,7 +11,7 @@
         </div>
         <div class="products-item-title align-center">
           <h3>{{item.title}}</h3>
-          <h4 v-if="item.creator">{{item.creator}}</h4>
+          <h4 v-if="item.creator">{{item.creator | inverseCreator}}</h4>
         </div>
       </div>
     </div>
@@ -21,6 +21,7 @@
 <script>
 
   import requestHelper from '../../models/helpers/request-helper';
+  import productHelper from '../../models/helpers/product-helper';
   import Product from '../../models/class/product-class';
 
   export default {
@@ -49,12 +50,9 @@
           }
         })
         .then(response => {
-          console.log(response)
           this.productsList = response.data.data.results.map(item => {
             return new Product(item);
           });
-
-          console.log(this.productsList)
         })
         .catch(err => {
           console.error(err)
@@ -63,7 +61,12 @@
     },
     created() {
       this.getProducts();
-    }
+    },
+    filters: {
+      inverseCreator(name) {
+        return productHelper.inverseCreator(name);
+      }
+    },
   };
 
 </script>
