@@ -12,10 +12,14 @@ import jsMd5 from 'js-md5';
 
 const requestHelper = (() => {
 
-  function getHash(timestamp = null, privateKey = null, publicKey = null) {
+  /**
+    * This function create a md5 hash using a date, private Key and public Key
+    * and return a unique hash for using in api.
+    *
+  */
 
-    const hash = jsMd5(`${timestamp}${privateKey}${publicKey}`);
-    return hash;
+  function getHash(timestamp = null, privateKey = null, publicKey = null) {
+    return jsMd5(`${timestamp}${privateKey}${publicKey}`);
   };
 
   return {
