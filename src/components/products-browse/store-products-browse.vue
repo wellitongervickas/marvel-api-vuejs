@@ -25,8 +25,11 @@
       getProducts() {
 
         const ts = Date.now();
-        const hash = requestHelper.getHash(ts, this.$appConfig.api.privateKey, this.$appConfig.api.publicKey);
         const apikey = this.$appConfig.api.publicKey;
+        const privateKey = this.$appConfig.api.privateKey;
+
+        // Create a hash of data
+        const hash = requestHelper.getHash(ts, privateKey, apikey);
         const url = `${this.$appConfig.api.url}/v1/public/comics`;
 
         this.$http.get(url, {
