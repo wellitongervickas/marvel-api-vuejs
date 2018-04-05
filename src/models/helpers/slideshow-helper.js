@@ -1,24 +1,7 @@
+'use-strict'
+
 const slideshowHelper = (() => {
 
-  /**
-    * Create a default object of slider list
-    * on call slideshowHelper.createItem(Object)
-    *
-  */
-
-  function createItem (item) {
-
-    // Destructuring
-    const { image, title, description, link} = item;
-
-    return {
-      image,
-      title,
-      description,
-      link,
-      status: false,
-    };
-  };
 
   /**
     * Set initial object to show in slideshow
@@ -93,7 +76,6 @@ const slideshowHelper = (() => {
   };
 
   return {
-    createItem,
     setInitialSliderStatus,
     changeActiveSlider
   }

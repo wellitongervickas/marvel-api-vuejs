@@ -31,6 +31,8 @@ const eng = (() => {
       next: 'Next',
       prev: 'Preview',
       readUp: 'Read Up',
+      loadMore: 'Load More',
+      loading: 'Loading',
     },
     WARNINGS: {
       emptyCart: 'Your shopping cart is empty!',
