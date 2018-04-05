@@ -24,6 +24,7 @@
 
 <script>
 
+  import { mapState, mapActions } from 'vuex'
   import requestHelper from '../../models/helpers/request-helper';
   import productHelper from '../../models/helpers/product-helper';
   import Product from '../../models/class/product-class';
@@ -42,7 +43,29 @@
         productsList: [],
       }
     },
+    computed: {
+
+      /*
+        * Get products from memory in vuex
+        *
+      */
+      ...mapState({
+        getProdutsFromLocal: function(state) {
+          return state.products.productsList;
+        }
+      })
+    },
     methods: {
+
+      /*
+        * Save products from endpoint in vuex to reuse again when
+        * user need see an product details
+        *
+      */
+
+      ...mapActions([
+          'saveProducts'
+      ]),
 
       /**
         * This method was created to search the list of products
@@ -97,6 +120,9 @@
           this.productsList = response.data.data.results.map(item => {
             return new Product(item);
           });
+
+          // Save in vuex
+          this.saveProducts(this.productsList);
         })
         .catch(err => {
           console.error(err)
@@ -116,11 +142,16 @@
         this.getProductsFromApi(this.getParameters)
         .then(response => {
 
+          // Create product class
           const newProductList = response.data.data.results.map(item => {
             return new Product(item);
           });
 
-          this.productsList = requestHelper.mergeUpdatedList(this.productsList, newProductList);
+          // Update the list
+          this.productsList = requestHelper.mergeUpdatedList(this.getProdutsFromLocal, newProductList);
+
+          // Save in vuex again
+          this.saveProducts(this.productsList);
         })
         .catch(err => {
           console.error(err)
