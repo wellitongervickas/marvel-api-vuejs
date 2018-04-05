@@ -1,3 +1,5 @@
+'use-strict'
+
 /**
   * Documentation of md5 https://www.npmjs.com/package/js-md5
   *
@@ -5,12 +7,24 @@
 
 import jsMd5 from 'js-md5';
 
-/**
-  * Generate objects and values for api requests
-  *
-*/
-
 const requestHelper = (() => {
+
+  /**
+    * This function construct default parameters object of
+    * endpoint results and set by default
+    *
+  */
+
+  function getParameters(data) {
+
+    // Destructuring
+    const { limit, offset } = data;
+
+    return {
+      limit,
+      offset
+    };
+  };
 
   /**
     * This function create a md5 hash using a date, private Key and public Key
@@ -22,8 +36,33 @@ const requestHelper = (() => {
     return jsMd5(`${timestamp}${privateKey}${publicKey}`);
   };
 
+  /**
+    * This function update default parameters to get more products of
+    * api endpoint for use in new request
+    *
+  */
+
+  function getMoreProducts(parameters) {
+
+    parameters.offset += 20;
+    return parameters;
+  };
+
+  /**
+    * This function merge old list to new list and return a array of all
+    * products to show in products browse
+    *
+  */
+
+  function mergeUpdatedList (oldList, newList) {
+    return oldList.concat(newList);
+  };
+
   return {
-    getHash
+    getParameters,
+    getHash,
+    getMoreProducts,
+    mergeUpdatedList
   };
 
 })();
