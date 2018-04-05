@@ -4,7 +4,6 @@
 
 <template>
   <div class="store-products-browse">
-
     <div class="store-products-list">
       <div class="products-list-item flex-column-center" v-for="(item, index) in productsList" :key="index">
         <div class="products-item-thumbnail flex-around-center">
@@ -15,14 +14,11 @@
           <h4 v-if="item.creator">{{item.creator | inverseCreator}}</h4>
         </div>
       </div>
+      <store-loading-content v-show="loadingStatus"></store-loading-content>
     </div>
-
-    <store-loading-content v-show="loadingStatus"></store-loading-content>
-
     <div class="store-products-loadmore flex-around">
       <button @click="updateProductList()" class="btn btn-large btn-red text-white transition-slow">{{loadMore}}</button>
     </div>
-
   </div>
 </template>
 
@@ -90,7 +86,7 @@
         *
       */
 
-      getProducts() {
+      loadProducts() {
         this.getProductsFromApi()
         .then(response => {
 
@@ -134,7 +130,7 @@
     created() {
 
       // Initial getter of products
-      this.getProducts();
+      this.loadProducts();
     },
     filters: {
 

@@ -1,6 +1,8 @@
 .store-products-list {
   display: flex;
   flex-wrap: wrap;
+  border-bottom: 1px solid #222;
+  padding-bottom: 50px;
 
   .products-list-item {
     width: 25%;
@@ -26,4 +28,6 @@
 
 .store-products-loadmore {
   padding: 20px;
+  position: relative;
+  top: -45px;
 }
