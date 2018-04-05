@@ -5,7 +5,7 @@
 <template>
   <div class="store-products-browse">
     <div class="store-products-list">
-      <div class="products-list-item flex-column-center" v-for="(item, index) in productsList" :key="index">
+      <div class="products-list-item flex-column-center" v-for="(item, index) in productsList" :key="index" :data-id="item.id">
         <div class="products-item-thumbnail flex-around-center">
           <img :src="item.image" :alt="item.title">
         </div>
