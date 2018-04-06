@@ -33,6 +33,7 @@ const eng = (() => {
       readUp: 'Read Up',
       loadMore: 'Load More',
       loading: 'Loading',
+      readOnlineDevice: 'Read online or on your iPhone, iPad or Android Device',
     },
     WARNINGS: {
       emptyCart: 'Your shopping cart is empty!',
