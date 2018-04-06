@@ -16,7 +16,7 @@
       .products-item-title-name {
         color: #4b4b4b;
         font-size: 20px;
-        margin-bottom: 10px;
+        margin: 10px;
       }
 
       .products-item-title-creator {
@@ -33,6 +33,7 @@
     }
 
     .products-item-thumbnail {
+      background-image: url(/images/layout/image_not_found.jpg);
       background-color: #222;
       height: 400px;
       position: relative;

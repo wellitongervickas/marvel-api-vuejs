@@ -1,0 +1,21 @@
+.details-intro {
+  background-color: #2a2a2a;
+  margin-bottom: 50px;
+
+  .intro-content {
+    .intro-content-img {
+      padding: 40px 0;
+      height: 400px;
+      position: relative;
+      overflow: hidden;
+      max-width: 260px;
+
+      img {
+        background-image: url(/images/layout/image_not_found.jpg);
+        background-color: #222;
+        width: 99%;
+        border: 1px solid #fff;
+      }
+    }
+  }
+}
