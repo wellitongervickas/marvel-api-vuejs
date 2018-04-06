@@ -3,6 +3,9 @@
   margin-bottom: 50px;
 
   .intro-content {
+    display: grid;
+    grid-template-columns: 25% 50% 25%;
+
     .intro-content-img {
       padding: 40px 0;
       height: 400px;
@@ -16,6 +19,10 @@
         width: 99%;
         border: 1px solid #fff;
       }
+    }
+
+    .intro-content-description {
+      padding: 70px 0;
     }
   }
 }

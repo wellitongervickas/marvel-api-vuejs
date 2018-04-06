@@ -2,21 +2,36 @@
 
 const productHelper = (() => {
 
+
+  function getCreator (creators, type) {
+    if (creators.available > 0) {
+      const editor = creators.items.filter(item => {
+        if (item.role == type) {
+          return item;
+        }
+      })
+
+      return (editor[0]) ? editor[0].name : null;
+    }
+
+    return;
+  };
+
   /**
     * This method return a full name with comma
     *
   */
 
-  function inverseCreator (name) {
+  function inverseCreator (creator) {
 
     // Transform full name in array
-    const nameToSplit = name.split(' ');
+    const nameToSplit = creator.split(' ');
 
     if (nameToSplit.length >= 1 && nameToSplit.length <=2) {
       return `${nameToSplit[1]}, ${nameToSplit[0]}`
     }
 
-    return name;
+    return creator;
   };
 
   /*
@@ -37,6 +52,7 @@ const productHelper = (() => {
   };
 
   return {
+    getCreator,
     inverseCreator,
     validateImageNotFound
   };
