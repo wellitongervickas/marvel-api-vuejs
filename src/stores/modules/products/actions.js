@@ -11,8 +11,6 @@ export default {
   */
 
   saveProducts(context, payload) {
-
-    storageHelper.save('products', payload);
     context.commit('SAVE_PRODUCTS', payload)
   }
 }

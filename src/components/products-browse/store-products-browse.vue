@@ -56,25 +56,7 @@
         productsList: [],
       }
     },
-    computed: {
-
-      /**
-        * Get products from memory in vuex
-        *
-      */
-      ...mapGetters(['getProdutsFromLocal'])
-    },
     methods: {
-
-      /**
-        * Save products from endpoint in vuex to reuse again when
-        * user need see an product details
-        *
-      */
-
-      ...mapActions([
-          'saveProducts'
-      ]),
 
       /**
         * This method was created to search the list of products
@@ -131,8 +113,6 @@
             return new Product(item);
           });
 
-          // Save in vuex
-          this.saveProducts(this.productsList);
         })
         .catch(err => {
           console.error(err)
@@ -157,15 +137,9 @@
             return new Product(item);
           });
 
-          // Verify existing products in memory before get in vuex
-          const getFromStorage = storageHelper.get('products');
-          const productsList = (getFromStorage.length > 1) ? getFromStorage : this.getProdutsFromLocal;
-
           // Update the list
-          this.productsList = requestHelper.mergeUpdatedList(productsList, newProductList);
+          this.productsList = requestHelper.mergeUpdatedList(this.productsList, newProductList);
 
-          // Save in vuex again
-          this.saveProducts(this.productsList);
         })
         .catch(err => {
           console.error(err)
