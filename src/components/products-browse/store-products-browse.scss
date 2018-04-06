@@ -12,6 +12,26 @@
       width: 90%;
     }
 
+    .products-item-title {
+      .products-item-title-name {
+        color: #4b4b4b;
+        font-size: 20px;
+        margin-bottom: 10px;
+      }
+
+      .products-item-title-creator {
+        font-size: 16px;
+        margin-bottom: 15px;
+      }
+
+      .products-item-title-break {
+        width: 50%;
+        height: 2px;
+        background-color: #4b4b4b;
+        margin: 0 auto;
+      }
+    }
+
     .products-item-thumbnail {
       background-color: #222;
       height: 400px;

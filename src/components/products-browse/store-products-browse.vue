@@ -7,11 +7,18 @@
     <div class="store-products-list">
       <div class="products-list-item flex-column-center" v-for="(item, index) in productsList" :key="index" :data-id="item.id">
         <div class="products-item-thumbnail flex-around-center">
-          <img :src="item.image" :alt="item.title">
+          <router-link :to="{ name: 'product', params: { id: item.id }}">
+            <img :src="item.image" :alt="item.title">
+          </router-link>
         </div>
-        <div class="products-item-title align-center">
-          <h3>{{item.title}}</h3>
-          <h4 v-if="item.creator">{{item.creator | inverseCreator}}</h4>
+        <div class="products-item-title flex-column-between align-center">
+          <h3 class="products-item-title-name">
+            <router-link :to="{ name: 'product', params: { id: item.id }}">
+              {{item.title}}
+            </router-link>
+          </h3>
+          <span class="products-item-title-creator text-uppercase" v-if="item.creator">{{item.creator | inverseCreator}}</span>
+          <div class="products-item-title-break"></div>
         </div>
       </div>
       <store-loading-content v-show="loadingStatus"></store-loading-content>
@@ -24,11 +31,12 @@
 
 <script>
 
-  import { mapState, mapActions } from 'vuex'
+  import { mapState, mapActions, mapGetters } from 'vuex';
   import requestHelper from '../../models/helpers/request-helper';
   import productHelper from '../../models/helpers/product-helper';
   import Product from '../../models/class/product-class';
   import StoreLoadingContent from '../loading-content/store-loading-content';
+  import storageHelper from '../../models/helpers/storage-helper';
 
   export default {
     name: 'ProductsBrowse',
@@ -49,11 +57,7 @@
         * Get products from memory in vuex
         *
       */
-      ...mapState({
-        getProdutsFromLocal: function(state) {
-          return state.products.productsList;
-        }
-      })
+      ...mapGetters(['getProdutsFromLocal'])
     },
     methods: {
 
@@ -147,8 +151,12 @@
             return new Product(item);
           });
 
+          // Verify existing products in memory before get in vuex
+          const getFromStorage = storageHelper.get('products');
+          const productsList = (getFromStorage.length > 1) ? getFromStorage : this.getProdutsFromLocal;
+
           // Update the list
-          this.productsList = requestHelper.mergeUpdatedList(this.getProdutsFromLocal, newProductList);
+          this.productsList = requestHelper.mergeUpdatedList(productsList, newProductList);
 
           // Save in vuex again
           this.saveProducts(this.productsList);

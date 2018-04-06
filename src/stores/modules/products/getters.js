@@ -1,7 +1,7 @@
 'use-strict'
 
+import storageHelper from '../../../models/helpers/storage-helper';
+
 export default {
-  getProdutsFromLocal(state) {
-    return state.productsList;
-  }
+  getProdutsFromLocal: state => state.productsList
 }
