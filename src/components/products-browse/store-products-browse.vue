@@ -112,7 +112,6 @@
           this.productsList = response.data.data.results.map(item => {
             return new Product(item);
           });
-
         })
         .catch(err => {
           console.error(err)
@@ -128,7 +127,10 @@
 
       updateProductList() {
 
+        // Update parameters
         this.getParameters = requestHelper.getMoreProducts(this.getParameters);
+
+        // Get new products from api
         this.getProductsFromApi(this.getParameters)
         .then(response => {
 

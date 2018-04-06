@@ -73,7 +73,10 @@
           this.productDetails = product[0];
         })
         .catch(err => {
-          console.error(err)
+          console.error(err);
+
+          // If invalid id, return to home
+          this.$router.push('/');
         });
       }
     },
