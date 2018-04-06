@@ -8,10 +8,13 @@
       height: 400px;
       position: relative;
       overflow: hidden;
-      max-width: 280px;
+      max-width: 260px;
 
       img {
-        width: 100%;
+        background-image: url(/images/layout/image_not_found.jpg);
+        background-color: #222;
+        width: 99%;
+        border: 1px solid #fff;
       }
     }
   }
