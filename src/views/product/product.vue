@@ -11,7 +11,7 @@
     </section>
     <section>
       <main>
-        # {{productList}}
+        <store-product-details :details="productDetails"></store-product-details>
       </main>
     </section>
     </section>
@@ -28,18 +28,22 @@
   import { mapState, mapActions, mapGetters } from 'vuex';
   import StoreHeader from '../content/header/store-header.vue';
   import StoreFooter from '../content/footer/store-footer.vue';
+  import StoreProductDetails from '../../components/product-details/store-product-details.vue';
   import storageHelper from '../../models/helpers/storage-helper';
+  import Product from '../../models/class/product-class';
 
   export default {
     name: 'Product',
     components: {
       StoreHeader,
-      StoreFooter
+      StoreFooter,
+      StoreProductDetails
     },
     props: ['id'],
     data() {
       return {
-        productList: []
+        productList: [],
+        productDetails: {}
       }
     },
     computed: {
@@ -62,6 +66,23 @@
         // Verify existing products in memory before get in vuex
         const getFromStorage = storageHelper.get('products');
         this.productList = (getFromStorage.length > 1) ? getFromStorage : products;
+
+        // If dont have a product, redirect to home
+        if (this.productList.lenght <= 0) {
+
+          this.$router.push('/')
+        } else {
+
+          this.setProductDetails();
+        }
+      },
+
+      setProductDetails() {
+        this.productDetails = this.productList.find(item => {
+          if (item.id == this.id) {
+            return item;
+          }
+        });
       }
     },
     created(){

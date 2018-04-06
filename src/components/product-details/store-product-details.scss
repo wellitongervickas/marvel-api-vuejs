@@ -1,0 +1,18 @@
+.details-intro {
+  background-color: #2a2a2a;
+  margin-bottom: 50px;
+
+  .intro-content {
+    .intro-content-img {
+      padding: 40px 0;
+      height: 400px;
+      position: relative;
+      overflow: hidden;
+      max-width: 280px;
+
+      img {
+        width: 100%;
+      }
+    }
+  }
+}

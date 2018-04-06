@@ -6,7 +6,7 @@ const storageHelper = (() => {
     *
   */
 
-  function saveInStorage (key, payload) {
+  function saveInStorage (key, payload = []) {
     localStorage.setItem(key, JSON.stringify(payload))
   };
 
@@ -17,8 +17,8 @@ const storageHelper = (() => {
   */
 
   function getOfStorage (key) {
-    const data = localStorage.getItem(key)
-    return JSON.parse(data);
+    const data = localStorage.getItem(key);
+    return (data) ? JSON.parse(data) : [];
   };
 
   return {
