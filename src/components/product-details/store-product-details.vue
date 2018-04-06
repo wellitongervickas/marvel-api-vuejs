@@ -7,7 +7,6 @@
     <div class="details-intro">
       <div class="intro-content container text-white">
 
-
         <div class="intro-content-img flex-around-center">
           <img :src="details.image" :alt="details.title">
         </div>

@@ -1,3 +1,5 @@
+$product-default-height: 400px;
+
 .details-intro {
   background-color: #2a2a2a;
   margin-bottom: 50px;
@@ -8,13 +10,14 @@
 
     .intro-content-img {
       padding: 40px 0;
-      height: 400px;
+      height: $product-default-height;
       position: relative;
       overflow: hidden;
       max-width: 260px;
 
       img {
         background-image: url(/images/layout/image_not_found.jpg);
+        min-height: $product-default-height;
         background-color: #222;
         width: 99%;
         border: 1px solid #fff;

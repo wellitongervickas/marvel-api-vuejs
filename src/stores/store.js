@@ -16,8 +16,8 @@ import mutations from './mutations';
 import actions from './actions';
 import getters from './getters';
 
-// Products
-import products from './modules/products/main'
+// Cart
+import cart from './modules/cart/main';
 
 /**
   * Vue Project Uses
@@ -37,6 +37,6 @@ export default new Vuex.Store({
   actions,
   getters,
   modules: {
-    products
+    cart
   }
 });

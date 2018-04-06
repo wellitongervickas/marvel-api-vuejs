@@ -25,12 +25,11 @@
 
 <script>
 
-  import { mapState, mapActions, mapGetters } from 'vuex';
   import StoreHeader from '../content/header/store-header.vue';
   import StoreFooter from '../content/footer/store-footer.vue';
   import StoreProductDetails from '../../components/product-details/store-product-details.vue';
-  import storageHelper from '../../models/helpers/storage-helper';
   import Product from '../../models/class/product-class';
+  import requestHelper from '../../models/helpers/request-helper';
 
   export default {
     name: 'Product',
@@ -42,46 +41,39 @@
     props: ['id'],
     data() {
       return {
-        productList: [],
         productDetails: {}
       }
     },
-    computed: {
-
-      /**
-        * Get products from memory in vuex
-        *
-      */
-      ...mapGetters(['getProdutsFromLocal'])
-    },
     methods: {
+      getProductFromApi () {
 
-      /**
-        * Get products from memory in vuex or local storage
-        *
-      */
+        // Create a object of parameters
+        const ts = Date.now();
+        const apikey = this.$appConfig.api.publicKey;
+        const privateKey = this.$appConfig.api.privateKey;
+        const hash = requestHelper.getHash(ts, privateKey, apikey);
+        const url = `${this.$appConfig.api.url}/v1/public/comics/${this.id}`;
+        const params = Object.assign({
+          ts,
+          apikey,
+          hash
+        });
 
-      loadProductsFromLocal(products) {
+        this.$http.get(url, {
+          params
+        })
+        .then(response => {
 
-        // Verify existing products in memory before get in vuex
-        const getFromStorage = storageHelper.get('products');
-        this.productList = (getFromStorage.length > 1) ? getFromStorage : products;
+          // Get product from list and change to product class
+          const product = response.data.data.results.map(item => {
+            return new Product(item);
+          });
 
-        // If dont have a product, redirect to home
-        if (this.productList.lenght <= 0) {
-
-          this.$router.push('/')
-        } else {
-
-          this.setProductDetails();
-        }
-      },
-
-      setProductDetails() {
-        this.productDetails = this.productList.find(item => {
-          if (item.id == this.id) {
-            return item;
-          }
+          // Set product details
+          this.productDetails = product[0];
+        })
+        .catch(err => {
+          console.error(err)
         });
       }
     },
@@ -90,8 +82,8 @@
       // Return to top
       window.scrollTo({top: 0});
 
-      // Call to getter of products list
-      this.loadProductsFromLocal(this.getProdutsFromLocal);
+      // Get product
+      this.getProductFromApi()
     }
   }
 </script>
