@@ -12,6 +12,7 @@ class Product {
     this.penciler = productHelper.getCreator(product.creators, 'penciller');
     this.writer = productHelper.getCreator(product.creators, 'writer');
     this.coverArtist = productHelper.getCreator(product.creators, 'penciller (cover)');
+    this.modified = productHelper.getDate(product.modified);
   }
 };
 

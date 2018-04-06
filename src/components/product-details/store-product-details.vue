@@ -16,6 +16,7 @@
         <div class="intro-content-description">
           <h1 class="description-title text-uppercase">{{details.title}}</h1>
           <ul class="description-creators unstyled-list">
+            <li v-if="details.modified">Published: {{details.modified}}</li>
             <li v-if="details.creator">Creator: {{details.creator}}</li>
             <li v-if="details.writer">Writer: {{details.writer}}</li>
             <li v-if="details.penciler">Penciller: {{details.penciler}}</li>

@@ -24,7 +24,12 @@
       <store-loading-content v-show="loadingStatus"></store-loading-content>
     </div>
     <div class="store-products-loadmore flex-around">
-      <button @click="updateProductList()" class="btn btn-large btn-red text-white transition-slow">{{loadMore}}</button>
+      <button
+        :disabled="loadingStatus"
+        @click="updateProductList()"
+        class="btn btn-large btn-red text-white transition-slow">
+        {{loadMore}}
+      </button>
     </div>
   </div>
 </template>

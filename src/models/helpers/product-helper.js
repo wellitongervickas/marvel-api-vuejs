@@ -2,6 +2,19 @@
 
 const productHelper = (() => {
 
+  /**
+    * This function is responsible for returning a valid date
+  */
+
+  function getDate(data) {
+
+    // Method in progress (not finished)
+    return data;
+  };
+
+  /**
+    * This role is responsible for returning a creator
+  */
 
   function getCreator (creators, type) {
     if (creators.available > 0) {
@@ -52,6 +65,7 @@ const productHelper = (() => {
   };
 
   return {
+    getDate,
     getCreator,
     inverseCreator,
     validateImageNotFound
