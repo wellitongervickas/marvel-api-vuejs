@@ -53,7 +53,7 @@
     },
     computed: {
 
-      /*
+      /**
         * Get products from memory in vuex
         *
       */
@@ -61,7 +61,7 @@
     },
     methods: {
 
-      /*
+      /**
         * Save products from endpoint in vuex to reuse again when
         * user need see an product details
         *
@@ -82,6 +82,7 @@
         // Enable loading
         this.loadingStatus = true;
 
+        // Create a object of parameters
         const ts = Date.now();
         const apikey = this.$appConfig.api.publicKey;
         const privateKey = this.$appConfig.api.privateKey;
@@ -133,7 +134,7 @@
         });
       },
 
-      /*
+      /**
         * This method together with the standard search method
         * will update the list of current products by adding an
         * offset of 20 products

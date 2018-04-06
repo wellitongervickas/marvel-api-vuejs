@@ -44,13 +44,19 @@
     },
     computed: {
 
-      /*
+      /**
         * Get products from memory in vuex
         *
       */
       ...mapGetters(['getProdutsFromLocal'])
     },
     methods: {
+
+      /**
+        * Get products from memory in vuex or local storage
+        *
+      */
+
       loadProductsFromLocal(products) {
 
         // Verify existing products in memory before get in vuex
@@ -62,6 +68,8 @@
 
       // Return to top
       window.scrollTo({top: 0});
+
+      // Call to getter of products list
       this.loadProductsFromLocal(this.getProdutsFromLocal);
     }
   }
