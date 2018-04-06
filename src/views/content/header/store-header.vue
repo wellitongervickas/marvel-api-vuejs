@@ -9,9 +9,9 @@
     </div>
     <div class="store-header-top container flex-between user-select">
       <div class="flex3 store-header-top-logo">
-        <a class="flex" href="#">
+        <router-link :to="'/'" class="flex">
           <img src="/images/layout/logo.jpg" :title="storeName" :alt="storeName">
-        </a>
+        </router-link>
       </div>
       <div class="flex5 store-header-top-social">
         <ul class="unstyled-list top-social-icons flex-end-items">
