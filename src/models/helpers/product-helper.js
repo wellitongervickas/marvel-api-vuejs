@@ -4,16 +4,16 @@ const productHelper = (() => {
 
   /**
     * This function is responsible for returning a valid date
+    *
   */
 
   function getDate(data) {
-
-    // Method in progress (not finished)
     return data;
   };
 
   /**
     * This role is responsible for returning a creator
+    *
   */
 
   function getCreator (creators, type) {
@@ -39,7 +39,6 @@ const productHelper = (() => {
 
     // Transform full name in array
     const nameToSplit = creator.split(' ');
-
     if (nameToSplit.length >= 1 && nameToSplit.length <=2) {
       return `${nameToSplit[1]}, ${nameToSplit[0]}`
     }
@@ -50,13 +49,13 @@ const productHelper = (() => {
   /*
     * This method finds image not availabe in path of thumbnail
     * end replace for a local picture
+    *
   */
 
   function validateImageNotFound (path, extension) {
 
     // Find image not available in path
-    let findInString = path.includes('image_not_available');
-
+    const findInString = path.includes('image_not_available');
     if (!findInString) {
       return `${path}.${extension}`;
     }

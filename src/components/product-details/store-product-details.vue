@@ -26,6 +26,11 @@
 
         <div class="intro-content-pricing">
           <p>{{readOnlineDevice}}</p>
+          <div class="princing-values">
+            <ul>
+              <li v-for="(item, index) in details.prices" :class="item.type">{{item.price}}</li>
+            </ul>
+          </div>
         </div>
 
       </div>

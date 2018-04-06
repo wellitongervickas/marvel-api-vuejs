@@ -66,9 +66,7 @@
           hash
         });
 
-        this.$http.get(url, {
-          params
-        })
+        this.$http.get(url, {params})
         .then(response => {
 
           // Get product from list and change to product class
@@ -76,16 +74,11 @@
             return new Product(item);
           });
 
-          // Set product details
           this.productDetails = product[0];
-
-          // Disable Loading
           this.loadingStatus = false;
         })
         .catch(err => {
           console.error(err);
-
-          // Disable Loading
           this.loadingStatus = false
 
           // If invalid id, return to home
@@ -97,8 +90,6 @@
 
       // Return to top
       window.scrollTo({top: 0});
-
-      // Get product
       this.getProductFromApi()
     }
   }
