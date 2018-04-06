@@ -22,16 +22,16 @@ const productHelper = (() => {
     *
   */
 
-  function inverseCreator (editor) {
+  function inverseCreator (creator) {
 
     // Transform full name in array
-    const nameToSplit = editor.split(' ');
+    const nameToSplit = creator.split(' ');
 
     if (nameToSplit.length >= 1 && nameToSplit.length <=2) {
       return `${nameToSplit[1]}, ${nameToSplit[0]}`
     }
 
-    return editor;
+    return creator;
   };
 
   /*
