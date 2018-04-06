@@ -1,9 +1,9 @@
 <style lang="scss">
-  @import 'store-loading-content';
+  @import 'store-loading';
 </style>
 
 <template>
-  <div class="store-loading-content flex-around">
+  <div class="store-loading flex-around">
     <img src="/images/layout/loading.svg" :alt="loading">
   </div>
 </template>
@@ -11,7 +11,7 @@
 <script>
 
   export default {
-    name: 'StoreLoadingContent',
+    name: 'StoreLoading',
     data() {
       return {
         loading: this.$appConfig.lang.loading

@@ -20,6 +20,7 @@
         <store-footer></store-footer>
       </footer>
     </section>
+    <store-loading v-show="loadingStatus"></store-loading>
   </div>
 </template>
 
@@ -28,6 +29,7 @@
   import StoreHeader from '../content/header/store-header.vue';
   import StoreFooter from '../content/footer/store-footer.vue';
   import StoreProductDetails from '../../components/product-details/store-product-details.vue';
+  import StoreLoading from '../../components/loading/store-loading.vue';
   import Product from '../../models/class/product-class';
   import requestHelper from '../../models/helpers/request-helper';
 
@@ -36,16 +38,21 @@
     components: {
       StoreHeader,
       StoreFooter,
-      StoreProductDetails
+      StoreProductDetails,
+      StoreLoading
     },
     props: ['id'],
     data() {
       return {
-        productDetails: {}
+        productDetails: {},
+        loadingStatus: false,
       }
     },
     methods: {
       getProductFromApi () {
+
+        // Enable Loading
+        this.loadingStatus = true;
 
         // Create a object of parameters
         const ts = Date.now();
@@ -71,9 +78,15 @@
 
           // Set product details
           this.productDetails = product[0];
+
+          // Disable Loading
+          this.loadingStatus = false;
         })
         .catch(err => {
           console.error(err);
+
+          // Disable Loading
+          this.loadingStatus = false
 
           // If invalid id, return to home
           this.$router.push('/');
