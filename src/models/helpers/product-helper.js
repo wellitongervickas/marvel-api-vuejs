@@ -2,6 +2,16 @@
 
 const productHelper = (() => {
 
+  function readDescription(description, status) {
+
+    const maxLength = 100;
+    if (status) {
+      return description.substring(0, maxLength)
+    }
+
+    return description;
+  };
+
   /**
     * This function is responsible for returning a valid date
     *
@@ -64,6 +74,7 @@ const productHelper = (() => {
   };
 
   return {
+    readDescription,
     getDate,
     getCreator,
     inverseCreator,
