@@ -2,6 +2,22 @@
 
 const productHelper = (() => {
 
+  function priceType (type) {
+    switch (type) {
+      case 'digitalPurchasePrice':
+        return 'Digital Issue'
+        break;
+
+      case 'printPrice':
+        return 'Print Price'
+        break;
+
+      default:
+        // statements_def
+        break;
+    }
+  };
+
   /**
     * This method checks if the comic has a virtual file
     *
@@ -113,6 +129,7 @@ const productHelper = (() => {
   };
 
   return {
+    priceType,
     isDigitalRead,
     cropDescription,
     getDate,

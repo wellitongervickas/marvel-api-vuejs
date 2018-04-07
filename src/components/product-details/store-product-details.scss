@@ -1,4 +1,5 @@
 $product-default-height: 400px;
+$default-margin-bottom: 20px;
 
 .details-intro {
   background-color: #2a2a2a;
@@ -33,7 +34,7 @@ $product-default-height: 400px;
       }
 
       .description-title, .description-creators {
-        margin-bottom: 20px;
+        margin-bottom: $default-margin-bottom;
       }
 
       .description-creators {
@@ -51,7 +52,45 @@ $product-default-height: 400px;
 
     .intro-content-pricing {
       background-color: #3c3c3c;
-      padding: 70px 40px;
+      padding: 0 40px;
+
+      .princing-digital-description {
+        line-height: 25px;
+      }
+
+      .princing-digital-description, .princing-rating-description {
+        font-size: 16px;
+        margin-bottom: $default-margin-bottom;
+      }
+
+      .princing-values {
+        font-size: 50px;
+        font-weight: 800;
+        margin-bottom: $default-margin-bottom;
+
+        .princing-values-currency, .princing-values-description {
+          margin-bottom: 10px;
+        }
+
+        .princing-values-description {
+          font-size: 16px;
+          font-weight: 400;
+        }
+
+        .princing-more-values {
+          color: #ccc;
+
+          .princing-values-currency {
+            border-top: 1px solid #666;
+            font-size: 20px;
+            padding-top: 20px;
+          }
+
+          .princing-values-description {
+            font-size: 14px;
+          }
+        }
+      }
     }
   }
 }

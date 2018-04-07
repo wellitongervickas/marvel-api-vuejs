@@ -43,14 +43,20 @@
           </p>
           <p v-else>{{noDescription}}</p>
         </div>
-        <div class="intro-content-pricing align-center">
-          <p v-show="details.digitalRead">{{readOnlineDevice}}</p>
-          <div class="princing-values">
-            <ul class="unstyled-list">
-              <li v-for="(item, index) in details.prices" :class="item.type">{{item.price}}</li>
-            </ul>
-          </div>
-          <p>{{customerRating}}</p>
+        <div class="intro-content-pricing flex-column-center flex-center align-center" v-if="details.prices">
+          <p class="princing-digital-description text-uppercase" v-show="details.digitalRead">{{readOnlineDevice}}</p>
+          <ul class="princing-values unstyled-list">
+            <li
+              class="flex-column-between"
+              :class="{'princing-more-values': index > 0}"
+              v-for="(item, index) in details.prices">
+              <span class="princing-values-currency text-uppercase">$ {{item.price}}</span>
+              <span class="princing-values-description text-uppercase" :class="item.type">
+                {{item.type | priceType}}
+              </span>
+            </li>
+          </ul>
+          <p class="princing-rating-description text-uppercase">{{customerRating}}</p>
         </div>
       </div>
     </div>
@@ -89,6 +95,9 @@
         if (description) {
           return productHelper.cropDescription(description, status);
         }
+      },
+      priceType(price) {
+        return productHelper.priceType(price);
       }
     },
   };
