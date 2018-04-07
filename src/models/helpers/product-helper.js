@@ -4,14 +4,14 @@ const productHelper = (() => {
 
   /**
     * This function will return if the state is true for a description with
-    * up to 100 characters, otherwise returns a full description
+    * up to 100 characters, if more than 400 to, otherwise returns a full description
     *
   */
 
   function cropDescription(description, status) {
 
     const maxLengthLess = 100;
-    const maxLengthMore = 300;
+    const maxLengthMore = 400;
 
     if (status) {
 

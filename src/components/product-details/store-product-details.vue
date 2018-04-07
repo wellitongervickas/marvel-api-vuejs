@@ -12,22 +12,22 @@
         <div class="intro-content-description">
           <h1 class="description-title text-uppercase">{{details.title}}</h1>
           <ul class="description-creators unstyled-list">
-            <li v-if="details.modified">Published: {{details.modified}}</li>
-            <li v-if="details.creator">Creator: {{details.creator}}</li>
-            <li v-if="details.writer">Writer: {{details.writer}}</li>
-            <li v-if="details.penciler">Penciller: {{details.penciler}}</li>
-            <li v-if="details.coverArtist">Cover Artist: {{details.coverArtist}}</li>
+            <li v-if="details.modified">{{published}}: {{details.modified}}</li>
+            <li v-if="details.creator">{{creator}}: {{details.creator}}</li>
+            <li v-if="details.writer">{{writer}}: {{details.writer}}</li>
+            <li v-if="details.penciler">{{penciller}}: {{details.penciler}}</li>
+            <li v-if="details.coverArtist">{{coverArtist}}: {{details.coverArtist}}</li>
           </ul>
           <p class="description-text" v-if="details.description">
             {{details.description | cropDescription(showMoreDescription)}}
             <button class="description-text-read pointer" @click="showMoreDescription = !showMoreDescription">
               <div class="text-read-button-more" v-show="showMoreDescription">
                 <span>[ + ]</span>
-                <span class="text-red">Read More</span>
+                <span class="text-red">{{readMore}}</span>
               </div>
               <div class="text-read-button-less" v-show="!showMoreDescription">
                 <span>[ - ]</span>
-                <span class="text-red">Read Less</span>
+                <span class="text-red">{{readLess}}</span>
               </div>
             </button>
           </p>
@@ -58,6 +58,13 @@
       return {
         readOnlineDevice: this.$appConfig.lang.TITLES.readOnlineDevice,
         customerRating: this.$appConfig.lang.TITLES.customerRating,
+        published: this.$appConfig.lang.TITLES.published,
+        creator: this.$appConfig.lang.TITLES.creator,
+        writer: this.$appConfig.lang.TITLES.writer,
+        penciller: this.$appConfig.lang.TITLES.penciller,
+        coverArtist: this.$appConfig.lang.TITLES.coverArtist,
+        readMore: this.$appConfig.lang.TITLES.readMore,
+        readLess: this.$appConfig.lang.TITLES.readLess,
         showMoreDescription: true,
       }
     },

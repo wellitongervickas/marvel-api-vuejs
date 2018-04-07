@@ -34,7 +34,14 @@ const eng = (() => {
       loadMore: 'Load More',
       loading: 'Loading',
       readOnlineDevice: 'Read online or on your iPhone, iPad or Android Device',
-      customerRating: 'Average customer rating'
+      customerRating: 'Average customer rating',
+      published: 'Published',
+      creator: 'Creator',
+      writer: 'Writer',
+      penciller: 'Penciller',
+      coverArtist: 'Cover Artist',
+      readMore: 'read more',
+      readLess: 'read less',
     },
     WARNINGS: {
       emptyCart: 'Your shopping cart is empty!',
