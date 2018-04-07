@@ -20,6 +20,7 @@
         <store-footer></store-footer>
       </footer>
     </section>
+    <store-loading v-show="loadingStatus"></store-loading>
   </div>
 </template>
 
@@ -28,6 +29,7 @@
   import StoreHeader from '../content/header/store-header.vue';
   import StoreFooter from '../content/footer/store-footer.vue';
   import StoreProductDetails from '../../components/product-details/store-product-details.vue';
+  import StoreLoading from '../../components/loading/store-loading.vue';
   import Product from '../../models/class/product-class';
   import requestHelper from '../../models/helpers/request-helper';
 
@@ -36,16 +38,21 @@
     components: {
       StoreHeader,
       StoreFooter,
-      StoreProductDetails
+      StoreProductDetails,
+      StoreLoading
     },
     props: ['id'],
     data() {
       return {
-        productDetails: {}
+        productDetails: {},
+        loadingStatus: false,
       }
     },
     methods: {
       getProductFromApi () {
+
+        // Enable Loading
+        this.loadingStatus = true;
 
         // Create a object of parameters
         const ts = Date.now();
@@ -59,9 +66,7 @@
           hash
         });
 
-        this.$http.get(url, {
-          params
-        })
+        this.$http.get(url, {params})
         .then(response => {
 
           // Get product from list and change to product class
@@ -69,11 +74,15 @@
             return new Product(item);
           });
 
-          // Set product details
           this.productDetails = product[0];
+          this.loadingStatus = false;
         })
         .catch(err => {
-          console.error(err)
+          console.error(err);
+          this.loadingStatus = false
+
+          // If invalid id, return to home
+          this.$router.push('/');
         });
       }
     },
@@ -81,8 +90,6 @@
 
       // Return to top
       window.scrollTo({top: 0});
-
-      // Get product
       this.getProductFromApi()
     }
   }

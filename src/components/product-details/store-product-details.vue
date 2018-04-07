@@ -21,11 +21,18 @@
             <li v-if="details.penciler">Penciller: {{details.penciler}}</li>
             <li v-if="details.coverArtist">Cover Artist: {{details.coverArtist}}</li>
           </ul>
+          <div v-html="details.description"></div>
         </div>
 
 
         <div class="intro-content-pricing">
           <p>{{readOnlineDevice}}</p>
+          <div class="princing-values">
+            <ul>
+              <li v-for="(item, index) in details.prices" :class="item.type">{{item.price}}</li>
+            </ul>
+          </div>
+          <p>{{customerRating}}</p>
         </div>
 
       </div>
@@ -40,7 +47,8 @@
     props: ['details'],
     data() {
       return {
-        readOnlineDevice: this.$appConfig.lang.TITLES.readOnlineDevice
+        readOnlineDevice: this.$appConfig.lang.TITLES.readOnlineDevice,
+        customerRating: this.$appConfig.lang.TITLES.customerRating
       }
     }
   };

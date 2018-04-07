@@ -23,7 +23,7 @@
       </div>
       <store-loading-content v-show="loadingStatus"></store-loading-content>
     </div>
-    <div class="store-products-loadmore flex-around">
+    <div class="store-products-loadmore flex-around" v-show="productsList.length">
       <button
         :disabled="loadingStatus"
         @click="updateProductList()"
@@ -112,7 +112,6 @@
           this.productsList = response.data.data.results.map(item => {
             return new Product(item);
           });
-
         })
         .catch(err => {
           console.error(err)
@@ -128,7 +127,10 @@
 
       updateProductList() {
 
+        // Update parameters
         this.getParameters = requestHelper.getMoreProducts(this.getParameters);
+
+        // Get new products from api
         this.getProductsFromApi(this.getParameters)
         .then(response => {
 
