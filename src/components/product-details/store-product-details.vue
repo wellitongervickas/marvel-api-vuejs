@@ -18,12 +18,20 @@
             <li v-if="details.penciler">Penciller: {{details.penciler}}</li>
             <li v-if="details.coverArtist">Cover Artist: {{details.coverArtist}}</li>
           </ul>
-          <div>
-            <p>{{details.description | cropDescription(showFullDescription)}}</p>
-            <div @click="showFullDescription = !showFullDescription">
-              <span v-show="showFullDescription">Read More</span>
-              <span v-show="!showFullDescription">Read Less</span>
-            </div>
+          <div class="description-text" v-if="details.description">
+            <p>
+              {{details.description | cropDescription(showMoreDescription)}}
+              <div class="description-text-read pointer" @click="showMoreDescription = !showMoreDescription">
+                <div v-show="showMoreDescription">
+                  <span>[ + ]</span>
+                  <span class="text-red">Read More</span>
+                </div>
+                <div v-show="!showMoreDescription">
+                  <span>[ - ]</span>
+                  <span class="text-red">Read Less</span>
+                </div>
+              </div>
+            </p>
           </div>
         </div>
         <div class="intro-content-pricing">
@@ -52,12 +60,12 @@
       return {
         readOnlineDevice: this.$appConfig.lang.TITLES.readOnlineDevice,
         customerRating: this.$appConfig.lang.TITLES.customerRating,
-        showFullDescription: true,
+        showMoreDescription: true,
       }
     },
     filters: {
 
-      // Change creator name
+      // Change description
       cropDescription(description, status) {
 
         // Wait to get a description

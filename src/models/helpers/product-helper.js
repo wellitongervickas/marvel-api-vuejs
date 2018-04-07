@@ -10,12 +10,19 @@ const productHelper = (() => {
 
   function cropDescription(description, status) {
 
-    const maxLength = 100;
-    if (status) {
-      return description.substring(0, maxLength)
-    }
+    const maxLengthLess = 100;
+    const maxLengthMore = 300;
 
-    return description;
+    if (status) {
+
+      return `${description.substring(0, maxLengthLess)} ...`;
+    } else if (description.length > 300) {
+
+      return `${description.substring(0, maxLengthMore)} ...`;
+    } else {
+
+      return description;
+    }
   };
 
   /**
