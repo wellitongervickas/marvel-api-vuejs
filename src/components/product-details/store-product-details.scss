@@ -27,6 +27,13 @@ $product-default-height: 400px;
     .intro-content-description {
       padding: 70px 70px 70px 0px;
       font-size: 18px;
+      .description-text {
+        button {
+          color: #fff;
+          background-color: transparent;
+          border: none;
+        }
+      }
     }
 
     .intro-content-pricing {

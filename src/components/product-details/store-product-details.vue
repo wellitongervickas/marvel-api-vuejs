@@ -18,21 +18,19 @@
             <li v-if="details.penciler">Penciller: {{details.penciler}}</li>
             <li v-if="details.coverArtist">Cover Artist: {{details.coverArtist}}</li>
           </ul>
-          <div class="description-text" v-if="details.description">
-            <p>
-              {{details.description | cropDescription(showMoreDescription)}}
-              <div class="description-text-read pointer" @click="showMoreDescription = !showMoreDescription">
-                <div v-show="showMoreDescription">
-                  <span>[ + ]</span>
-                  <span class="text-red">Read More</span>
-                </div>
-                <div v-show="!showMoreDescription">
-                  <span>[ - ]</span>
-                  <span class="text-red">Read Less</span>
-                </div>
+          <p class="description-text" v-if="details.description">
+            {{details.description | cropDescription(showMoreDescription)}}
+            <button class="description-text-read pointer" @click="showMoreDescription = !showMoreDescription">
+              <div class="text-read-button-more" v-show="showMoreDescription">
+                <span>[ + ]</span>
+                <span class="text-red">Read More</span>
               </div>
-            </p>
-          </div>
+              <div class="text-read-button-less" v-show="!showMoreDescription">
+                <span>[ - ]</span>
+                <span class="text-red">Read Less</span>
+              </div>
+            </button>
+          </p>
         </div>
         <div class="intro-content-pricing">
           <p>{{readOnlineDevice}}</p>
