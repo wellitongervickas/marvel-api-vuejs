@@ -44,7 +44,7 @@
           <p v-else>{{noDescription}}</p>
         </div>
         <div class="intro-content-pricing align-center">
-          <p>{{readOnlineDevice}}</p>
+          <p v-show="details.digitalRead">{{readOnlineDevice}}</p>
           <div class="princing-values">
             <ul class="unstyled-list">
               <li v-for="(item, index) in details.prices" :class="item.type">{{item.price}}</li>

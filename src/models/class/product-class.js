@@ -15,6 +15,7 @@ class Product {
     this.modified = productHelper.getDate(product.modified);
     this.prices = product.prices;
     this.description = product.description;
+    this.digitalRead = productHelper.isDigitalRead(product.prices);;
   }
 };
 

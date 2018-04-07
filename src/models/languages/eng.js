@@ -33,7 +33,7 @@ const eng = (() => {
       readUp: 'Read Up',
       loadMore: 'Load More',
       loading: 'Loading',
-      readOnlineDevice: 'Read online or on your iPhone, iPad or Android Device',
+      readOnlineDevice: 'Read online, iPhone, iPad or Android Device',
       customerRating: 'Average customer rating',
       published: 'Published',
       creator: 'Creator',

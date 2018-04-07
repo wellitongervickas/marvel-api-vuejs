@@ -3,6 +3,23 @@
 const productHelper = (() => {
 
   /**
+    * This method checks if the comic has a virtual file
+    *
+  */
+
+  function isDigitalRead (prices) {
+
+    for (let i in prices) {
+      if (prices[i].type == 'digitalPurchasePrice') {
+        return true;
+        break;
+      }
+    }
+
+    return false;
+  };
+
+  /**
     * This function will return if the state is true for a description with
     * up to 100 characters, if more than 300 to, otherwise returns a full description
     *
@@ -96,6 +113,7 @@ const productHelper = (() => {
   };
 
   return {
+    isDigitalRead,
     cropDescription,
     getDate,
     getCreator,
