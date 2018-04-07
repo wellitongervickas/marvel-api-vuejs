@@ -52,7 +52,7 @@
       return {
         readOnlineDevice: this.$appConfig.lang.TITLES.readOnlineDevice,
         customerRating: this.$appConfig.lang.TITLES.customerRating,
-        showFullDescription: false,
+        showFullDescription: true,
       }
     },
     filters: {
@@ -62,7 +62,7 @@
 
         // Wait to get a description
         if (description) {
-          return productHelper.readDescription(description, status);
+          return productHelper.cropDescription(description, status);
         }
       }
     },
