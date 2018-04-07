@@ -14,6 +14,7 @@ class Product {
     this.coverArtist = productHelper.getCreator(product.creators, 'penciller (cover)');
     this.modified = productHelper.getDate(product.modified);
     this.prices = product.prices;
+    this.description = product.description;
   }
 };
 

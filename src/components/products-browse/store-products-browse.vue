@@ -23,7 +23,7 @@
       </div>
       <store-loading-content v-show="loadingStatus"></store-loading-content>
     </div>
-    <div class="store-products-loadmore flex-around">
+    <div class="store-products-loadmore flex-around" v-show="productsList.length">
       <button
         :disabled="loadingStatus"
         @click="updateProductList()"

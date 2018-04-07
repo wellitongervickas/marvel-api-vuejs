@@ -34,6 +34,7 @@ const eng = (() => {
       loadMore: 'Load More',
       loading: 'Loading',
       readOnlineDevice: 'Read online or on your iPhone, iPad or Android Device',
+      customerRating: 'Average customer rating'
     },
     WARNINGS: {
       emptyCart: 'Your shopping cart is empty!',
