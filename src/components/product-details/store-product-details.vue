@@ -41,11 +41,12 @@
               </div>
             </button>
           </p>
+          <p v-else>{{noDescription}}</p>
         </div>
-        <div class="intro-content-pricing">
+        <div class="intro-content-pricing align-center">
           <p>{{readOnlineDevice}}</p>
           <div class="princing-values">
-            <ul>
+            <ul class="unstyled-list">
               <li v-for="(item, index) in details.prices" :class="item.type">{{item.price}}</li>
             </ul>
           </div>
@@ -75,6 +76,7 @@
         coverArtist: this.$appConfig.lang.TITLES.coverArtist,
         readMore: this.$appConfig.lang.TITLES.readMore,
         readLess: this.$appConfig.lang.TITLES.readLess,
+        noDescription: this.$appConfig.lang.TITLES.noDescription,
         showMoreDescription: true,
       }
     },

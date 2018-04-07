@@ -4,19 +4,19 @@ const productHelper = (() => {
 
   /**
     * This function will return if the state is true for a description with
-    * up to 100 characters, if more than 400 to, otherwise returns a full description
+    * up to 100 characters, if more than 300 to, otherwise returns a full description
     *
   */
 
   function cropDescription(description, status) {
 
     const maxLengthLess = 100;
-    const maxLengthMore = 400;
+    const maxLengthMore = 300;
 
     if (status) {
 
       return `${description.substring(0, maxLengthLess)} ...`;
-    } else if (description.length > 300) {
+    } else if (description.length >= maxLengthMore) {
 
       return `${description.substring(0, maxLengthMore)} ...`;
     } else {
@@ -31,7 +31,16 @@ const productHelper = (() => {
   */
 
   function getDate(data) {
-    return data;
+
+    const parsedDate = Date.parse(data);
+
+    if (isNaN(parsedDate) == false) {
+
+      const date = new Date(parsedDate);
+      return date.toDateString();
+    }
+
+    return;
   };
 
   /**

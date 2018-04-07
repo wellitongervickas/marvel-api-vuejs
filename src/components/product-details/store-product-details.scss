@@ -28,6 +28,10 @@ $product-default-height: 400px;
       padding: 70px 70px 70px 0px;
       font-size: 18px;
 
+      .description-title {
+        font-size: 30px;
+      }
+
       .description-title, .description-creators {
         margin-bottom: 20px;
       }

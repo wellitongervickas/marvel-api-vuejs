@@ -42,6 +42,7 @@ const eng = (() => {
       coverArtist: 'Cover Artist',
       readMore: 'read more',
       readLess: 'read less',
+      noDescription: 'No description yet!',
     },
     WARNINGS: {
       emptyCart: 'Your shopping cart is empty!',
