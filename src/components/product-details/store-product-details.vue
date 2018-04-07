@@ -6,12 +6,9 @@
   <div class="store-product-details">
     <div class="details-intro">
       <div class="intro-content container text-white">
-
         <div class="intro-content-img flex-around-center">
           <img :src="details.image" :alt="details.title">
         </div>
-
-
         <div class="intro-content-description">
           <h1 class="description-title text-uppercase">{{details.title}}</h1>
           <ul class="description-creators unstyled-list">
@@ -23,8 +20,6 @@
           </ul>
           <div v-html="details.description"></div>
         </div>
-
-
         <div class="intro-content-pricing">
           <p>{{readOnlineDevice}}</p>
           <div class="princing-values">
@@ -34,7 +29,6 @@
           </div>
           <p>{{customerRating}}</p>
         </div>
-
       </div>
     </div>
   </div>

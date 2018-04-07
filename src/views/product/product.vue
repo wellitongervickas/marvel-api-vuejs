@@ -60,13 +60,12 @@
         const privateKey = this.$appConfig.api.privateKey;
         const hash = requestHelper.getHash(ts, privateKey, apikey);
         const url = `${this.$appConfig.api.url}/v1/public/comics/${this.id}`;
-        const params = Object.assign({
-          ts,
-          apikey,
-          hash
-        });
 
-        this.$http.get(url, {params})
+        this.$http.get(url, {
+          params: {
+            ts, apikey, hash
+          }
+        })
         .then(response => {
 
           // Get product from list and change to product class
