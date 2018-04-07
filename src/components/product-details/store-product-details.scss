@@ -1,5 +1,5 @@
 $product-default-height: 400px;
-$default-margin-bottom: 20px;
+$default-margin-bottom: 30px;
 
 .details-intro {
   background-color: #2a2a2a;
@@ -90,6 +90,11 @@ $default-margin-bottom: 20px;
             font-size: 14px;
           }
         }
+      }
+
+      .pricing-purchase-button {
+        font-size: 22px;
+        margin-bottom: $default-margin-bottom;
       }
     }
   }

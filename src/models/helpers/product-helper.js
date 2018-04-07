@@ -2,6 +2,11 @@
 
 const productHelper = (() => {
 
+  /**
+    * This function turns the price type into a readable value
+    *
+  */
+
   function priceType (type) {
     switch (type) {
       case 'digitalPurchasePrice':
@@ -46,7 +51,7 @@ const productHelper = (() => {
     const maxLengthLess = 100;
     const maxLengthMore = 300;
 
-    if (status) {
+    if (status && description.length >= maxLengthLess) {
 
       return `${description.substring(0, maxLengthLess)} ...`;
     } else if (description.length >= maxLengthMore) {
