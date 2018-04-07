@@ -12,11 +12,21 @@
         <div class="intro-content-description">
           <h1 class="description-title text-uppercase">{{details.title}}</h1>
           <ul class="description-creators unstyled-list">
-            <li v-if="details.modified">{{published}}: {{details.modified}}</li>
-            <li v-if="details.creator">{{creator}}: {{details.creator}}</li>
-            <li v-if="details.writer">{{writer}}: {{details.writer}}</li>
-            <li v-if="details.penciler">{{penciller}}: {{details.penciler}}</li>
-            <li v-if="details.coverArtist">{{coverArtist}}: {{details.coverArtist}}</li>
+            <li v-if="details.modified">
+              <b>{{published}}:</b> {{details.modified}}
+            </li>
+            <li v-if="details.creator">
+              <b>{{creator}}:</b> {{details.creator}}
+            </li>
+            <li v-if="details.writer">
+              <b>{{writer}}:</b> {{details.writer}}
+            </li>
+            <li v-if="details.penciler">
+              <b>{{penciller}}:</b> {{details.penciler}}
+            </li>
+            <li v-if="details.coverArtist">
+              <b>{{coverArtist}}:</b> {{details.coverArtist}}
+            </li>
           </ul>
           <p class="description-text" v-if="details.description">
             {{details.description | cropDescription(showMoreDescription)}}

@@ -28,6 +28,14 @@ $product-default-height: 400px;
       padding: 70px 70px 70px 0px;
       font-size: 18px;
 
+      .description-title, .description-creators {
+        margin-bottom: 20px;
+      }
+
+      .description-creators {
+        line-height: 30px;
+      }
+
       .description-text {
         button {
           color: #fff;
