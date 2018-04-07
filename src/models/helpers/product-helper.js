@@ -3,8 +3,25 @@
 const productHelper = (() => {
 
   /**
+    * This method checks if the comic has a virtual file
+    *
+  */
+
+  function isDigitalRead (prices) {
+
+    for (let i in prices) {
+      if (prices[i].type == 'digitalPurchasePrice') {
+        return true;
+        break;
+      }
+    }
+
+    return false;
+  };
+
+  /**
     * This function will return if the state is true for a description with
-    * up to 100 characters, otherwise returns a full description
+    * up to 100 characters, if more than 300 to, otherwise returns a full description
     *
   */
 
@@ -16,7 +33,7 @@ const productHelper = (() => {
     if (status) {
 
       return `${description.substring(0, maxLengthLess)} ...`;
-    } else if (description.length > 300) {
+    } else if (description.length >= maxLengthMore) {
 
       return `${description.substring(0, maxLengthMore)} ...`;
     } else {
@@ -31,7 +48,16 @@ const productHelper = (() => {
   */
 
   function getDate(data) {
-    return data;
+
+    const parsedDate = Date.parse(data);
+
+    if (isNaN(parsedDate) == false) {
+
+      const date = new Date(parsedDate);
+      return date.toDateString();
+    }
+
+    return;
   };
 
   /**
@@ -87,6 +113,7 @@ const productHelper = (() => {
   };
 
   return {
+    isDigitalRead,
     cropDescription,
     getDate,
     getCreator,

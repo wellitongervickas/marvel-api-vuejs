@@ -76,6 +76,8 @@
         const hash = requestHelper.getHash(ts, privateKey, apikey);
         const url = `${this.$appConfig.api.url}/v1/public/comics`;
         const params = Object.assign({
+          hasDigitalIssue: true,
+          orderBy: '-focDate',
           ts,
           apikey,
           hash
