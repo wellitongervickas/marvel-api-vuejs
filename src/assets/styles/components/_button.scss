@@ -1,5 +1,6 @@
 .btn {
   @extend .pointer;
+  @extend .transition-slow;
   text-transform: uppercase;
   height: 50px;
   display: inline-flex;
@@ -48,12 +49,6 @@
   }
 
   &:disabled {
-    color: #999;
     cursor: not-allowed;
-    background-color: #ccc;
-
-    &, &:before, &:after {
-      background-color: #ccc;
-    }
   }
 }

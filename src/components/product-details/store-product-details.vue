@@ -31,7 +31,7 @@
           <p class="description-text" v-if="details.description">
             {{details.description | cropDescription(showMoreDescription)}}
             <button class="description-text-read pointer" @click="showMoreDescription = !showMoreDescription">
-              <div class="text-read-button-more" v-show="showMoreDescription">
+              <div class="text-read-button-more" v-show="showMoreDescription && details.description.length > 100">
                 <span>[ + ]</span>
                 <span class="text-red">{{readMore}}</span>
               </div>
@@ -43,14 +43,23 @@
           </p>
           <p v-else>{{noDescription}}</p>
         </div>
-        <div class="intro-content-pricing align-center">
-          <p v-show="details.digitalRead">{{readOnlineDevice}}</p>
-          <div class="princing-values">
-            <ul class="unstyled-list">
-              <li v-for="(item, index) in details.prices" :class="item.type">{{item.price}}</li>
-            </ul>
+        <div class="intro-content-pricing flex-column-center flex-center align-center" v-if="details.prices">
+          <p class="princing-digital-description text-uppercase" v-show="details.digitalRead">{{readOnlineDevice}}</p>
+          <ul class="princing-values unstyled-list">
+            <li
+              v-for="(item, index) in details.prices"
+              class="flex-column-between"
+              :class="{'princing-more-values': index > 0}">
+              <span class="princing-values-currency text-uppercase">$ {{item.price}}</span>
+              <span class="princing-values-description text-uppercase" :class="item.type">
+                {{item.type | priceType}}
+              </span>
+            </li>
+          </ul>
+          <div class="pricing-purchase-button">
+            <button type="button" class="btn btn-red text-white text-uppercase">Add to cart</button>
           </div>
-          <p>{{customerRating}}</p>
+          <p class="princing-rating-description text-uppercase">{{customerRating}}</p>
         </div>
       </div>
     </div>
@@ -89,6 +98,9 @@
         if (description) {
           return productHelper.cropDescription(description, status);
         }
+      },
+      priceType(price) {
+        return productHelper.priceType(price);
       }
     },
   };

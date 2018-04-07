@@ -3,6 +3,27 @@
 const productHelper = (() => {
 
   /**
+    * This function turns the price type into a readable value
+    *
+  */
+
+  function priceType (type) {
+    switch (type) {
+      case 'digitalPurchasePrice':
+        return 'Digital Issue'
+        break;
+
+      case 'printPrice':
+        return 'Print Price'
+        break;
+
+      default:
+        // statements_def
+        break;
+    }
+  };
+
+  /**
     * This method checks if the comic has a virtual file
     *
   */
@@ -30,7 +51,7 @@ const productHelper = (() => {
     const maxLengthLess = 100;
     const maxLengthMore = 300;
 
-    if (status) {
+    if (status && description.length >= maxLengthLess) {
 
       return `${description.substring(0, maxLengthLess)} ...`;
     } else if (description.length >= maxLengthMore) {
@@ -113,6 +134,7 @@ const productHelper = (() => {
   };
 
   return {
+    priceType,
     isDigitalRead,
     cropDescription,
     getDate,
