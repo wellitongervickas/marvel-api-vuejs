@@ -2,14 +2,27 @@
 
 const productHelper = (() => {
 
-  function readDescription(description, status) {
+  /**
+    * This function will return if the state is true for a description with
+    * up to 100 characters, otherwise returns a full description
+    *
+  */
 
-    const maxLength = 100;
+  function cropDescription(description, status) {
+
+    const maxLengthLess = 100;
+    const maxLengthMore = 300;
+
     if (status) {
-      return description.substring(0, maxLength)
-    }
 
-    return description;
+      return `${description.substring(0, maxLengthLess)} ...`;
+    } else if (description.length > 300) {
+
+      return `${description.substring(0, maxLengthMore)} ...`;
+    } else {
+
+      return description;
+    }
   };
 
   /**
@@ -74,7 +87,7 @@ const productHelper = (() => {
   };
 
   return {
-    readDescription,
+    cropDescription,
     getDate,
     getCreator,
     inverseCreator,
