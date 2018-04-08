@@ -59,7 +59,10 @@
           <div class="pricing-purchase-button">
             <button type="button" class="btn btn-red text-white text-uppercase">Add to cart</button>
           </div>
-          <p class="princing-rating-description text-uppercase">{{customerRating}}</p>
+          <div class="princing-rating-description">
+            <p class="text-uppercase">{{customerRating}}</p>
+            <store-rating rating="3.5"></store-rating>
+          </div>
         </div>
       </div>
     </div>
@@ -70,9 +73,13 @@
 
   import { mapState, mapActions, mapGetters } from 'vuex';
   import productHelper from '../../models/helpers/product-helper';
+  import StoreRating from '../rating/store-rating.vue';
 
   export default {
     name: 'StoreProductDetails',
+    components: {
+      StoreRating
+    },
     props: ['details'],
     data() {
       return {
