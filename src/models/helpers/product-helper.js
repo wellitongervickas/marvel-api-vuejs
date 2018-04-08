@@ -2,6 +2,12 @@
 
 const productHelper = (() => {
 
+  function ratingCount(value) {
+
+    const maxRatingValue = 5;
+    return [];
+  };
+
   /**
     * This function turns the price type into a readable value
     *
@@ -134,6 +140,7 @@ const productHelper = (() => {
   };
 
   return {
+    ratingCount,
     priceType,
     isDigitalRead,
     cropDescription,
