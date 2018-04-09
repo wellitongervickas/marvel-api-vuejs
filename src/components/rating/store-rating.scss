@@ -1,0 +1,25 @@
+$default-width-rating: 160px;
+
+.store-rating {
+  margin: 0 auto;
+  padding-top: 20px;
+  width: $default-width-rating;
+
+  .store-rating-start {
+    height: 19px;
+    background-position: center left;
+
+    &.store-rating-start-bg {
+      width: $default-width-rating;
+      background-image: url(/images/layout/start-rating-bg.png);
+    }
+
+    &.store-rating-start-count {
+      left:0px;
+      position: absolute;
+      width: auto;
+      background-image: url(/images/layout/start-rating-count.png);
+    }
+  }
+}
+

@@ -2,7 +2,10 @@
   @import 'store-rating'
 </style>
 <template>
-  <div>Hello from rating -> {{rating}} = {{ratingValues}}</div>
+  <div class="store-rating flex-column-center relative">
+    <div class="store-rating-start store-rating-start-bg"></div>
+    <div class="store-rating-start store-rating-start-count" :style="{ width: counterWidth + 'px'}"></div>
+  </div>
 </template>
 <script>
 
@@ -13,13 +16,12 @@
     props: ['rating'],
     data() {
       return {
-        ratingValues: []
+        counterWidth: 0
       }
     },
     methods: {
       getRating() {
-        this.ratingValues = productHelper.ratingCount(this.rating);
-        console.log(this.ratingValues, ' final value!')
+        this.counterWidth = productHelper.ratingCount(this.rating);
       }
     },
     created() {

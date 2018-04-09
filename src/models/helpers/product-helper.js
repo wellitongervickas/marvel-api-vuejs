@@ -5,7 +5,9 @@ const productHelper = (() => {
   function ratingCount(value) {
 
     const maxRatingValue = 5;
-    return [];
+    const valueToReturn = (value / maxRatingValue) * 160;
+
+    return valueToReturn;
   };
 
   /**
