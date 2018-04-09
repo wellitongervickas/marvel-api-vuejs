@@ -43,6 +43,8 @@ const eng = (() => {
       readMore: 'read more',
       readLess: 'read less',
       noDescription: 'No description yet!',
+      digitalPurchasePrice: 'Digital Issue',
+      printPrice: 'Print Price',
     },
     WARNINGS: {
       emptyCart: 'Your shopping cart is empty!',

@@ -52,7 +52,7 @@
               :class="{'princing-more-values': index > 0}">
               <span class="princing-values-currency text-uppercase">$ {{item.price}}</span>
               <span class="princing-values-description text-uppercase" :class="item.type">
-                {{item.type | priceType}}
+                {{item.type | priceType(digitalPurchasePrice, printPrice)}}
               </span>
             </li>
           </ul>
@@ -93,6 +93,8 @@
         readMore: this.$appConfig.lang.TITLES.readMore,
         readLess: this.$appConfig.lang.TITLES.readLess,
         noDescription: this.$appConfig.lang.TITLES.noDescription,
+        digitalPurchasePrice: this.$appConfig.lang.TITLES.digitalPurchasePrice,
+        printPrice: this.$appConfig.lang.TITLES.printPrice,
         showMoreDescription: true,
       }
     },
@@ -106,8 +108,16 @@
           return productHelper.cropDescription(description, status);
         }
       },
-      priceType(price) {
-        return productHelper.priceType(price);
+      priceType(type, digital, print) {
+        if (type == 'printPrice') {
+
+          return print;
+        } else if (type == 'digitalPurchasePrice') {
+
+          return digital;
+        }
+
+        return type;
       }
     },
   };

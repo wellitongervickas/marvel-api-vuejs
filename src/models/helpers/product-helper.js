@@ -2,33 +2,18 @@
 
 const productHelper = (() => {
 
+  /**
+    * This function return a value to width of div when get rating
+    * Remember 160px is a default width of div
+    *
+  */
+
   function ratingCount(value) {
 
     const maxRatingValue = 5;
     const valueToReturn = (value / maxRatingValue) * 160;
 
     return valueToReturn;
-  };
-
-  /**
-    * This function turns the price type into a readable value
-    *
-  */
-
-  function priceType (type) {
-    switch (type) {
-      case 'digitalPurchasePrice':
-        return 'Digital Issue'
-        break;
-
-      case 'printPrice':
-        return 'Print Price'
-        break;
-
-      default:
-        // statements_def
-        break;
-    }
   };
 
   /**
@@ -143,7 +128,6 @@ const productHelper = (() => {
 
   return {
     ratingCount,
-    priceType,
     isDigitalRead,
     cropDescription,
     getDate,
