@@ -61,7 +61,7 @@
           </div>
           <div class="princing-rating-description">
             <p class="text-uppercase">{{customerRating}}</p>
-            <store-rating rating="3.5"></store-rating>
+            <store-rating rating="4"></store-rating>
           </div>
         </div>
       </div>
