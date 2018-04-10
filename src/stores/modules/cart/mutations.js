@@ -9,8 +9,11 @@ export default {
     // Save in storage
     cartHelper.save(payload);
 
+    // Get saved itens
+    const products = cartHelper.get();
+
     // Save in vuex
-    state.products.push(payload);
+    state.products = products;
   },
 
   REMOVE_FROM_CART( state, payload) {
