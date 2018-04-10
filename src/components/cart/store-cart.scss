@@ -1,0 +1,35 @@
+.store-cart {
+  .store-cart-details {
+    position: absolute;
+    width: 355px;
+    background-color: #fff;
+    border: 1px solid #333;
+    right: 0px;
+    padding: 20px;
+    top: 50px;
+
+    &:before, &:after {
+      position: absolute;
+      content: '';
+      transform: rotate(-90deg);
+    }
+
+
+    &:before {
+      border-left: 15px solid transparent;
+      border-right: 15px solid transparent;
+      border-bottom: 15px solid #333;
+      top: -8px;
+      right: -8px;
+    }
+
+    &:after {
+      border-left: 18px solid transparent;
+      border-right: 18px solid transparent;
+      border-bottom: 18px solid #fff;
+      top: -5px;
+      right: -9px;
+    }
+
+  }
+}

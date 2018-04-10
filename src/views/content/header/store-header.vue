@@ -48,7 +48,7 @@
             <input type="text" :placeholder="searchStore">
           </div>
           <div class="top-bar-cart flex1">
-            <img src="/images/icons/cart/shopping-cart.png" :alt="cart">
+            <store-cart></store-cart>
           </div>
         </div>
       </div>
@@ -63,12 +63,14 @@
 
   import StoreAds from '../../../components/ads/store-ads.vue';
   import StoreMenu from '../../../components/menu/store-menu.vue';
+  import StoreCart from '../../../components/cart/store-cart.vue';
 
   export default {
     name: 'StoreHeader',
     components: {
       StoreAds,
       StoreMenu,
+      StoreCart
     },
     data () {
       return {

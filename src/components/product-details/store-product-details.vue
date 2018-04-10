@@ -57,7 +57,7 @@
             </li>
           </ul>
           <div class="pricing-purchase-button">
-            <button type="button" class="btn btn-red text-white text-uppercase">Add to cart</button>
+            <button type="button" class="btn btn-red text-white text-uppercase" @click="addProductToCart(details)">Add to cart</button>
           </div>
           <div class="princing-rating-description">
             <p class="text-uppercase">{{customerRating}}</p>
@@ -71,7 +71,7 @@
 
 <script>
 
-  import { mapState, mapActions, mapGetters } from 'vuex';
+  import { mapActions } from 'vuex';
   import productHelper from '../../models/helpers/product-helper';
   import StoreRating from '../rating/store-rating.vue';
 
@@ -96,6 +96,14 @@
         digitalPurchasePrice: this.$appConfig.lang.TITLES.digitalPurchasePrice,
         printPrice: this.$appConfig.lang.TITLES.printPrice,
         showMoreDescription: true,
+      }
+    },
+    methods: {
+      ...mapActions([
+        'addTocart'
+      ]),
+      addProductToCart(product) {
+        this.addTocart(product)
       }
     },
     filters: {
