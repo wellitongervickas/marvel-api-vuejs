@@ -32,6 +32,7 @@
   import StoreLoading from '../../components/loading/store-loading.vue';
   import Product from '../../models/class/product-class';
   import requestHelper from '../../models/helpers/request-helper';
+  import productHelper from '../../models/helpers/product-helper';
 
   export default {
     name: 'Product',
@@ -69,9 +70,7 @@
         .then(response => {
 
           // Get product from list and change to product class
-          const product = response.data.data.results.map(item => {
-            return new Product(item);
-          });
+          const product = productHelper.createList(response.data.data.results);
 
           this.productDetails = product[0];
           this.loadingStatus = false;

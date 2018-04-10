@@ -1,4 +1,4 @@
-'use-strict'
+'use-strict';
 
 import cartHelper from '../../../models/helpers/cart-helper';
 

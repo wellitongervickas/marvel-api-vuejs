@@ -1,6 +1,36 @@
 'use-strict'
 
+import Product from '../class/product-class';
+
 const productHelper = (() => {
+
+  function createList (list) {
+
+    let newList = [];
+
+    for (let i in list) {
+
+      let product = list[i];
+
+      let obj = {
+        id: product.id,
+        image: validateImageNotFound(product.thumbnail.path, product.thumbnail.extension),
+        title: product.title,
+        creator: getCreator(product.creators, 'editor'),
+        penciler: getCreator(product.creators, 'penciller'),
+        writer: getCreator(product.creators, 'writer'),
+        coverArtist: getCreator(product.creators, 'penciller (cover)'),
+        modified: getDate(product.modified),
+        prices: product.prices,
+        description: product.description,
+        digitalRead: isDigitalRead(product.prices),
+      };
+
+      newList.push(new Product(obj));
+    }
+
+    return newList;
+  };
 
   /**
     * This function return a value to width of div when get rating
@@ -127,6 +157,7 @@ const productHelper = (() => {
   };
 
   return {
+    createList,
     ratingCount,
     isDigitalRead,
     cropDescription,
