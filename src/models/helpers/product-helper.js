@@ -1,6 +1,42 @@
 'use-strict'
 
+import Product from '../class/product-class';
+
 const productHelper = (() => {
+
+  function createList (list) {
+
+    let newList = [];
+
+    for (let i in list) {
+
+      let product = list[i];
+
+      let obj = {
+        id: product.id,
+        image: validateImageNotFound(product.thumbnail.path, product.thumbnail.extension),
+        title: product.title,
+        creator: getCreator(product.creators, 'editor'),
+        penciler: getCreator(product.creators, 'penciller'),
+        writer: getCreator(product.creators, 'writer'),
+        coverArtist: getCreator(product.creators, 'penciller (cover)'),
+        modified: getDate(product.modified),
+        prices: product.prices,
+        description: product.description,
+        digitalRead: isDigitalRead(product.prices),
+      };
+
+      newList.push(new Product(obj));
+    }
+
+    return newList;
+  };
+
+  /**
+    * This function return a value to width of div when get rating
+    * Remember 160px is a default width of div
+    *
+  */
 
   function ratingCount(value) {
 
@@ -8,27 +44,6 @@ const productHelper = (() => {
     const valueToReturn = (value / maxRatingValue) * 160;
 
     return valueToReturn;
-  };
-
-  /**
-    * This function turns the price type into a readable value
-    *
-  */
-
-  function priceType (type) {
-    switch (type) {
-      case 'digitalPurchasePrice':
-        return 'Digital Issue'
-        break;
-
-      case 'printPrice':
-        return 'Print Price'
-        break;
-
-      default:
-        // statements_def
-        break;
-    }
   };
 
   /**
@@ -142,8 +157,8 @@ const productHelper = (() => {
   };
 
   return {
+    createList,
     ratingCount,
-    priceType,
     isDigitalRead,
     cropDescription,
     getDate,

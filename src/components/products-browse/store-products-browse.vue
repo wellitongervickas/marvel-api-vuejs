@@ -41,7 +41,6 @@
   import productHelper from '../../models/helpers/product-helper';
   import Product from '../../models/class/product-class';
   import StoreLoadingContent from '../loading-content/store-loading-content';
-  import storageHelper from '../../models/helpers/storage-helper';
 
   export default {
     name: 'ProductsBrowse',
@@ -111,9 +110,7 @@
           this.getParameters = requestHelper.getParameters(response.data.data);
 
           // Get products from api and return new list
-          this.productsList = response.data.data.results.map(item => {
-            return new Product(item);
-          });
+          this.productsList = productHelper.createList(response.data.data.results);
         })
         .catch(err => {
           console.error(err)
@@ -137,9 +134,7 @@
         .then(response => {
 
           // Create product class
-          const newProductList = response.data.data.results.map(item => {
-            return new Product(item);
-          });
+          const newProductList = productHelper.createList(response.data.data.results);
 
           // Update the list
           this.productsList = requestHelper.mergeUpdatedList(this.productsList, newProductList);

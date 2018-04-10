@@ -1,9 +1,21 @@
 'use-strict'
 
-import storageHelper from '../../../models/helpers/storage-helper';
-
 export default {
-  addTocart( context, payload ) {},
-  updateCart( context, payload ) {},
-  removeFromCart( context, payload ) {},
+
+  /**
+    * This method is responsible for saving the products to the cart.
+    *
+  */
+
+  addTocart( context, payload ) {
+    context.commit('ADD_TO_CART', payload)
+  },
+
+  updateCart( context, payload ) {
+    context.commit('UPDATE_CART', payload)
+  },
+
+  removeFromCart( context, payload ) {
+    context.commit('REMOVE_FROM_CART', payload)
+  },
 }
