@@ -1,8 +1,7 @@
 'use-strict'
 
-export default {
-  products: [],
-  qtd: 0,
-  subTotal: 0,
-  total: 0
-}
+import Cart from '../../../models/class/cart-class';
+
+const shoppingCart = new Cart();
+
+export default shoppingCart
