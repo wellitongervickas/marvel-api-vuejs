@@ -4,6 +4,12 @@ import Product from '../class/product-class';
 
 const productHelper = (() => {
 
+  /*
+    * This method is responsible for handling a list
+    * and returning objects with updated data
+    *
+  */
+
   function createList (list) {
 
     let newList = [];

@@ -7,7 +7,7 @@
     <div class="store-header-advertisement">
       <store-ads></store-ads>
     </div>
-    <div class="store-header-top container flex-between user-select">
+    <div class="store-header-top container flex-between">
       <div class="flex3 store-header-top-logo">
         <router-link :to="'/'" class="flex">
           <img src="/images/layout/logo.jpg" :title="storeName" :alt="storeName">

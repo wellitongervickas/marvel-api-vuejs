@@ -4,6 +4,24 @@ import storageHelper from './storage-helper'
 
 const cartHelper = (() => {
 
+  /*
+    * This function is responsible for decreasing the
+    * size of the product title in the store cart.
+    *
+  */
+
+  function cropName (name) {
+    const maxLength = 30;
+
+    if (name.length >= maxLength) {
+
+      return `${name.substring(0, maxLength)} ...`;
+    } else {
+
+      return name;
+    }
+  };
+
   /**
     * This method is responsible for saving the new products
     * that are being sent to the cart and if there is any saved
@@ -35,6 +53,7 @@ const cartHelper = (() => {
   };
 
   return {
+    cropName,
     save: saveProductsInStorage,
     get: getProductsFromStorage
   };
