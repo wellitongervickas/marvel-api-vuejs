@@ -2,14 +2,10 @@
 
 class Slider {
   constructor (slider) {
-
-    // Destructuring
-    const { image, title, description, link} = slider;
-
-    this.image = image;
-    this.title = title;
-    this.description = description;
-    this.link = link;
+    this.image = slider.image;
+    this.title = slider.title;
+    this.description = slider.description;
+    this.link = slider.link;
     this.status = false;
   }
 };

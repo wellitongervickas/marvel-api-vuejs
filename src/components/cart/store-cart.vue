@@ -9,9 +9,11 @@
     </div>
     <transition name="fade">
       <div class="store-cart-details" v-show="showCartDetails">
-        <div class="cart-details-item" v-for="(item, index) in getCartProducts">
-          {{item.title}}
-        </div>
+        <ul class="unstyled-list">
+          <li class="cart-details-item" v-for="(item, index) in getCartProducts">
+            <div class="item-title">{{item.title | cropProductName}}</div>
+          </li>
+        </ul>
       </div>
     </transition>
   </div>
@@ -20,6 +22,7 @@
 <script>
 
   import { mapGetters  } from 'vuex';
+  import cartHelper from '../../models/helpers/cart-helper'
 
   export default {
     name: 'StoreCart',
@@ -32,6 +35,11 @@
       ...mapGetters([
         'getCartProducts'
       ])
+    },
+    filters: {
+      cropProductName(name) {
+        return cartHelper.cropName(name)
+      }
     }
   }
 </script>
