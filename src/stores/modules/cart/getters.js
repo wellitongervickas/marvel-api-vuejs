@@ -10,5 +10,9 @@ export default {
     }
 
     return state.products
+  },
+
+  getCartQtd(state) {
+    return state.qtd;
   }
 }

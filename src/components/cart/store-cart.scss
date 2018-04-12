@@ -22,16 +22,20 @@
     top: 50px;
 
     .cart-details-list {
-      max-height: 300px;
+      max-height: 330px;
 
       .cart-details-item {
         display: grid;
         grid-column-gap: 20px;
         grid-template-columns: 15% 55% 15%;
         margin-bottom: 20px;
+        border-bottom: 1px solid #333;
+        padding-bottom: 20px;
 
         &:last-of-type {
           margin-bottom: 0px;
+          border-bottom: none;
+          padding-bottom: 0px;
         }
 
         .item-image {

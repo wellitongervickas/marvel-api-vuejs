@@ -5,12 +5,12 @@
 <template>
   <div class="store-cart relative">
     <div class="store-cart-icon pointer" @click="showCartDetails = !showCartDetails">
-      <div v-if="getCartProducts.length" class="cart-label-qtd flex-around-center text-white">{{getCartProducts.length}}</div>
+      <div v-if="getCartProducts.length" class="cart-label-qtd flex-around-center text-white">{{getCartQtd}}</div>
       <img src="/images/icons/cart/shopping-cart.png">
     </div>
     <transition name="fade">
       <div class="store-cart-details" v-show="showCartDetails">
-        <ul class="cart-details-list scrolled-y unstyled-list">
+        <ul class="cart-details-list scrolled scrolled-y unstyled-list">
           <li class="cart-details-item" v-for="(item, index) in getCartProducts">
             <div class="item-image">
               <router-link :to="{ name: 'product', params: { id: item.id }}">
@@ -19,7 +19,9 @@
             </div>
             <div class="item-description flex-evenly-column">
               <div class="item-description-title">
-                <h3>{{item.title | cropProductName}}</h3>
+                <router-link :to="{ name: 'product', params: { id: item.id }}">
+                  <h3>{{item.title | cropProductName}}</h3>
+                </router-link>
               </div>
               <div v-if="item.creator" class="item-description-autor text-uppercase">{{item.creator | inverseCreator}}</div>
             </div>
@@ -46,7 +48,8 @@
     },
     computed: {
       ...mapGetters([
-        'getCartProducts'
+        'getCartProducts',
+        'getCartQtd'
       ])
     },
     filters: {

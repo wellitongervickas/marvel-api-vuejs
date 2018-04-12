@@ -1,0 +1,31 @@
+
+.scrolled {
+  overflow: auto;
+  padding-right: 15px;
+
+  &.scrolled-y {
+    overflow-x: hidden;
+  }
+
+  &.scrolled-x {
+    overflow-y: hidden;
+  }
+
+
+  &::-webkit-scrollbar {
+      width: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+      background: #f1f1f1;
+  }
+
+  &::-webkit-scrollbar-thumb {
+      background: #888;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+      background: #555;
+  }
+}
+
