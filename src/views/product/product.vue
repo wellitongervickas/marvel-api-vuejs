@@ -61,7 +61,7 @@
         const apikey = this.$appConfig.api.publicKey;
         const privateKey = this.$appConfig.api.privateKey;
         const hash = requestHelper.getHash(ts, privateKey, apikey);
-        const url = `${this.$appConfig.api.url}/v1/public/comics/${this.id}`;
+        const url = `${this.$appConfig.api.url}/comics/${this.id}`;
 
         this.$http.get(url, {
           params: {
