@@ -154,7 +154,9 @@
 
       // Change creator name
       inverseCreator(name) {
-        return productHelper.inverseCreator(name);
+        if (name) {
+          return productHelper.inverseCreator(name);
+        }
       }
     },
   };

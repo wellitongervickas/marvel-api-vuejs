@@ -76,3 +76,9 @@
   @extend .flex;
   justify-content: flex-end;
 }
+
+.flex-evenly-column {
+  @extend .flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+}

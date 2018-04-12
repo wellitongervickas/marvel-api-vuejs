@@ -11,7 +11,7 @@ const cartHelper = (() => {
   */
 
   function cropName (name) {
-    const maxLength = 30;
+    const maxLength = 20;
 
     if (name.length >= maxLength) {
 

@@ -73,6 +73,7 @@
 
   import { mapActions } from 'vuex';
   import productHelper from '../../models/helpers/product-helper';
+  import systemHelper from '../../models/helpers/system-helper';
   import StoreRating from '../rating/store-rating.vue';
 
   export default {
@@ -103,6 +104,9 @@
         'addTocart'
       ]),
       addProductToCart(product) {
+
+        // Scroll to top again
+        systemHelper.scrollTo(document.documentElement);
         this.addTocart(product)
       }
     },
@@ -123,9 +127,10 @@
         } else if (type == 'digitalPurchasePrice') {
 
           return digital;
-        }
+        } else {
 
-        return type;
+          return type;
+        }
       }
     },
   };
