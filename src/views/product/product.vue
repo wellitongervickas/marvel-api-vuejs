@@ -33,6 +33,7 @@
   import Product from '../../models/class/product-class';
   import requestHelper from '../../models/helpers/request-helper';
   import productHelper from '../../models/helpers/product-helper';
+  import systemHelper from '../../models/helpers/system-helper';
 
   export default {
     name: 'Product',
@@ -74,6 +75,9 @@
 
           this.productDetails = product[0];
           this.loadingStatus = false;
+
+          // Scroll to top again
+          systemHelper.scrollTo(document.documentElement);
         })
         .catch(err => {
           console.error(err);
@@ -84,10 +88,12 @@
         });
       }
     },
+    watch: {
+      id () {
+        this.getProductFromApi();
+      }
+    },
     created(){
-
-      // Return to top
-      window.scrollTo({top: 0});
       this.getProductFromApi()
     }
   }

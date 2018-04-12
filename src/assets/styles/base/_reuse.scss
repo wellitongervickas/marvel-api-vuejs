@@ -23,3 +23,17 @@
 .float-right {
   float: right;
 }
+
+.scrolled {
+  overflow: auto;
+}
+
+.scrolled-y {
+  @extend .scrolled;
+  overflow-x: hidden;
+}
+
+.scrolled-x {
+  @extend .scrolled;
+  overflow-y: hidden;
+}
