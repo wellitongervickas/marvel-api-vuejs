@@ -73,7 +73,7 @@
         const apikey = this.$appConfig.api.publicKey;
         const privateKey = this.$appConfig.api.privateKey;
         const hash = requestHelper.getHash(ts, privateKey, apikey);
-        const url = `${this.$appConfig.api.url}/v1/public/comics`;
+        const url = `${this.$appConfig.api.url}/comics`;
         const params = Object.assign({
           hasDigitalIssue: true,
           orderBy: '-focDate',
