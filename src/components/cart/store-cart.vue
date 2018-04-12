@@ -33,7 +33,7 @@
 
 <script>
 
-  import { mapGetters  } from 'vuex';
+  import { mapGetters, mapState, mapActions  } from 'vuex';
   import cartHelper from '../../models/helpers/cart-helper';
   import productHelper from '../../models/helpers/product-helper';
 

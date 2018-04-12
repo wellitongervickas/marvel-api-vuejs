@@ -4,7 +4,7 @@ import cartHelper from '../../../models/helpers/cart-helper';
 
 export default {
 
-  ADD_TO_CART( state, payload) {
+  ADD_TO_CART(state, payload) {
 
     // Save in storage
     cartHelper.save(payload);
@@ -16,11 +16,11 @@ export default {
     state.products = products;
   },
 
-  REMOVE_FROM_CART( state, payload) {
+  REMOVE_FROM_CART(state, payload) {
 
   },
 
-  UPDATE_CART( state, payload) {
+  UPDATE_CART(state, payload) {
 
   },
 }
