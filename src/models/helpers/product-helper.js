@@ -18,7 +18,7 @@ const productHelper = (() => {
 
       let product = list[i];
 
-      let obj = {
+      let obj = new Product({
         id: product.id,
         image: validateImageNotFound(product.thumbnail.path, product.thumbnail.extension),
         title: product.title,
@@ -30,9 +30,9 @@ const productHelper = (() => {
         prices: product.prices,
         description: product.description,
         digitalRead: isDigitalRead(product.prices),
-      };
+      });
 
-      newList.push(new Product(obj));
+      newList.push(obj);
     }
 
     return newList;
