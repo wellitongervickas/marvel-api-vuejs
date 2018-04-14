@@ -15,12 +15,7 @@ export default {
     // Save in vuex
     state.products = products;
   },
-
-  REMOVE_FROM_CART(state, payload) {
-
-  },
-
-  UPDATE_CART(state, payload) {
-
-  },
+  UPDATE_CART_QTD(state, payload) {
+    state.qtd = payload;
+  }
 }

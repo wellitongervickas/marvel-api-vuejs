@@ -4,6 +4,18 @@ import storageHelper from './storage-helper'
 
 const cartHelper = (() => {
 
+  function sumCartValues(list) {
+
+    let price = 0;
+    for (let i in list) {
+
+      let priceList = list[i].prices;
+      price += priceList[0].price
+    }
+
+    return price;
+  };
+
   /*
     * This function is responsible for decreasing the
     * size of the product title in the store cart.
@@ -54,6 +66,7 @@ const cartHelper = (() => {
 
   return {
     cropName,
+    sum: sumCartValues,
     save: saveProductsInStorage,
     get: getProductsFromStorage
   };

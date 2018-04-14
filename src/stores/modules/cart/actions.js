@@ -12,11 +12,8 @@ export default {
     context.commit('ADD_TO_CART', payload);
   },
 
-  updateCart(context, payload) {
-    context.commit('UPDATE_CART', payload);
-  },
+  updateCartQtd(context, payload) {
+    context.commit('UPDATE_CART_QTD', payload);
+  }
 
-  removeFromCart(context, payload) {
-    context.commit('REMOVE_FROM_CART', payload);
-  },
 }

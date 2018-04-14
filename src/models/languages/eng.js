@@ -45,6 +45,7 @@ const eng = (() => {
       noDescription: 'No description yet!',
       digitalPurchasePrice: 'Digital Issue',
       printPrice: 'Print Price',
+      subTotal: 'Subtotal',
     },
     WARNINGS: {
       emptyCart: 'Your shopping cart is empty!',

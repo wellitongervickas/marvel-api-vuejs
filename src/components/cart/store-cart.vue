@@ -5,7 +5,7 @@
 <template>
   <div class="store-cart relative">
     <div class="store-cart-icon pointer" @click="showCartDetails = !showCartDetails">
-      <div v-if="getCartProducts.length" class="cart-label-qtd flex-around-center text-white">{{getCartQtd}}</div>
+      <div v-if="getCartQtd" class="cart-label-qtd flex-around-center text-white">{{getCartQtd}}</div>
       <img src="/images/icons/cart/shopping-cart.png">
     </div>
     <transition name="fade">
@@ -28,6 +28,9 @@
             <div class="item-price flex-evenly-column">$ {{item.prices[0].price}}</div>
           </li>
         </ul>
+        <div class="cart-details-subtotal text-uppercase align-center">
+          {{`${subTotalTitle}: ${currency} ${subTotal}`}}
+        </div>
       </div>
     </transition>
   </div>
@@ -43,14 +46,52 @@
     name: 'StoreCart',
     data() {
       return {
-        showCartDetails: false
+        subTotalTitle: this.$appConfig.lang.TITLES.subTotal,
+        currency: this.$appConfig.currency,
+        showCartDetails: false,
+        subTotal: 0,
       }
     },
     computed: {
+
+      // From vuex
       ...mapGetters([
         'getCartProducts',
         'getCartQtd'
       ])
+    },
+    methods: {
+
+      // From vuex
+      ...mapActions([
+        'updateCartQtd'
+      ]),
+
+      /**
+        * when called change cart subtotal values
+        *
+      */
+
+      sumCartValues() {
+        this.subTotal = cartHelper.sum(this.getCartProducts);
+      }
+    },
+    watch: {
+
+      /**
+        * when cart list length is changed
+        * cart quantity get new value
+        *
+      */
+
+      getCartProducts: function() {
+        this.updateCartQtd(this.getCartProducts.length);
+        this.sumCartValues();
+      }
+    },
+    created() {
+      this.updateCartQtd(this.getCartProducts.length);
+      this.sumCartValues();
     },
     filters: {
       cropProductName(name) {

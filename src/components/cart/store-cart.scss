@@ -32,12 +32,6 @@
         border-bottom: 1px solid #333;
         padding-bottom: 20px;
 
-        &:last-of-type {
-          margin-bottom: 0px;
-          border-bottom: none;
-          padding-bottom: 0px;
-        }
-
         .item-image {
           width: 100%;
           overflow: hidden;
@@ -47,6 +41,11 @@
           }
         }
       }
+    }
+
+    .cart-details-subtotal {
+      font-weight: bold;
+      font-size: 18px;
     }
 
     &:before, &:after {
