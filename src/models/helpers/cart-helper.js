@@ -38,13 +38,10 @@ const cartHelper = (() => {
       tmpList[i].qtd = 1;
 
       // Iterate in array for sum equal items
-      let qtd = list.filter(item => item.id == tmpList[i].id);
+      let repeated = list.filter(item => item.id == tmpList[i].id);
 
       // Change quantity
-      tmpList[i].qtd = qtd.length;
-
-      // Change price
-      tmpList[i].prices[0].price *= qtd.length;
+      tmpList[i].qtd = repeated.length;
     }
 
     return tmpList;
@@ -60,8 +57,8 @@ const cartHelper = (() => {
 
     let price = 0;
     for (let i in list) {
-      let item = list[i].prices;
-      price += item[0].price;
+      let prices = list[i].prices;
+      price += (prices[0].price * list[i].qtd);
     }
 
     return price.toFixed(2);
