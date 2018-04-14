@@ -8,6 +8,7 @@
 
 import Home from '../../views/home/home.vue';
 import Product from '../../views/product/product.vue';
+import Checkout from '../../views/checkout/checkout.vue';
 
 const routes = (() => {
   return [
@@ -16,6 +17,9 @@ const routes = (() => {
     },
     {
       path: '/product/:id', component: Product, name: 'product', props: true
+    },
+    {
+      path: '/checkout', component: Checkout, name: 'checkout'
     }
   ]
 })();

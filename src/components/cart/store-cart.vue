@@ -6,7 +6,7 @@
   <div class="store-cart relative">
     <div class="store-cart-icon pointer" @click="showCartDetails = !showCartDetails">
       <div v-if="getCartQtd" class="cart-label-qtd flex-around-center text-white">{{getCartQtd}}</div>
-      <img src="/images/icons/cart/shopping-cart.png">
+      <img src="/images/icons/cart/shopping-cart.png" :alt="shoppingCart">
     </div>
     <transition name="fade">
       <div class="store-cart-details" v-show="showCartDetails">
@@ -36,6 +36,11 @@
         <div class="cart-details-subtotal text-uppercase align-center" v-show="productsList.length">
           {{`${subTotalTitle}: ${currency} ${subTotal}`}}
         </div>
+        <div class="cart-button flex-around-center relative">
+          <router-link class="btn btn-red btn-sm text-white text-uppercase" :to="{ name: 'checkout'}">
+            {{proceedToCheckout}}
+          </router-link>
+        </div>
       </div>
     </transition>
   </div>
@@ -52,6 +57,8 @@
     data() {
       return {
         subTotalTitle: this.$appConfig.lang.TITLES.subTotal,
+        proceedToCheckout: this.$appConfig.lang.TITLES.proceedToCheckout,
+        shoppingCart: this.$appConfig.lang.TITLES.shoppingCart,
         currency: this.$appConfig.currency,
         showCartDetails: false,
         productsList: [],
@@ -74,6 +81,15 @@
       ]),
 
       /**
+        * when called concatenate repeated product
+        *
+      */
+
+      concatenateProducts() {
+        this.productsList = cartHelper.concat(this.getCartProducts);
+      },
+
+      /**
         * when called change cart subtotal values
         *
       */
@@ -82,14 +98,6 @@
         this.subTotal = cartHelper.sum(this.productsList);
       },
 
-      /**
-        * when called concatenate repeated product
-        *
-      */
-
-      concatenateProducts() {
-        this.productsList = cartHelper.concat(this.getCartProducts);
-      }
     },
     watch: {
 
@@ -113,9 +121,11 @@
       this.sumCartValues();
     },
     filters: {
+
       cropProductName(name) {
         if (name) return cartHelper.cropName(name)
       },
+
       inverseCreator(name) {
         if (name) return productHelper.inverseCreator(name);
       }

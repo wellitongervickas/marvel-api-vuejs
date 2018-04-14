@@ -15,6 +15,8 @@ const eng = (() => {
     TITLES: {
       storeName: 'Marvel Store',
       storeNameShort: 'Marvel',
+      shoppingCart: 'Shopping Cart',
+      keepShopping: 'Keep Shopping',
       advertisement: 'Advertisement',
       welcome: 'Welcome',
       account: 'My Account',
@@ -46,6 +48,7 @@ const eng = (() => {
       digitalPurchasePrice: 'Digital Issue',
       printPrice: 'Print Price',
       subTotal: 'Subtotal',
+      proceedToCheckout: 'Proceed to Checkout'
     },
     WARNINGS: {
       emptyCart: 'Your shopping cart is empty!',
