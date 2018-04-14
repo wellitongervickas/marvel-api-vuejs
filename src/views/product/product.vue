@@ -30,7 +30,6 @@
   import StoreFooter from '../content/footer/store-footer.vue';
   import StoreProductDetails from '../../components/product-details/store-product-details.vue';
   import StoreLoading from '../../components/loading/store-loading.vue';
-  import Product from '../../models/class/product-class';
   import requestHelper from '../../models/helpers/request-helper';
   import productHelper from '../../models/helpers/product-helper';
   import systemHelper from '../../models/helpers/system-helper';

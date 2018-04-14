@@ -3,7 +3,7 @@
 const systemHelper = (() => {
 
   // this code is from: https://gist.github.com/andjosh/6764939
-  function scrollTo(element, to = 0, duration= 1000) {
+  function scrollTo(element, to = 0, duration= 500) {
 
     const start = element.scrollTop;
     const change = to - start;
@@ -26,12 +26,12 @@ const systemHelper = (() => {
     animateScroll();
   };
 
-  Math.easeInOutQuad = function (t, b, c, d) {
+  Math.easeInOutQuad = function (t, s, c, d) {
 
     t /= d/2;
-    if (t < 1) return c/2*t*t + b;
+    if (t < 1) return c/2*t*t + s;
     t--;
-    return -c/2 * (t*(t-2) - 1) + b;
+    return -c/2 * (t*(t-2) - 1) + s;
   };
 
   return {

@@ -36,6 +36,11 @@
         <div class="cart-details-subtotal text-uppercase align-center" v-show="productsList.length">
           {{`${subTotalTitle}: ${currency} ${subTotal}`}}
         </div>
+        <div class="cart-button flex-around-center relative">
+          <router-link class="btn btn-red btn-sm text-white" :to="{ name: 'checkout'}">
+            Proceed to checkout
+          </router-link>
+        </div>
       </div>
     </transition>
   </div>

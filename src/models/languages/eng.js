@@ -46,6 +46,7 @@ const eng = (() => {
       digitalPurchasePrice: 'Digital Issue',
       printPrice: 'Print Price',
       subTotal: 'Subtotal',
+      proceedToCheckout: 'Proceed to Checkout'
     },
     WARNINGS: {
       emptyCart: 'Your shopping cart is empty!',

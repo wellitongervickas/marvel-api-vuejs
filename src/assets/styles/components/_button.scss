@@ -1,8 +1,11 @@
+$default-height: 50px;
+$default-sm-height: 40px;
+
 .btn {
   @extend .pointer;
   @extend .transition-slow;
   text-transform: uppercase;
-  height: 50px;
+  height: $default-height;
   display: inline-flex;
   align-items: center;
   padding: 0 20px;
@@ -31,10 +34,18 @@
     }
   }
 
+  &.btn-sm {
+    height: $default-sm-height;
+
+    &:before, &:after {
+      height: $default-sm-height;
+    }
+  }
+
   &:before, &:after {
     top: 0px;
     content: '';
-    height: 50px;
+    height: $default-height;
     width: 15px;
     position: absolute;
     transform: skew(-10deg, 0deg);
