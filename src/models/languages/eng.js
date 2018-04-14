@@ -15,6 +15,8 @@ const eng = (() => {
     TITLES: {
       storeName: 'Marvel Store',
       storeNameShort: 'Marvel',
+      shoppingCart: 'Shopping Cart',
+      keepShopping: 'Keep Shopping',
       advertisement: 'Advertisement',
       welcome: 'Welcome',
       account: 'My Account',

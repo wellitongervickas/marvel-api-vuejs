@@ -1,0 +1,26 @@
+$default-space-container: 50px;
+$default-margin-bottom: 50px;
+
+.store-checkout-details {
+  padding-top: $default-space-container;
+  padding-bottom: $default-space-container;
+
+  .checkout-details-header {
+    margin-bottom: $default-margin-bottom;
+
+    .details-header-title {
+      img {
+        margin-right: 20px;
+      }
+    }
+  }
+  .checkout-details-body {
+    margin-bottom: $default-margin-bottom;
+  }
+
+  .checkout-details-footer {
+    .btn {
+      font-size: 18px;
+    }
+  }
+}

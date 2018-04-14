@@ -11,7 +11,7 @@
     </section>
     <section>
       <main>
-        hello from checkout
+        <store-checkout-details></store-checkout-details>
       </main>
     </section>
     </section>
@@ -20,7 +20,6 @@
         <store-footer></store-footer>
       </footer>
     </section>
-    <store-loading v-show="loadingStatus"></store-loading>
   </div>
 </template>
 
@@ -28,23 +27,24 @@
 
   import StoreHeader from '../content/header/store-header.vue';
   import StoreFooter from '../content/footer/store-footer.vue';
-  import StoreProductDetails from '../../components/product-details/store-product-details.vue';
   import StoreLoading from '../../components/loading/store-loading.vue';
   import requestHelper from '../../models/helpers/request-helper';
   import systemHelper from '../../models/helpers/system-helper';
+  import StoreCheckoutDetails from '../../components/checkout-details/store-checkout-details.vue';
 
   export default {
     name: 'Checkout',
     components: {
       StoreHeader,
       StoreFooter,
-      StoreProductDetails,
-      StoreLoading
+      StoreLoading,
+      StoreCheckoutDetails
     },
     data() {
-      return {
-        loadingStatus: false,
-      }
+      return {}
+    },
+    created() {
+      systemHelper.scrollTo(document.documentElement);
     }
   }
 </script>

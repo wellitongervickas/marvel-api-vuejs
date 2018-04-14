@@ -1,3 +1,15 @@
+.default-btn {
+  @extend .pointer;
+  @extend .transition-slow;
+  background-color: #fff;
+  border: 1px solid #666;
+  padding: 15px 50px;
+  display:flex;
+  font-weight: 600;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+
 $default-height: 50px;
 $default-sm-height: 40px;
 
