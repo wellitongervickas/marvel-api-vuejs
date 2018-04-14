@@ -42,6 +42,9 @@ const cartHelper = (() => {
 
       // Change quantity
       tmpList[i].qtd = qtd.length;
+
+      // Change price
+      tmpList[i].prices[0].price *= qtd.length;
     }
 
     return tmpList;
