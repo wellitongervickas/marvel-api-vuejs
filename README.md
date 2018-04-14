@@ -1,6 +1,6 @@
 # front-end-test
 
-> A vuejs front-end test
+> A vuejs front-end test marvel api
 
 ## Build Setup
 
