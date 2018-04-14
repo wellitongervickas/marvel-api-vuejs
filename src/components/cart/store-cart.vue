@@ -26,7 +26,7 @@
               <div v-if="item.creator" class="item-description-autor text-uppercase">{{item.creator | inverseCreator}}</div>
             </div>
             <div class="item-price flex-evenly-column align-right relative" :data-qtd="`x ${item.qtd}`">
-              {{`${currency} ${item.prices[0].price}`}}
+              {{`${currency} ${item.qtd * item.prices[0].price}`}}
             </div>
           </li>
         </ul>
