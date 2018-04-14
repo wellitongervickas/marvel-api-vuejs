@@ -32,6 +32,12 @@
         border-bottom: 1px solid #333;
         padding-bottom: 20px;
 
+        &:last-of-type {
+          margin-bottom: 0px;
+          border-bottom: none;
+          padding-bottom: 0px;
+        }
+
         .item-image {
           width: 100%;
           overflow: hidden;
@@ -40,13 +46,24 @@
             max-width: 100%;
           }
         }
+
+        .item-price {
+          &:before {
+            content: attr(data-qtd);
+            position: absolute;
+            right: 0px;
+            bottom: 0px;
+          }
+        }
       }
     }
 
     .cart-details-subtotal {
+      margin-top: 20px;
       font-weight: bold;
       font-size: 18px;
     }
+
 
     &:before, &:after {
       position: absolute;

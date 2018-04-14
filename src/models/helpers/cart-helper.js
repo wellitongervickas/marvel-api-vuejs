@@ -4,16 +4,67 @@ import storageHelper from './storage-helper'
 
 const cartHelper = (() => {
 
+  /**
+    * This function will add an attribute to the product
+    * object by counting how many times it has been repeated
+    *
+  */
+
+  function concatenateProducts (list) {
+
+    // Get unique item of list
+    let tmpList = [];
+    for (let i in list) {
+
+      let product = list[i];
+      product.qtd = 1;
+
+      let exist = tmpList.filter(item => {
+
+        if (item.id == product.id) {
+          return product;
+        }
+      });
+
+      if (!exist.length) {
+
+        tmpList.push(product);
+      }
+    };
+
+    // Get product quantity
+    for (let i in tmpList) {
+
+      tmpList[i].qtd = 1;
+
+      // Iterate in array for sum equal items
+      let qtd = list.filter(item => item.id == tmpList[i].id);
+
+      // Change quantity
+      tmpList[i].qtd = qtd.length;
+
+      // Change price
+      tmpList[i].prices[0].price *= qtd.length;
+    }
+
+    return tmpList;
+  };
+
+  /**
+    * This function will add the first values
+    * ​​of the product and mend a total
+    *
+  */
+
   function sumCartValues(list) {
 
     let price = 0;
     for (let i in list) {
-
-      let priceList = list[i].prices;
-      price += priceList[0].price
+      let item = list[i].prices;
+      price += item[0].price;
     }
 
-    return price;
+    return price.toFixed(2);
   };
 
   /*
@@ -66,6 +117,7 @@ const cartHelper = (() => {
 
   return {
     cropName,
+    concat: concatenateProducts,
     sum: sumCartValues,
     save: saveProductsInStorage,
     get: getProductsFromStorage

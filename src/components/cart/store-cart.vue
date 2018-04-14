@@ -10,8 +10,8 @@
     </div>
     <transition name="fade">
       <div class="store-cart-details" v-show="showCartDetails">
-        <ul class="cart-details-list scrolled scrolled-y unstyled-list">
-          <li class="cart-details-item" v-for="(item, index) in getCartProducts">
+        <ul class="cart-details-list scrolled scrolled-y unstyled-list" v-show="productsList.length">
+          <li class="cart-details-item" v-for="(item, index) in productsList" :key="item.index">
             <div class="item-image">
               <router-link :to="{ name: 'product', params: { id: item.id }}">
                 <img :src="item.image" :alt="item.title">
@@ -25,10 +25,15 @@
               </div>
               <div v-if="item.creator" class="item-description-autor text-uppercase">{{item.creator | inverseCreator}}</div>
             </div>
-            <div class="item-price flex-evenly-column">$ {{item.prices[0].price}}</div>
+            <div class="item-price flex-evenly-column align-right relative" :data-qtd="`x ${item.qtd}`">
+              {{`${currency} ${item.prices[0].price}`}}
+            </div>
           </li>
         </ul>
-        <div class="cart-details-subtotal text-uppercase align-center">
+        <div class="cart-details-list--empty" v-show="!productsList.length">
+          Carrinho Vázio!
+        </div>
+        <div class="cart-details-subtotal text-uppercase align-center" v-show="productsList.length">
           {{`${subTotalTitle}: ${currency} ${subTotal}`}}
         </div>
       </div>
@@ -49,6 +54,7 @@
         subTotalTitle: this.$appConfig.lang.TITLES.subTotal,
         currency: this.$appConfig.currency,
         showCartDetails: false,
+        productsList: [],
         subTotal: 0,
       }
     },
@@ -73,7 +79,16 @@
       */
 
       sumCartValues() {
-        this.subTotal = cartHelper.sum(this.getCartProducts);
+        this.subTotal = cartHelper.sum(this.productsList);
+      },
+
+      /**
+        * when called concatenate repeated product
+        *
+      */
+
+      concatenateProducts() {
+        this.productsList = cartHelper.concat(this.getCartProducts);
       }
     },
     watch: {
@@ -85,12 +100,16 @@
       */
 
       getCartProducts: function() {
+
         this.updateCartQtd(this.getCartProducts.length);
+        this.concatenateProducts();
         this.sumCartValues();
       }
     },
     created() {
+
       this.updateCartQtd(this.getCartProducts.length);
+      this.concatenateProducts();
       this.sumCartValues();
     },
     filters: {
