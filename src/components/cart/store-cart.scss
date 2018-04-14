@@ -46,8 +46,24 @@
             max-width: 100%;
           }
         }
+
+        .item-price {
+          &:before {
+            content: attr(data-qtd);
+            position: absolute;
+            right: 0px;
+            bottom: 0px;
+          }
+        }
       }
     }
+
+    .cart-details-subtotal {
+      margin-top: 20px;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
 
     &:before, &:after {
       position: absolute;

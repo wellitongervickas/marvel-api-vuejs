@@ -52,6 +52,7 @@ const router = new VueRouter({
 */
 
 Vue.prototype.$appConfig = {
+  currency: '$',
   base: window.location.pathname,
   lang: eng,
   api: {
