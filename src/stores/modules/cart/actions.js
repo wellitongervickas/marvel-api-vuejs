@@ -1,4 +1,4 @@
-'use-strict';
+'use strict';
 
 export default {
 
@@ -14,6 +14,10 @@ export default {
 
   updateCartQtd(context, payload) {
     context.commit('UPDATE_CART_QTD', payload);
+  },
+
+  updateCartSubtotal(context, payload) {
+    context.commit('UPDATE_CART_SUBTOTAL', payload);
   }
 
 }
