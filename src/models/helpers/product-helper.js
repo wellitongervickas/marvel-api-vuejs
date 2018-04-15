@@ -117,12 +117,8 @@ const productHelper = (() => {
 
   function getCreator (creators, type) {
     if (creators.available > 0) {
-      const editor = creators.items.filter(item => {
-        if (item.role == type) {
-          return item;
-        }
-      })
 
+      const editor = creators.items.filter(item => item.role == type)
       return (editor[0]) ? editor[0].name : null;
     }
 
@@ -139,6 +135,7 @@ const productHelper = (() => {
     // Transform full name in array
     const nameToSplit = creator.split(' ');
     if (nameToSplit.length >= 1 && nameToSplit.length <=2) {
+
       return `${nameToSplit[1]}, ${nameToSplit[0]}`
     }
 
