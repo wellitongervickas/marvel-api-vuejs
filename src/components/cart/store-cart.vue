@@ -122,13 +122,8 @@
     },
     filters: {
 
-      cropProductName(name) {
-        if (name) return cartHelper.cropName(name)
-      },
-
-      inverseCreator(name) {
-        if (name) return productHelper.inverseCreator(name);
-      }
+      cropProductName: name => cartHelper.cropName(name),
+      inverseCreator: name => productHelper.inverseCreator(name),
     }
   }
 </script>

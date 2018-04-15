@@ -19,13 +19,7 @@ const cartHelper = (() => {
       let product = list[i];
       product.qtd = 1;
 
-      let exist = tmpList.filter(item => {
-
-        if (item.id == product.id) {
-          return product;
-        }
-      });
-
+      let exist = tmpList.filter(item => item.id == product.id);
       if (!exist.length) {
 
         tmpList.push(product);
@@ -34,7 +28,6 @@ const cartHelper = (() => {
 
     // Get product quantity
     for (let i in tmpList) {
-
       tmpList[i].qtd = 1;
 
       // Iterate in array for sum equal items
