@@ -2,12 +2,6 @@
 
 export default {
 
-  /**
-    * This method is responsible for
-    * saving the products to the cart.
-    *
-  */
-
   addTocart(context, payload) {
     context.commit('ADD_TO_CART', payload);
   },
@@ -18,6 +12,14 @@ export default {
 
   updateCartSubtotal(context, payload) {
     context.commit('UPDATE_CART_SUBTOTAL', payload);
+  },
+
+  deleteProduct(context, payload) {
+    context.commit('DELETE_PRODUCT', payload);
+  },
+
+  updateProduct(context, payload) {
+    context.commit('UPDATE_PRODUCT', payload);
   }
 
 }

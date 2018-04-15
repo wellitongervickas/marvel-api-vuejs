@@ -6,19 +6,29 @@ export default {
 
   ADD_TO_CART(state, payload) {
 
-    // Save in storage
     cartHelper.save(payload);
-
-    // Get saved itens
-    const products = cartHelper.get();
-
-    // Save in vuex
-    state.products = products;
+    state.products = cartHelper.get();
   },
+
   UPDATE_CART_QTD(state, payload) {
+
     state.qtd = payload;
   },
+
   UPDATE_CART_SUBTOTAL(state, payload) {
+
     state.subtotal = payload;
+  },
+
+  DELETE_PRODUCT(state, payload) {
+
+    let updatedList = cartHelper.delete(state.products, payload);
+    state.products = cartHelper.updateList(updatedList);
+  },
+
+  UPDATE_PRODUCT(state, payload) {
+
+    cartHelper.updateProductQtd(state.products, payload.product, payload.action);
   }
+
 }
