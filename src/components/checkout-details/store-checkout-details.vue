@@ -23,7 +23,7 @@
 
         <div class="products-list" v-show="productsList.length">
           <div class="products-item" v-for="(item, index) in productsList">
-            <div class="item-info flex">
+            <div class="item-info flex relative">
               <div class="info-image">
                 <router-link :to="{ name: 'product', params: { id: item.id }}">
                   <img :src="item.image" :alt="item.title">
@@ -36,15 +36,25 @@
                 </router-link>
               </div>
             </div>
-            <div class="item-price flex-around-center">{{`${currency} ${(item.prices[0].price).toFixed(2)}`}}</div>
-            <div class="item-qtd flex-around-center">{{item.qtd}}</div>
+            <div class="item-price relative flex-around-center">{{`${currency} ${(item.prices[0].price).toFixed(2)}`}}</div>
+            <div class="item-qtd relative flex-around-center">
+              <div class="item-qtd-decrement">
+                <button type="button">-</button>
+              </div>
+              <div class="item-qtd-valyes">
+                <input type="text" v-model="item.qtd">
+              </div>
+              <div class="item-qtd-increment">
+                <button type="button">+</button>
+              </div>
+            </div>
             <div class="item-total flex-around-center">{{`${currency} ${(item.qtd * item.prices[0].price).toFixed(2)}`}}</div>
           </div>
         </div>
-
+        <div class="products-list--empty" v-show="!productsList.length">{{cartEmpty}}</div>
 
       </div>
-      <div class="details-body-subtotal flex-between-center">
+      <div class="details-body-subtotal flex-between-center" v-show="productsList.length">
         <div class="separator-subotal"></div>
         <div class="values-subotal text-uppercase">Total {{`${currency} ${getCartSubtotal}`}}</div>
       </div>
@@ -70,6 +80,7 @@
         proceedToCheckout: this.$appConfig.lang.TITLES.proceedToCheckout,
         shoppingCart: this.$appConfig.lang.TITLES.shoppingCart,
         keepShopping: this.$appConfig.lang.TITLES.keepShopping,
+        cartEmpty: this.$appConfig.lang.TITLES.cartEmpty,
         currency: this.$appConfig.currency,
         productsList: []
       }

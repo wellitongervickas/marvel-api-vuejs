@@ -30,8 +30,8 @@
             </div>
           </li>
         </ul>
-        <div class="cart-details-list--empty" v-show="!productsList.length">
-          Carrinho Vázio!
+        <div class="cart-details-list--empty align-center" v-show="!productsList.length">
+          {{cartEmpty}}
         </div>
         <div class="cart-details-subtotal text-uppercase align-center" v-show="productsList.length">
           {{`${subTotalTitle}: ${currency} ${subtotal}`}}
@@ -59,6 +59,7 @@
         subTotalTitle: this.$appConfig.lang.TITLES.subTotal,
         proceedToCheckout: this.$appConfig.lang.TITLES.proceedToCheckout,
         shoppingCart: this.$appConfig.lang.TITLES.shoppingCart,
+        cartEmpty: this.$appConfig.lang.TITLES.cartEmpty,
         currency: this.$appConfig.currency,
         showCartDetails: false,
         productsList: [],

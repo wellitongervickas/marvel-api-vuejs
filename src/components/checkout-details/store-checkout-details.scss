@@ -1,5 +1,6 @@
 $default-space-container: 50px;
 $default-margin-bottom: 50px;
+$default-font-size: 20px;
 
 .store-checkout-details {
   padding-top: $default-space-container;
@@ -20,6 +21,11 @@ $default-margin-bottom: 50px;
     .details-body-products {
       border: 1px solid #959595;
 
+      .products-list--empty {
+        padding: 40px;
+        text-align: center;
+      }
+
       .products-list {
         .products-item {
           display: grid;
@@ -28,6 +34,11 @@ $default-margin-bottom: 50px;
 
           &:last-of-type {
             border-bottom: none;
+          }
+
+          .item-price, .item-total {
+            font-size: $default-font-size;
+            font-weight: bold;
           }
 
           .item-info {
@@ -45,10 +56,22 @@ $default-margin-bottom: 50px;
 
             .info-title {
               h3 {
-                font-size: 20px;
+                font-size: $default-font-size;
                 font-weight: bold;
                 margin-bottom: 5px;
               }
+            }
+          }
+
+          .item-info, .item-qtd, .item-price {
+            &:after {
+              content: '';
+              width: 1px;
+              height: 50px;
+              background-color: #959595;
+              right: 0px;
+              position: absolute;
+              top:40%;
             }
           }
         }
