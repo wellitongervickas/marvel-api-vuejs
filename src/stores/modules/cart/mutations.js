@@ -1,4 +1,4 @@
-'use-strict';
+'use strict';
 
 import cartHelper from '../../../models/helpers/cart-helper';
 
@@ -17,5 +17,8 @@ export default {
   },
   UPDATE_CART_QTD(state, payload) {
     state.qtd = payload;
+  },
+  UPDATE_CART_SUBTOTAL(state, payload) {
+    state.subtotal = payload;
   }
 }

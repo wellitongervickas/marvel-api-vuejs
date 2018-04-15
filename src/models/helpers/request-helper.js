@@ -1,4 +1,4 @@
-'use-strict'
+'use strict';
 
 /**
   * Documentation of md5 https://www.npmjs.com/package/js-md5

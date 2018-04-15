@@ -1,4 +1,4 @@
-'use-strict';
+'use strict';
 
 import cartHelper from '../../../models/helpers/cart-helper';
 
@@ -9,10 +9,14 @@ export default {
       return cartHelper.get();
     }
 
-    return state.products
+    return state.products;
   },
 
   getCartQtd(state) {
     return state.qtd;
+  },
+
+  getCartSubtotal(state) {
+    return state.subtotal;
   }
 }

@@ -1,4 +1,4 @@
-'use-strict'
+'use strict';
 
 import Product from '../class/product-class';
 

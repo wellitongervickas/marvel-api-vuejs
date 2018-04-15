@@ -1,4 +1,4 @@
-'use-strict'
+'use strict';
 
 /**
   * This closure was created to carry out actions in

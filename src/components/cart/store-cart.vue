@@ -34,7 +34,7 @@
           Carrinho Vázio!
         </div>
         <div class="cart-details-subtotal text-uppercase align-center" v-show="productsList.length">
-          {{`${subTotalTitle}: ${currency} ${subTotal}`}}
+          {{`${subTotalTitle}: ${currency} ${subtotal}`}}
         </div>
         <div class="cart-button flex-around-center relative">
           <router-link class="btn btn-red btn-sm text-white text-uppercase" :to="{ name: 'checkout'}">
@@ -62,7 +62,7 @@
         currency: this.$appConfig.currency,
         showCartDetails: false,
         productsList: [],
-        subTotal: 0,
+        subtotal: 0,
       }
     },
     computed: {
@@ -77,7 +77,8 @@
 
       // From vuex
       ...mapActions([
-        'updateCartQtd'
+        'updateCartQtd',
+        'updateCartSubtotal'
       ]),
 
       /**
@@ -95,7 +96,8 @@
       */
 
       sumCartValues() {
-        this.subTotal = cartHelper.sum(this.productsList);
+        this.subtotal = cartHelper.sum(this.productsList);
+        this.updateCartSubtotal(this.subtotal);
       },
 
     },
@@ -103,7 +105,7 @@
 
       /**
         * when cart list length is changed
-        * cart quantity get new value
+        * cart changed to
         *
       */
 
