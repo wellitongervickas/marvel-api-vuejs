@@ -16,6 +16,10 @@ export default {
 
   deleteProduct(context, payload) {
     context.commit('DELETE_PRODUCT', payload);
+  },
+
+  updateProduct(context, payload) {
+    context.commit('UPDATE_PRODUCT', payload);
   }
 
 }

@@ -4,6 +4,8 @@ import storageHelper from './storage-helper'
 
 const cartHelper = (() => {
 
+  function updateProductQtd(list, product, action) {};
+
   /**
     * This function will delete product of
     * list and return a new list to update
@@ -97,9 +99,7 @@ const cartHelper = (() => {
   function updateProductsInStorage(list) {
 
     storageHelper.save('cartProducts', list);
-    const listToReturn = storageHelper.get('cartProducts');
-
-    return listToReturn;
+    return storageHelper.get('cartProducts');;
   };
 
 
@@ -135,6 +135,7 @@ const cartHelper = (() => {
 
   return {
     cropName,
+    updateProductQtd,
     delete: deleteProduct,
     concat: concatenateProducts,
     sum: sumCartValues,

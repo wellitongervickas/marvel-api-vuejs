@@ -18,41 +18,45 @@
     <div class="checkout-details-body">
       <div class="details-body-products">
         <div class="products-list" v-show="productsList.length">
-          <div class="products-item relative" v-for="(item, index) in productsList">
-            <div class="item-info flex relative">
-              <div class="info-image">
-                <router-link :to="{ name: 'product', params: { id: item.id }}">
-                  <img :src="item.image" :alt="item.title">
-                </router-link>
+          <transition-group name="fade" tag="div">
+            <div class="products-item relative" v-for="(item, index) in productsList" :key="item.id">
+              <div class="item-info flex relative">
+                <div class="info-image">
+                  <router-link :to="{ name: 'product', params: { id: item.id }}">
+                    <img :src="item.image" :alt="item.title">
+                  </router-link>
+                </div>
+                <div class="info-title flex-around-center">
+                  <router-link :to="{ name: 'product', params: { id: item.id }}">
+                    <h3>{{item.title | cropProductName}}</h3>
+                    <span class="products-item-title-creator text-uppercase" v-if="item.creator">
+                      {{item.creator | inverseCreator}}
+                    </span>
+                  </router-link>
+                </div>
               </div>
-              <div class="info-title flex-around-center">
-                <router-link :to="{ name: 'product', params: { id: item.id }}">
-                  <h3>{{item.title | cropProductName}}</h3>
-                  <span class="products-item-title-creator text-uppercase" v-if="item.creator">{{item.creator | inverseCreator}}</span>
-                </router-link>
+              <div class="item-price relative flex-around-center">
+                {{`${currency} ${(item.prices[0].price).toFixed(2)}`}}
+              </div>
+              <div class="item-qtd relative">
+                <div class="item-qtd-decrement flex-around-center">
+                  <button class="pointer" type="button" :disabled="item.qtd == 1">-</button>
+                </div>
+                <div class="item-qtd-values flex-around-center">
+                  <input type="text" v-model="item.qtd" class="default-input align-center">
+                </div>
+                <div class="item-qtd-increment flex-around-center">
+                  <button class="pointer" type="button">+</button>
+                </div>
+              </div>
+              <div class="item-total flex-around-center">
+                {{`${currency} ${(item.qtd * item.prices[0].price).toFixed(2)}`}}
+              </div>
+              <div class="item-delete">
+                <button type="button" @click="deleteProductById(item.id)" class="btn btn-white btn-sm text-black">X</button>
               </div>
             </div>
-            <div class="item-price relative flex-around-center">
-              {{`${currency} ${(item.prices[0].price).toFixed(2)}`}}
-            </div>
-            <div class="item-qtd relative flex-around-center">
-              <div class="item-qtd-decrement">
-                <button type="button" :disabled="item.qtd == 1" @click="decrementQtd(item)">-</button>
-              </div>
-              <div class="item-qtd-valyes">
-                <input type="text" v-model="item.qtd">
-              </div>
-              <div class="item-qtd-increment">
-                <button type="button" @click="incrementQtd(item)">+</button>
-              </div>
-            </div>
-            <div class="item-total flex-around-center">
-              {{`${currency} ${(item.qtd * item.prices[0].price).toFixed(2)}`}}
-            </div>
-            <div class="item-delete">
-              <button type="button" @click="deleteProductById(item.id)" class="btn btn-white btn-sm text-black">X</button>
-            </div>
-          </div>
+          </transition-group>
         </div>
         <div class="products-list--empty" v-show="!productsList.length">{{cartEmpty}}</div>
       </div>
@@ -64,6 +68,8 @@
     <div class="checkout-details-footer flex-end">
       <button type="button" class="btn btn-red text-white">{{proceedToCheckout}}</button>
     </div>
+
+    {{this.getCartProducts}}
   </div>
 </template>
 
@@ -90,31 +96,21 @@
         'getCartProducts',
         'getCartSubtotal',
       ]),
-      // ...mapState([
-
-      // ])
     },
     methods: {
 
       ...mapActions([
-        'deleteProduct'
+        'deleteProduct',
       ]),
 
       concatenateProducts() {
         this.productsList = cartHelper.concat(this.getCartProducts);
       },
 
-      incrementQtd(product) {
-        console.log(product)
-      },
-
-      decrementQtd(product) {
-        console.log(product)
-      },
-
       deleteProductById(id) {
         this.deleteProduct(id);
-      }
+      },
+
     },
     created() {
       this.concatenateProducts();

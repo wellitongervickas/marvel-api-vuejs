@@ -11,7 +11,7 @@
     <transition name="fade">
       <div class="store-cart-details" v-show="showCartDetails">
         <ul class="cart-details-list scrolled scrolled-y unstyled-list" v-show="productsList.length">
-          <li class="cart-details-item" v-for="(item, index) in productsList" :key="item.index">
+          <li class="cart-details-item" v-for="(item, index) in productsList" :key="item.id">
             <div class="item-image">
               <router-link :to="{ name: 'product', params: { id: item.id }}">
                 <img :src="item.image" :alt="item.title">

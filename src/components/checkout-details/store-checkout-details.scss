@@ -71,7 +71,33 @@ $default-font-size: 20px;
               background-color: #959595;
               right: 0px;
               position: absolute;
-              top:40%;
+              top:37%;
+            }
+          }
+
+          .item-qtd {
+            display: grid;
+            grid-template-columns: 25% 50% 25%;
+
+            .item-qtd-values {
+              input {
+                max-width: 70%;
+              }
+            }
+
+            .item-qtd-decrement, .item-qtd-increment {
+              button {
+                font-size: $default-font-size;
+                color: #fff;
+                border: none;
+                background-color: #333;
+                padding: 0 8px;
+
+                &:disabled {
+                  cursor: not-allowed;
+                  background-color: #ccc;
+                }
+              }
             }
           }
 
@@ -79,6 +105,7 @@ $default-font-size: 20px;
             position: absolute;
             right: -25px;
             top: 40%;
+
           }
         }
       }
