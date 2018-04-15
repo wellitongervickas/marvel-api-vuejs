@@ -107,7 +107,7 @@
 
         // Scroll to top again
         systemHelper.scrollTo(document.documentElement);
-        this.addTocart(product)
+        this.addTocart(product);
       }
     },
     filters: {

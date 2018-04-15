@@ -30,6 +30,7 @@ const productHelper = (() => {
         prices: product.prices,
         description: product.description,
         digitalRead: isDigitalRead(product.prices),
+        qtd: 1
       });
 
       newList.push(obj);
@@ -118,8 +119,8 @@ const productHelper = (() => {
   function getCreator (creators, type) {
     if (creators.available > 0) {
 
-      const editor = creators.items.filter(item => item.role == type)
-      return (editor[0]) ? editor[0].name : null;
+      const editor = creators.items.find(item => item.role == type)
+      return (editor) ? editor.name : null;
     }
 
     return;

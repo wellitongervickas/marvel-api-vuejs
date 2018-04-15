@@ -17,9 +17,9 @@
     </div>
     <div class="checkout-details-body">
       <div class="details-body-products">
-        <div class="products-list" v-show="productsList.length">
+        <div class="products-list" v-show="getCartProducts.length">
           <transition-group name="fade" tag="div">
-            <div class="products-item relative" v-for="(item, index) in productsList" :key="item.id">
+            <div class="products-item relative" v-for="(item, index) in getCartProducts" :key="index">
               <div class="item-info flex relative">
                 <div class="info-image">
                   <router-link :to="{ name: 'product', params: { id: item.id }}">
@@ -40,13 +40,22 @@
               </div>
               <div class="item-qtd relative">
                 <div class="item-qtd-decrement flex-around-center">
-                  <button class="pointer" type="button" :disabled="item.qtd == 1">-</button>
+                  <button
+                  class="pointer"
+                  type="button"
+                  :disabled="item.qtd == 1">-</button>
                 </div>
                 <div class="item-qtd-values flex-around-center">
-                  <input type="text" v-model="item.qtd" class="default-input align-center">
+                  <input
+                  type="number"
+                  v-model.number="item.qtd"
+                  min="1"
+                  class="default-input align-center">
                 </div>
                 <div class="item-qtd-increment flex-around-center">
-                  <button class="pointer" type="button">+</button>
+                  <button
+                  class="pointer"
+                  type="button">+</button>
                 </div>
               </div>
               <div class="item-total flex-around-center">
@@ -58,9 +67,9 @@
             </div>
           </transition-group>
         </div>
-        <div class="products-list--empty" v-show="!productsList.length">{{cartEmpty}}</div>
+        <div class="products-list--empty" v-show="!getCartProducts.length">{{cartEmpty}}</div>
       </div>
-      <div class="details-body-subtotal flex-between-center" v-show="productsList.length">
+      <div class="details-body-subtotal flex-between-center" v-show="getCartProducts.length">
         <div class="separator-subotal"></div>
         <div class="values-subotal text-uppercase">Total {{`${currency} ${getCartSubtotal}`}}</div>
       </div>
@@ -68,8 +77,6 @@
     <div class="checkout-details-footer flex-end">
       <button type="button" class="btn btn-red text-white">{{proceedToCheckout}}</button>
     </div>
-
-    {{this.getCartProducts}}
   </div>
 </template>
 
@@ -88,7 +95,6 @@
         keepShopping: this.$appConfig.lang.TITLES.keepShopping,
         cartEmpty: this.$appConfig.lang.TITLES.cartEmpty,
         currency: this.$appConfig.currency,
-        productsList: []
       }
     },
     computed: {
@@ -103,29 +109,10 @@
         'deleteProduct',
       ]),
 
-      concatenateProducts() {
-        this.productsList = cartHelper.concat(this.getCartProducts);
-      },
-
       deleteProductById(id) {
         this.deleteProduct(id);
       },
 
-    },
-    created() {
-      this.concatenateProducts();
-    },
-    watch: {
-
-      /**
-        * when cart list length is changed
-        * cart changed to
-        *
-      */
-
-      getCartProducts: function() {
-        this.concatenateProducts();
-      }
     },
     filters: {
 

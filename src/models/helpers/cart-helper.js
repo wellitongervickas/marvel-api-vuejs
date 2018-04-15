@@ -4,8 +4,6 @@ import storageHelper from './storage-helper'
 
 const cartHelper = (() => {
 
-  function updateProductQtd(list, product, action) {};
-
   /**
     * This function will delete product of
     * list and return a new list to update
@@ -13,44 +11,9 @@ const cartHelper = (() => {
   */
 
   function deleteProduct(list, id) {
+
     return list.filter(item => item.id != id);
   }
-
-  /**
-    * This function will add an attribute to the product
-    * object by counting how many times it has been repeated
-    *
-  */
-
-  function concatenateProducts (list) {
-
-    // Get unique item of list
-    let tmpList = [];
-    for (let i in list) {
-
-      let product = list[i];
-      product.qtd = 1;
-
-      let exist = tmpList.filter(item => item.id == product.id);
-      if (!exist.length) {
-
-        tmpList.push(product);
-      }
-    };
-
-    // Get product quantity
-    for (let i in tmpList) {
-      tmpList[i].qtd = 1;
-
-      // Iterate in array for sum equal items
-      let repeated = list.filter(item => item.id == tmpList[i].id);
-
-      // Change quantity
-      tmpList[i].qtd = repeated.length;
-    }
-
-    return tmpList;
-  };
 
   /**
     * This function will add the first values
@@ -59,6 +22,7 @@ const cartHelper = (() => {
   */
 
   function sumCartValues(list) {
+
     if (list) {
       let price = 0;
       for (let i in list) {
@@ -80,8 +44,8 @@ const cartHelper = (() => {
   */
 
   function cropName (name) {
-    if (name) {
 
+    if (name) {
       const maxLength = 20;
       if (name.length >= maxLength) {
         return `${name.substring(0, maxLength)} ...`;
@@ -110,18 +74,24 @@ const cartHelper = (() => {
     *
   */
 
-  function saveProductsInStorage (payload) {
+  function saveProductsInStorage (product) {
 
-    let productList = [];
-    const productsFromStorage = getProductsFromStorage();
+    let productsFromStorage = getProductsFromStorage();
+    let existOnList = productsFromStorage.find(item => item.id == product.id);
 
-    productList.push(payload);
+    if (existOnList) {
+      for (let i in productsFromStorage) {
+        if (productsFromStorage[i].id == product.id) {
+          productsFromStorage[i].qtd += 1;
+          break;
+        }
+      }
+    } else {
 
-    if (productsFromStorage.length) {
-      productList = productList.concat(productsFromStorage);
+      productsFromStorage.push(product);
     }
 
-    storageHelper.save('cartProducts', productList);
+    storageHelper.save('cartProducts', productsFromStorage);
   };
 
   /**
@@ -135,9 +105,7 @@ const cartHelper = (() => {
 
   return {
     cropName,
-    updateProductQtd,
     delete: deleteProduct,
-    concat: concatenateProducts,
     sum: sumCartValues,
     save: saveProductsInStorage,
     updateList: updateProductsInStorage,

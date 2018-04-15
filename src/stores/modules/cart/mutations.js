@@ -24,11 +24,6 @@ export default {
 
     let updatedList = cartHelper.delete(state.products, payload);
     state.products = cartHelper.updateList(updatedList);
-  },
-
-  UPDATE_PRODUCT(state, payload) {
-
-    cartHelper.updateProductQtd(state.products, payload.product, payload.action);
   }
 
 }

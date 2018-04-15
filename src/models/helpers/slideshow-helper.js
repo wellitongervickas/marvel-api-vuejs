@@ -30,12 +30,12 @@ const slideshowHelper = (() => {
       switch (control) {
         case 'next':
 
-          nextItem = activeSlide + 1;
+          nextItem = (activeSlide + 1);
           break;
 
         case 'prev':
 
-          nextItem = activeSlide - 1;
+          nextItem = (activeSlide - 1);
           break;
 
         default:

@@ -10,8 +10,8 @@
     </div>
     <transition name="fade">
       <div class="store-cart-details" v-show="showCartDetails">
-        <ul class="cart-details-list scrolled scrolled-y unstyled-list" v-show="productsList.length">
-          <li class="cart-details-item" v-for="(item, index) in productsList" :key="item.id">
+        <ul class="cart-details-list scrolled scrolled-y unstyled-list" v-show="getCartProducts.length">
+          <li class="cart-details-item" v-for="(item, index) in getCartProducts" :key="item.id">
             <div class="item-image">
               <router-link :to="{ name: 'product', params: { id: item.id }}">
                 <img :src="item.image" :alt="item.title">
@@ -30,10 +30,10 @@
             </div>
           </li>
         </ul>
-        <div class="cart-details-list--empty align-center" v-show="!productsList.length">
+        <div class="cart-details-list--empty align-center" v-show="!getCartProducts.length">
           {{cartEmpty}}
         </div>
-        <div class="cart-details-subtotal text-uppercase align-center" v-show="productsList.length">
+        <div class="cart-details-subtotal text-uppercase align-center" v-show="getCartProducts.length">
           {{`${subTotalTitle}: ${currency} ${subtotal}`}}
         </div>
         <div class="cart-button flex-around-center relative">
@@ -62,7 +62,6 @@
         cartEmpty: this.$appConfig.lang.TITLES.cartEmpty,
         currency: this.$appConfig.currency,
         showCartDetails: false,
-        productsList: [],
         subtotal: 0,
       }
     },
@@ -83,21 +82,12 @@
       ]),
 
       /**
-        * when called concatenate repeated product
-        *
-      */
-
-      concatenateProducts() {
-        this.productsList = cartHelper.concat(this.getCartProducts);
-      },
-
-      /**
         * when called change cart subtotal values
         *
       */
 
       sumCartValues() {
-        this.subtotal = cartHelper.sum(this.productsList);
+        this.subtotal = cartHelper.sum(this.getCartProducts);
         this.updateCartSubtotal(this.subtotal);
       },
 
@@ -113,14 +103,12 @@
       getCartProducts: function() {
 
         this.updateCartQtd(this.getCartProducts.length);
-        this.concatenateProducts();
         this.sumCartValues();
       }
     },
     created() {
 
       this.updateCartQtd(this.getCartProducts.length);
-      this.concatenateProducts();
       this.sumCartValues();
     },
     filters: {
