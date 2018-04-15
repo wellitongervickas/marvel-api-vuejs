@@ -74,6 +74,12 @@ $default-font-size: 20px;
               top:40%;
             }
           }
+
+          .item-delete {
+            position: absolute;
+            right: -25px;
+            top: 40%;
+          }
         }
       }
     }

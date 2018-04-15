@@ -5,6 +5,16 @@ import storageHelper from './storage-helper'
 const cartHelper = (() => {
 
   /**
+    * This function will delete product of
+    * list and return a new list to update
+    * storage and vuex
+  */
+
+  function deleteProduct(list, id) {
+    return list.filter(item => item.id != id);
+  }
+
+  /**
     * This function will add an attribute to the product
     * object by counting how many times it has been repeated
     *
@@ -47,14 +57,18 @@ const cartHelper = (() => {
   */
 
   function sumCartValues(list) {
+    if (list) {
+      let price = 0;
+      for (let i in list) {
 
-    let price = 0;
-    for (let i in list) {
-      let prices = list[i].prices;
-      price += (prices[0].price * list[i].qtd);
+        let prices = list[i].prices;
+        if (prices) {
+          price += (prices[0].price * list[i].qtd);
+        }
+      }
+
+      return price.toFixed(2);
     }
-
-    return price.toFixed(2);
   };
 
   /*
@@ -64,16 +78,30 @@ const cartHelper = (() => {
   */
 
   function cropName (name) {
-    const maxLength = 20;
+    if (name) {
 
-    if (name.length >= maxLength) {
-
-      return `${name.substring(0, maxLength)} ...`;
-    } else {
+      const maxLength = 20;
+      if (name.length >= maxLength) {
+        return `${name.substring(0, maxLength)} ...`;
+      }
 
       return name;
     }
   };
+
+  /**
+    * This function will update product list in storage
+    *
+  */
+
+  function updateProductsInStorage(list) {
+
+    storageHelper.save('cartProducts', list);
+    const listToReturn = storageHelper.get('cartProducts');
+
+    return listToReturn;
+  };
+
 
   /**
     * This method is responsible for saving the new products
@@ -85,7 +113,7 @@ const cartHelper = (() => {
   function saveProductsInStorage (payload) {
 
     let productList = [];
-    let productsFromStorage = getProductsFromStorage();
+    const productsFromStorage = getProductsFromStorage();
 
     productList.push(payload);
 
@@ -107,9 +135,11 @@ const cartHelper = (() => {
 
   return {
     cropName,
+    delete: deleteProduct,
     concat: concatenateProducts,
     sum: sumCartValues,
     save: saveProductsInStorage,
+    updateList: updateProductsInStorage,
     get: getProductsFromStorage
   };
 

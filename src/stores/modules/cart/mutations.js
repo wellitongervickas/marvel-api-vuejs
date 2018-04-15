@@ -15,10 +15,19 @@ export default {
     // Save in vuex
     state.products = products;
   },
+
   UPDATE_CART_QTD(state, payload) {
     state.qtd = payload;
   },
+
   UPDATE_CART_SUBTOTAL(state, payload) {
     state.subtotal = payload;
+  },
+
+  DELETE_PRODUCT(state, payload) {
+
+    let updatedList = cartHelper.delete(state.products, payload);
+    state.products = cartHelper.updateList(updatedList);
   }
+
 }

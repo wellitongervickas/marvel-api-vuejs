@@ -15,14 +15,10 @@
         </router-link>
       </div>
     </div>
-
-
     <div class="checkout-details-body">
       <div class="details-body-products">
-
-
         <div class="products-list" v-show="productsList.length">
-          <div class="products-item" v-for="(item, index) in productsList">
+          <div class="products-item relative" v-for="(item, index) in productsList">
             <div class="item-info flex relative">
               <div class="info-image">
                 <router-link :to="{ name: 'product', params: { id: item.id }}">
@@ -36,31 +32,35 @@
                 </router-link>
               </div>
             </div>
-            <div class="item-price relative flex-around-center">{{`${currency} ${(item.prices[0].price).toFixed(2)}`}}</div>
+            <div class="item-price relative flex-around-center">
+              {{`${currency} ${(item.prices[0].price).toFixed(2)}`}}
+            </div>
             <div class="item-qtd relative flex-around-center">
               <div class="item-qtd-decrement">
-                <button type="button">-</button>
+                <button type="button" :disabled="item.qtd == 1" @click="decrementQtd(item)">-</button>
               </div>
               <div class="item-qtd-valyes">
                 <input type="text" v-model="item.qtd">
               </div>
               <div class="item-qtd-increment">
-                <button type="button">+</button>
+                <button type="button" @click="incrementQtd(item)">+</button>
               </div>
             </div>
-            <div class="item-total flex-around-center">{{`${currency} ${(item.qtd * item.prices[0].price).toFixed(2)}`}}</div>
+            <div class="item-total flex-around-center">
+              {{`${currency} ${(item.qtd * item.prices[0].price).toFixed(2)}`}}
+            </div>
+            <div class="item-delete">
+              <button type="button" @click="deleteProductById(item.id)" class="btn btn-white btn-sm text-black">X</button>
+            </div>
           </div>
         </div>
         <div class="products-list--empty" v-show="!productsList.length">{{cartEmpty}}</div>
-
       </div>
       <div class="details-body-subtotal flex-between-center" v-show="productsList.length">
         <div class="separator-subotal"></div>
         <div class="values-subotal text-uppercase">Total {{`${currency} ${getCartSubtotal}`}}</div>
       </div>
     </div>
-
-
     <div class="checkout-details-footer flex-end">
       <button type="button" class="btn btn-red text-white">{{proceedToCheckout}}</button>
     </div>
@@ -88,13 +88,33 @@
     computed: {
       ...mapGetters([
         'getCartProducts',
-        'getCartSubtotal'
-      ])
+        'getCartSubtotal',
+      ]),
+      // ...mapState([
+
+      // ])
     },
     methods: {
+
+      ...mapActions([
+        'deleteProduct'
+      ]),
+
       concatenateProducts() {
         this.productsList = cartHelper.concat(this.getCartProducts);
       },
+
+      incrementQtd(product) {
+        console.log(product)
+      },
+
+      decrementQtd(product) {
+        console.log(product)
+      },
+
+      deleteProductById(id) {
+        this.deleteProduct(id);
+      }
     },
     created() {
       this.concatenateProducts();
