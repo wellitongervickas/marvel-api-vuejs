@@ -18,8 +18,4 @@ export default {
     context.commit('DELETE_PRODUCT', payload);
   },
 
-  updateProduct(context, payload) {
-    context.commit('UPDATE_PRODUCT', payload);
-  }
-
 }

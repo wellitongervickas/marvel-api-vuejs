@@ -13,6 +13,7 @@ class Product {
     this.prices = product.prices;
     this.description = product.description;
     this.digitalRead = product.digitalRead;
+    this.qtd = product.qtd;
   }
 };
 
