@@ -43,17 +43,20 @@
                   <button
                   class="pointer"
                   type="button"
+                  @click="changeProductQtd(item);item.qtd--"
                   :disabled="item.qtd == 1">-</button>
                 </div>
                 <div class="item-qtd-values flex-around-center">
                   <input
                   type="number"
                   v-model.number="item.qtd"
+                  @input="changeProductQtd(item)"
                   min="1"
                   class="default-input align-center">
                 </div>
                 <div class="item-qtd-increment flex-around-center">
                   <button
+                  @click="changeProductQtd(item);item.qtd++"
                   class="pointer"
                   type="button">+</button>
                 </div>
@@ -84,6 +87,7 @@
 
   import { mapGetters, mapState, mapActions  } from 'vuex';
   import cartHelper from '../../models/helpers/cart-helper';
+  import checkoutHelper from '../../models/helpers/checkout-helper';
   import productHelper from '../../models/helpers/product-helper';
 
   export default {
@@ -107,15 +111,19 @@
 
       ...mapActions([
         'deleteProduct',
+        'updateProductQuantity'
       ]),
 
       deleteProductById(id) {
         this.deleteProduct(id);
       },
 
+      changeProductQtd(product) {
+        this.updateProductQuantity(product)
+      },
+
     },
     filters: {
-
       cropProductName: name => cartHelper.cropName(name),
       inverseCreator: name => productHelper.inverseCreator(name),
     }
