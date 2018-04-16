@@ -11,6 +11,8 @@ const checkoutHelper = (() => {
         item.qtd = product.qtd;
         return item;
       }
+
+      return item;
     });
 
     storageHelper.save('cartProducts', newList);
