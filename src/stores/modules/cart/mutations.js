@@ -1,6 +1,7 @@
 'use strict';
 
 import cartHelper from '../../../models/helpers/cart-helper';
+import checkoutHelper from '../../../models/helpers/checkout-helper';
 
 export default {
 
@@ -24,6 +25,10 @@ export default {
 
     let updatedList = cartHelper.delete(state.products, payload);
     state.products = cartHelper.updateList(updatedList);
-  }
+  },
+
+  UPDATE_PRODUCT_QUANTITY(state, payload) {
+    state.products = checkoutHelper.updateProductQtd(state.products, payload);
+  },
 
 }

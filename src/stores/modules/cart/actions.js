@@ -18,4 +18,7 @@ export default {
     context.commit('DELETE_PRODUCT', payload);
   },
 
+  updateProductQuantity(context, payload) {
+    context.commit('UPDATE_PRODUCT_QUANTITY', payload);
+  }
 }

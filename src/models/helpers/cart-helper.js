@@ -1,6 +1,6 @@
 'use strict';
 
-import storageHelper from './storage-helper'
+import storageHelper from './storage-helper';
 
 const cartHelper = (() => {
 
@@ -46,6 +46,7 @@ const cartHelper = (() => {
   function cropName (name) {
 
     if (name) {
+
       const maxLength = 20;
       if (name.length >= maxLength) {
         return `${name.substring(0, maxLength)} ...`;
@@ -53,6 +54,8 @@ const cartHelper = (() => {
 
       return name;
     }
+
+    return;
   };
 
   /**
