@@ -14,6 +14,9 @@ class Product {
     this.description = product.description;
     this.digitalRead = product.digitalRead;
     this.qtd = product.qtd;
+    this.upc = product.upc;
+    this.format = product.format;
+    this.stories = product.stories;
   }
 };
 

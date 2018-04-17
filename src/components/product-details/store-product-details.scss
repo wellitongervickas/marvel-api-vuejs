@@ -3,7 +3,7 @@ $default-margin-bottom: 30px;
 
 .details-intro {
   background-color: #2a2a2a;
-  margin-bottom: 50px;
+  margin-bottom: $default-margin-bottom;
 
   .intro-content {
     display: grid;
@@ -95,6 +95,59 @@ $default-margin-bottom: 30px;
       .pricing-purchase-button {
         font-size: 22px;
         margin-bottom: $default-margin-bottom;
+      }
+    }
+  }
+}
+
+.details {
+  margin-bottom: $default-margin-bottom;
+
+  .details-header {
+    font-size: 22px;
+  }
+
+  .details-tabs {
+    margin-top: 20px;
+    background-color: #ebebeb;
+
+    .details-tabs-header {
+      background-color: #d7d7d7;
+
+      ul {
+        li {
+          padding: 30px;
+          font-size: 20px;
+          color: #6c6c6c;
+          font-weight: bold;
+          border-right: 1px solid #e1e1e1;
+
+          &:last-of-type {
+            border-right: 1px solid transparent;
+          }
+
+          &:hover, &.active {
+            color: #333;
+            background-color: #ebebeb;
+          }
+        }
+      }
+    }
+
+    .details-tabs-content {
+      padding: 40px;
+      font-size: 16px;
+      color: #494949;
+      line-height: 25px;
+
+      .tabs-content-info {
+        display: grid;
+        grid-column-gap: 5%;
+        grid-template-columns:25% 70%;
+
+        .content-info-list {
+          border-right: 1px solid #ccc;
+        }
       }
     }
   }

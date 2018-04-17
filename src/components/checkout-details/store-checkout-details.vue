@@ -19,7 +19,7 @@
       <div class="details-body-products">
         <div class="products-list" v-show="getCartProducts.length">
           <transition-group name="fade" tag="div">
-            <div class="products-item relative" v-for="(item, index) in getCartProducts" :key="index">
+            <div class="products-item relative" v-for="(item, index) in getCartProducts" :key="item.id">
               <div class="item-info flex relative">
                 <div class="info-image">
                   <router-link :to="{ name: 'product', params: { id: item.id }}">
@@ -52,6 +52,7 @@
                   v-model.number="item.qtd"
                   @input="changeProductQtd(item)"
                   min="1"
+                  max="99"
                   class="default-input align-center">
                 </div>
                 <div class="item-qtd-increment flex-around-center">
