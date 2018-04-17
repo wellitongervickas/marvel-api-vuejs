@@ -28,7 +28,7 @@
         :disabled="loadingStatus"
         @click="updateProductList()"
         class="btn btn-large btn-red text-white transition-slow">
-        {{loadMore}}
+        {{langTitles.loadMore}}
       </button>
     </div>
   </div>
@@ -49,7 +49,7 @@
     },
     data() {
       return {
-        loadMore: this.$appConfig.lang.TITLES.loadMore,
+        langTitles: this.$appConfig.lang.TITLES,
         loadingStatus: false,
         getParameters: {},
         productsList: [],

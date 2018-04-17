@@ -6,12 +6,12 @@
   <div class="store-checkout-details container">
     <div class="checkout-details-header flex-between-center">
       <div class="details-header-title flex">
-        <img src="/images/icons/cart/shopping-cart.png" :alt="shoppingCart">
-        <h1 class="text-red text-uppercase">{{shoppingCart}}</h1>
+        <img src="/images/icons/cart/shopping-cart.png" :alt="langTitles.shoppingCart">
+        <h1 class="text-red text-uppercase">{{langTitles.shoppingCart}}</h1>
       </div>
       <div class="details-header-keepshopping">
         <router-link class="default-btn" to="/">
-          {{keepShopping}}
+          {{langTitles.keepShopping}}
         </router-link>
       </div>
     </div>
@@ -71,7 +71,7 @@
             </div>
           </transition-group>
         </div>
-        <div class="products-list--empty" v-show="!getCartProducts.length">{{cartEmpty}}</div>
+        <div class="products-list--empty" v-show="!getCartProducts.length">{{langTitles.cartEmpty}}</div>
       </div>
       <div class="details-body-subtotal flex-between-center" v-show="getCartProducts.length">
         <div class="separator-subotal"></div>
@@ -79,7 +79,7 @@
       </div>
     </div>
     <div class="checkout-details-footer flex-end">
-      <button type="button" class="btn btn-red text-white">{{proceedToCheckout}}</button>
+      <button type="button" class="btn btn-red text-white">{{langTitles.proceedToCheckout}}</button>
     </div>
   </div>
 </template>
@@ -95,10 +95,7 @@
     name: 'StoreCheckoutDetails',
     data() {
       return {
-        proceedToCheckout: this.$appConfig.lang.TITLES.proceedToCheckout,
-        shoppingCart: this.$appConfig.lang.TITLES.shoppingCart,
-        keepShopping: this.$appConfig.lang.TITLES.keepShopping,
-        cartEmpty: this.$appConfig.lang.TITLES.cartEmpty,
+        langTitles: this.$appConfig.lang.TITLES,
         currency: this.$appConfig.currency,
       }
     },

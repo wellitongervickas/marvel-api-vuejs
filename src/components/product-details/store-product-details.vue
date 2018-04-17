@@ -13,19 +13,19 @@
           <h1 class="description-title text-uppercase">{{details.title}}</h1>
           <ul class="description-creators unstyled-list">
             <li v-if="details.modified">
-              <b>{{published}}:</b> {{details.modified}}
+              <b>{{langTitles.published}}:</b> {{details.modified}}
             </li>
             <li v-if="details.creator">
-              <b>{{creator}}:</b> {{details.creator}}
+              <b>{{langTitles.creator}}:</b> {{details.creator}}
             </li>
             <li v-if="details.writer">
-              <b>{{writer}}:</b> {{details.writer}}
+              <b>{{langTitles.writer}}:</b> {{details.writer}}
             </li>
             <li v-if="details.penciler">
-              <b>{{penciller}}:</b> {{details.penciler}}
+              <b>{{langTitles.penciller}}:</b> {{details.penciler}}
             </li>
             <li v-if="details.coverArtist">
-              <b>{{coverArtist}}:</b> {{details.coverArtist}}
+              <b>{{langTitles.coverArtist}}:</b> {{details.coverArtist}}
             </li>
           </ul>
           <p class="description-text" v-if="details.description">
@@ -33,18 +33,18 @@
             <button class="description-text-read pointer" @click="showMoreDescription = !showMoreDescription">
               <div class="text-read-button-more" v-show="showMoreDescription && details.description.length > 100">
                 <span>[ + ]</span>
-                <span class="text-red">{{readMore}}</span>
+                <span class="text-red">{{langTitles.readMore}}</span>
               </div>
               <div class="text-read-button-less" v-show="!showMoreDescription">
                 <span>[ - ]</span>
-                <span class="text-red">{{readLess}}</span>
+                <span class="text-red">{{langTitles.readLess}}</span>
               </div>
             </button>
           </p>
-          <p v-else>{{noDescription}}</p>
+          <p v-else>{{langTitles.noDescription}}</p>
         </div>
         <div class="intro-content-pricing flex-column-center flex-center align-center" v-if="details.prices">
-          <p class="princing-digital-description text-uppercase" v-show="details.digitalRead">{{readOnlineDevice}}</p>
+          <p class="princing-digital-description text-uppercase" v-show="details.digitalRead">{{langTitles.readOnlineDevice}}</p>
           <ul class="princing-values unstyled-list">
             <li
               v-for="(item, index) in details.prices"
@@ -52,7 +52,7 @@
               :class="{'princing-more-values': index > 0}">
               <span class="princing-values-currency text-uppercase">$ {{item.price}}</span>
               <span class="princing-values-description text-uppercase" :class="item.type">
-                {{item.type | priceType(digitalPurchasePrice, printPrice)}}
+                {{item.type | priceType(langTitles.digitalPurchasePrice, langTitles.printPrice)}}
               </span>
             </li>
           </ul>
@@ -61,11 +61,11 @@
             type="button"
             class="btn btn-red text-white text-uppercase"
             @click="addProductToCart(details)">
-              {{addToCart}}
+              {{langTitles.addToCart}}
             </button>
           </div>
           <div class="princing-rating-description">
-            <p class="text-uppercase">{{customerRating}}</p>
+            <p class="text-uppercase">{{langTitles.customerRating}}</p>
             <store-rating rating="3.5"></store-rating>
           </div>
         </div>
@@ -73,7 +73,7 @@
     </div>
     <div class="details container">
       <div class="details-header">
-        <h2 class="text-uppercase text-red">{{moreDetails}}</h2>
+        <h2 class="text-uppercase text-red">{{langTitles.moreDetails}}</h2>
       </div>
       <div class="details-tabs">
         <div class="details-tabs-header">
@@ -91,11 +91,11 @@
         <div class="details-tabs-content">
           <div class="tabs-content-info" v-show="tabList[0].status" :key="1">
             <ul class="content-info-list unstyled-list">
-              <li><b>Rating:</b> 3.5</li>
-              <li><b>Format:</b> {{details.format}}</li>
-              <li><b>Price:</b> {{details.modified}}</li>
+              <li><b>{{langTitles.rating}}:</b> 3.5</li>
+              <li><b>{{langTitles.format}}:</b> {{details.format}}</li>
+              <li><b>{{langTitles.price}}:</b> {{details.modified}}</li>
               <li><b>Upc:</b> {{details.upc}}</li>
-              <li><b>FOC Date:</b> {{details.modified}}</li>
+              <li><b>{{langTitles.published}}:</b> {{details.modified}}</li>
             </ul>
             <div class="content-info-text flex-around-center">
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tincidunt dignissim mi, ac eleifend quam scelerisque eu. Donec at arcu in sapien ultricies posuere. Fusce mattis rutrum imperdiet. Quisque finibus massa quis imperdiet vestibulum. Aliquam metus nisl, finibus et ex at, commodo molestie turpis. Nam ut mattis lectus. Donec convallis arcu nec nibh sagittis, a mollis mi ullamcorper. Ut tristique arcu vel felis fermentum elementum.</p>
@@ -130,20 +130,7 @@
     props: ['details'],
     data() {
       return {
-        readOnlineDevice: this.$appConfig.lang.TITLES.readOnlineDevice,
-        customerRating: this.$appConfig.lang.TITLES.customerRating,
-        published: this.$appConfig.lang.TITLES.published,
-        creator: this.$appConfig.lang.TITLES.creator,
-        writer: this.$appConfig.lang.TITLES.writer,
-        penciller: this.$appConfig.lang.TITLES.penciller,
-        coverArtist: this.$appConfig.lang.TITLES.coverArtist,
-        readMore: this.$appConfig.lang.TITLES.readMore,
-        readLess: this.$appConfig.lang.TITLES.readLess,
-        noDescription: this.$appConfig.lang.TITLES.noDescription,
-        digitalPurchasePrice: this.$appConfig.lang.TITLES.digitalPurchasePrice,
-        moreDetails: this.$appConfig.lang.TITLES.moreDetails,
-        addToCart: this.$appConfig.lang.TITLES.addToCart,
-        printPrice: this.$appConfig.lang.TITLES.printPrice,
+        langTitles: this.$appConfig.lang.TITLES,
         showMoreDescription: true,
         tabList: []
       }

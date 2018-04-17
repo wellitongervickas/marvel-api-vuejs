@@ -45,13 +45,9 @@ const productHelper = (() => {
   function createList (list) {
 
     let newList = [];
-
     for (let i in list) {
 
       let product = list[i];
-
-      console.log(product)
-
       let obj = new Product({
         id: product.id,
         image: validateImageNotFound(product.thumbnail.path, product.thumbnail.extension),

@@ -6,7 +6,7 @@
   <nav>
     <div class="container">
       <ul class="top-menu flex-around-center unstyled-list">
-        <li class="top-menu-item--hot align-center text-uppercase">{{shop}}</li>
+        <li class="top-menu-item--hot align-center text-uppercase">{{langTitles.shop}}</li>
         <li class="align-center " v-for="(item, index) in menuList" :key="index">
           <a class="text-white inline-flex-center" :href="item.url">{{item.name}}</a>
         </li>
@@ -21,7 +21,7 @@
     name: 'StoreMenu',
     data() {
       return {
-        shop: this.$appConfig.lang.TITLES.shop,
+        langTitles: this.$appConfig.lang.TITLES,
         menuList: []
       }
     },

@@ -14,10 +14,10 @@
     <div class="slideshow-control container user-select">
       <div class="slideshow-control-btn container">
         <div class="slideshow-control-prev pointer transition-slow" @click="changeActiveSlider('prev')">
-          <img src="/images/layout/prev.png" :alt="prev">
+          <img src="/images/layout/prev.png" :alt="langTitles.prev">
         </div>
         <div class="slideshow-control-next pointer transition-slow" @click="changeActiveSlider('next')">
-          <img src="/images/layout/next.png" :alt="next">
+          <img src="/images/layout/next.png" :alt="langTitles.next">
         </div>
       </div>
       <div class="slideshow-control-num container">
@@ -39,7 +39,7 @@
           <h3 class="slideshow-label-desc">{{item.description}}</h3>
         </div>
         <div class="slideshow-label-btn align-center">
-          <a href="#" class="btn btn-large btn-red text-white transition-slow">{{readUp}}</a>
+          <a href="#" class="btn btn-large btn-red text-white transition-slow">{{langTitles.readUp}}</a>
         </div>
       </div>
     </transition-group>
@@ -55,9 +55,7 @@
     name: 'StoreSlideshow',
     data() {
       return {
-        next: this.$appConfig.lang.TITLES.next,
-        prev: this.$appConfig.lang.TITLES.prev,
-        readUp: this.$appConfig.lang.TITLES.readUp,
+        langTitles: this.$appConfig.lang.TITLES,
         sliderList: [],
       }
     },
