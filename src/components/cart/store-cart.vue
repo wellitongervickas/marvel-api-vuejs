@@ -6,7 +6,7 @@
   <div class="store-cart relative">
     <div class="store-cart-icon pointer" @click="showCartDetails = !showCartDetails">
       <div v-if="getCartQtd" class="cart-label-qtd flex-around-center text-white">{{getCartQtd}}</div>
-      <img src="/images/icons/cart/shopping-cart.png" :alt="shoppingCart">
+      <img src="/images/icons/cart/shopping-cart.png" :alt="langTitles.shoppingCart">
     </div>
     <transition name="fade">
       <div class="store-cart-details" v-show="showCartDetails">
@@ -31,14 +31,14 @@
           </li>
         </ul>
         <div class="cart-details-list--empty align-center" v-show="!getCartProducts.length">
-          {{cartEmpty}}
+          {{langTitles.cartEmpty}}
         </div>
         <div class="cart-details-subtotal text-uppercase align-center" v-show="getCartProducts.length">
-          {{`${subTotalTitle}: ${currency} ${subtotal}`}}
+          {{`${langTitles.subTotal}: ${currency} ${subtotal}`}}
         </div>
         <div class="cart-button flex-around-center relative">
           <router-link class="btn btn-red btn-sm text-white text-uppercase" :to="{ name: 'checkout'}">
-            {{proceedToCheckout}}
+            {{langTitles.proceedToCheckout}}
           </router-link>
         </div>
       </div>
@@ -56,10 +56,7 @@
     name: 'StoreCart',
     data() {
       return {
-        subTotalTitle: this.$appConfig.lang.TITLES.subTotal,
-        proceedToCheckout: this.$appConfig.lang.TITLES.proceedToCheckout,
-        shoppingCart: this.$appConfig.lang.TITLES.shoppingCart,
-        cartEmpty: this.$appConfig.lang.TITLES.cartEmpty,
+        langTitles: this.$appConfig.lang.TITLES,
         currency: this.$appConfig.currency,
         showCartDetails: false,
         subtotal: 0,
