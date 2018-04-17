@@ -4,6 +4,38 @@ import Product from '../class/product-class';
 
 const productHelper = (() => {
 
+  /**
+    * This function change active tab when is clicked
+    *
+  */
+
+  function changeActiveTab(list, item) {
+
+    for (let i in list) {
+      if (list[i].id == item.id) {
+        list[i].status = true
+      } else {
+        list[i].status = false;
+      }
+    }
+
+    return list;
+  };
+
+  /*
+    * Create a default list of tabs in product details
+    * to see more informations of showed product
+    *
+  */
+
+  function createTabList () {
+    return [
+      { id:0, title:'Extended credits and info', status: true},
+      { id:1, title:'Cover information', status: false},
+      { id:2, title:'Stories', status: false},
+    ];
+  }
+
   /*
     * This method is responsible for handling a list
     * and returning objects with updated data
@@ -18,6 +50,8 @@ const productHelper = (() => {
 
       let product = list[i];
 
+      console.log(product)
+
       let obj = new Product({
         id: product.id,
         image: validateImageNotFound(product.thumbnail.path, product.thumbnail.extension),
@@ -30,7 +64,10 @@ const productHelper = (() => {
         prices: product.prices,
         description: product.description,
         digitalRead: isDigitalRead(product.prices),
-        qtd: 1
+        qtd: 1,
+        upc: product.upc,
+        format: product.format,
+        stories: product.stories,
       });
 
       newList.push(obj);
@@ -166,7 +203,9 @@ const productHelper = (() => {
     getDate,
     getCreator,
     inverseCreator,
-    validateImageNotFound
+    validateImageNotFound,
+    createTabList,
+    changeActiveTab
   };
 
 })();

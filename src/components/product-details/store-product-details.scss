@@ -120,6 +120,11 @@ $default-margin-bottom: 30px;
           font-size: 20px;
           color: #6c6c6c;
           font-weight: bold;
+          border-right: 1px solid #e1e1e1;
+
+          &:last-of-type {
+            border-right: 1px solid transparent;
+          }
 
           &:hover, &.active {
             color: #333;
@@ -131,6 +136,19 @@ $default-margin-bottom: 30px;
 
     .details-tabs-content {
       padding: 40px;
+      font-size: 16px;
+      color: #494949;
+      line-height: 25px;
+
+      .tabs-content-info {
+        display: grid;
+        grid-column-gap: 5%;
+        grid-template-columns:25% 70%;
+
+        .content-info-list {
+          border-right: 1px solid #ccc;
+        }
+      }
     }
   }
 }

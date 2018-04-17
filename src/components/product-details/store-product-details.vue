@@ -78,12 +78,38 @@
       <div class="details-tabs">
         <div class="details-tabs-header">
           <ul class="unstyled-list flex">
-            <li class="transition-slow text-uppercase active pointer">Extended credits and info</li>
-            <li class="transition-slow text-uppercase pointer">Cover information</li>
-            <li class="transition-slow text-uppercase pointer">Stories</li>
+            <li
+              class="transition-slow text-uppercase pointer"
+              :class="{'active': item.status}"
+              @click="changeActiveTab(item)"
+              v-for="(item, index) in tabList"
+              :key="item.id">
+              {{item.title}}
+            </li>
           </ul>
         </div>
-        <div class="details-tabs-content">#</div>
+        <div class="details-tabs-content">
+          <div class="tabs-content-info" v-show="tabList[0].status" :key="1">
+            <ul class="content-info-list unstyled-list">
+              <li><b>Rating:</b> 3.5</li>
+              <li><b>Format:</b> {{details.format}}</li>
+              <li><b>Price:</b> {{details.modified}}</li>
+              <li><b>Upc:</b> {{details.upc}}</li>
+              <li><b>FOC Date:</b> {{details.modified}}</li>
+            </ul>
+            <div class="content-info-text flex-around-center">
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tincidunt dignissim mi, ac eleifend quam scelerisque eu. Donec at arcu in sapien ultricies posuere. Fusce mattis rutrum imperdiet. Quisque finibus massa quis imperdiet vestibulum. Aliquam metus nisl, finibus et ex at, commodo molestie turpis. Nam ut mattis lectus. Donec convallis arcu nec nibh sagittis, a mollis mi ullamcorper. Ut tristique arcu vel felis fermentum elementum.</p>
+            </div>
+          </div>
+          <div class="tabs-content-cover" v-show="tabList[1].status" :key="2">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tincidunt dignissim mi, ac eleifend quam scelerisque eu. Donec at arcu in sapien ultricies posuere. Fusce mattis rutrum imperdiet. Quisque finibus massa quis imperdiet vestibulum. Aliquam metus nisl, finibus et ex at, commodo molestie turpis. Nam ut mattis lectus. Donec convallis arcu nec nibh sagittis, a mollis mi ullamcorper. Ut tristique arcu vel felis fermentum elementum.</p>
+          </div>
+          <div class="tabs-content-stories" v-show="tabList[2].status" :key="3">
+            <ul v-if="details.stories">
+              <li class="text-uppercase" v-for="(item, index) in details.stories.items">{{item.name}}</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -119,17 +145,33 @@
         addToCart: this.$appConfig.lang.TITLES.addToCart,
         printPrice: this.$appConfig.lang.TITLES.printPrice,
         showMoreDescription: true,
+        tabList: []
       }
     },
     methods: {
+
       ...mapActions([
         'addTocart'
       ]),
+
       addProductToCart(product) {
 
-        // Scroll to top again
         systemHelper.scrollTo(document.documentElement);
         this.addTocart(product);
+      },
+
+      changeActiveTab(item) {
+        this.tabList = productHelper.changeActiveTab(this.tabList, item);
+      },
+    },
+    created() {
+      this.tabList = productHelper.createTabList();
+    },
+    watch: {
+      details: function () {
+
+        // Reset active tab
+        this.tabList = productHelper.changeActiveTab(this.tabList, this.tabList[0]);
       }
     },
     filters: {
