@@ -61,14 +61,29 @@
             type="button"
             class="btn btn-red text-white text-uppercase"
             @click="addProductToCart(details)">
-              Add to cart
+              {{addToCart}}
             </button>
           </div>
           <div class="princing-rating-description">
             <p class="text-uppercase">{{customerRating}}</p>
-            <store-rating rating="4"></store-rating>
+            <store-rating rating="3.5"></store-rating>
           </div>
         </div>
+      </div>
+    </div>
+    <div class="details container">
+      <div class="details-header">
+        <h2 class="text-uppercase text-red">{{moreDetails}}</h2>
+      </div>
+      <div class="details-tabs">
+        <div class="details-tabs-header">
+          <ul class="unstyled-list flex">
+            <li class="transition-slow text-uppercase active pointer">Extended credits and info</li>
+            <li class="transition-slow text-uppercase pointer">Cover information</li>
+            <li class="transition-slow text-uppercase pointer">Stories</li>
+          </ul>
+        </div>
+        <div class="details-tabs-content">#</div>
       </div>
     </div>
   </div>
@@ -100,6 +115,8 @@
         readLess: this.$appConfig.lang.TITLES.readLess,
         noDescription: this.$appConfig.lang.TITLES.noDescription,
         digitalPurchasePrice: this.$appConfig.lang.TITLES.digitalPurchasePrice,
+        moreDetails: this.$appConfig.lang.TITLES.moreDetails,
+        addToCart: this.$appConfig.lang.TITLES.addToCart,
         printPrice: this.$appConfig.lang.TITLES.printPrice,
         showMoreDescription: true,
       }

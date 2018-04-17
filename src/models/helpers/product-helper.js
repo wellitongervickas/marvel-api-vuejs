@@ -41,14 +41,14 @@ const productHelper = (() => {
 
   /**
     * This function return a value to width of div when get rating
-    * Remember 160px is a default width of div
+    * Remember 165 is a default width of div
     *
   */
 
   function ratingCount(value) {
 
     const maxRatingValue = 5;
-    return (value / maxRatingValue) * 160;
+    return (value / maxRatingValue) * 165;
   };
 
   /**
