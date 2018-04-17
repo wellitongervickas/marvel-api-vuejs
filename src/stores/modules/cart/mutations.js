@@ -31,4 +31,7 @@ export default {
     state.products = checkoutHelper.updateProductQtd(state.products, payload);
   },
 
+  SET_STATUS(state, payload) {
+    state.show = payload;
+  }
 }

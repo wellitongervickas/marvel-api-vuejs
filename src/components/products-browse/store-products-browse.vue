@@ -36,7 +36,6 @@
 
 <script>
 
-  import { mapState, mapActions, mapGetters } from 'vuex';
   import requestHelper from '../../models/helpers/request-helper';
   import productHelper from '../../models/helpers/product-helper';
   import Product from '../../models/class/product-class';

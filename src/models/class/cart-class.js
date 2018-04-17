@@ -5,6 +5,7 @@ class Cart {
     this.products = [];
     this.qtd = 0;
     this.subtotal = 0;
+    this.show = false;
   }
 };
 

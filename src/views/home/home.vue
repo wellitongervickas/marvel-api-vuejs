@@ -10,7 +10,8 @@
       </header>
     </section>
     <section>
-      <main>
+      <main class="relative">
+        <div class="shadow-cart" v-show="getStatusCart"></div>
         <store-slideshow></store-slideshow>
         <div
           class="store-content store-content-home relative">
@@ -35,6 +36,7 @@
   import StoreFooter from '../content/footer/store-footer.vue';
   import StoreSlideshow from '../../components/slideshow/store-slideshow.vue';
   import StoreProductsBrowse from '../../components/products-browse/store-products-browse.vue';
+  import { mapGetters } from 'vuex';
 
   export default {
     name: 'Home',
@@ -43,6 +45,11 @@
       StoreFooter,
       StoreSlideshow,
       StoreProductsBrowse
-    }
+    },
+    computed: {
+      ...mapGetters([
+        'getStatusCart'
+      ])
+    },
   }
 </script>

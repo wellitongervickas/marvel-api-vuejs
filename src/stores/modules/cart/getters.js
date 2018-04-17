@@ -18,5 +18,9 @@ export default {
 
   getCartSubtotal(state) {
     return state.subtotal;
+  },
+
+  getStatusCart(state) {
+    return state.show;
   }
 }
