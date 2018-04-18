@@ -8,12 +8,12 @@ const listChangesUtils = (() => {
     * is of the specific item and otherwise get
     * a false status
     *
-    * @params {list} Array
+    * @params {Array} list
     *
-    * @params {item} Object
+    * @params {Object} item
     * -> Nneed get status and id property to use this function
     *
-    * @params {index} Number
+    * @params {Number} index
     * -> Is optional value of index in the array list
     *
   */
