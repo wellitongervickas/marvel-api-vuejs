@@ -112,6 +112,14 @@
         </div>
       </div>
     </div>
+
+    <div class="relateds">
+      <div class="relateds-slide">
+        <div class="relateds-slide-item" v-for="(item, index) in relateds">
+          {{item.title}}
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -127,7 +135,7 @@
     components: {
       StoreRating
     },
-    props: ['details'],
+    props: ['details', 'relateds'],
     data() {
       return {
         langTitles: this.$appConfig.lang.TITLES,
@@ -141,29 +149,41 @@
         'addTocart'
       ]),
 
+      /**
+        * when called this function a new product
+        * or an product update the shopping cart
+        *
+      */
+
       addProductToCart(product) {
 
         systemHelper.scrollTo(document.documentElement);
         this.addTocart(product);
       },
 
+      /**
+        * When called this function a tab get
+        * new status true and otherwise get is false
+        *
+      */
+
       changeActiveTab(item) {
         this.tabList = productHelper.changeActiveTab(this.tabList, item);
       },
     },
-    created() {
-      this.tabList = productHelper.createTabList();
-    },
     watch: {
-      details: function () {
 
-        // Reset active tab
+      // Reset active tab when details is changed
+      details: function () {
         this.tabList = productHelper.changeActiveTab(this.tabList, this.tabList[0]);
+      },
+      relateds: function() {
+        console.log(this.relateds)
       }
     },
     filters: {
 
-      // Change description
+      // Crop description
       cropDescription(description, status) {
 
         // Wait to get a description
@@ -171,18 +191,30 @@
           return productHelper.cropDescription(description, status);
         }
       },
+
+      // Return a string language
       priceType(type, digital, print) {
-        if (type == 'printPrice') {
 
-          return print;
-        } else if (type == 'digitalPurchasePrice') {
+        switch (type) {
+          case 'printPrice':
 
-          return digital;
-        } else {
+            return print;
+          case 'digitalPurchasePrice':
 
-          return type;
+            return digital;
+            break;
+
+          default:
+
+            return type;
+            break;
         }
       }
+    },
+    created() {
+
+      // when component is initialized call this functions
+      this.tabList = productHelper.createTabList();
     },
   };
 

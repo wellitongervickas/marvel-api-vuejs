@@ -11,7 +11,7 @@
     </section>
     <section>
       <main>
-        <store-product-details :details="productDetails"></store-product-details>
+        <store-product-details :details="productDetails" :relateds="productDetailsRelated"></store-product-details>
       </main>
     </section>
     </section>
@@ -46,54 +46,115 @@
     data() {
       return {
         productDetails: {},
+        productDetailsRelated: {},
         loadingStatus: false,
+        apikey: this.$appConfig.api.publicKey,
+        privateKey: this.$appConfig.api.privateKey
       }
     },
     methods: {
-      getProductFromApi () {
+
+      /**
+        * This a global function to consult
+        * endpoint and return a data values
+        *
+      */
+
+      getProductFromApi(url) {
 
         // Enable Loading
         this.loadingStatus = true;
 
         // Create a object of parameters
         const ts = Date.now();
-        const apikey = this.$appConfig.api.publicKey;
-        const privateKey = this.$appConfig.api.privateKey;
+        const apikey = this.apikey;
+        const privateKey = this.privateKey;
         const hash = requestHelper.getHash(ts, privateKey, apikey);
-        const url = `${this.$appConfig.api.url}/comics/${this.id}`;
 
-        this.$http.get(url, {
+        return this.$http.get(url, {
           params: {
             ts, apikey, hash
           }
         })
         .then(response => {
 
-          // Get product from list and change to product class
-          const product = productHelper.createList(response.data.data.results);
+          this.loadingStatus = false
+          return response;
+        })
+        .catch(err => {
 
-          this.productDetails = product[0];
-          this.loadingStatus = false;
+          console.error(err);
+          this.loadingStatus = false
+          this.$router.push('/');
+        });
+      },
+
+      /**
+        * After get an product this function is
+        * responsible for get related products
+        *
+      */
+
+      getRelatedProduct(data) {
+
+        const url = data.resourceURI;
+        this.getProductFromApi(url)
+        .then(response => {
+
+          // Get product from list and change to product class
+          this.productDetailsRelated = this.configureProductDetails(response);
+        })
+      },
+
+      /**
+        * This function process informations when
+        * global function return a valid product
+        *
+      */
+
+      getProducts() {
+
+        const url = `${this.$appConfig.api.url}/comics/${this.id}`;
+        this.getProductFromApi(url)
+        .then(response => {
+
+          // Get product from list and change to product class
+          const products = this.configureProductDetails(response);
+          this.productDetails = products[0];
+
+          // Get related products
+          if (this.productDetails.series) {
+
+            this.getRelatedProduct(this.productDetails.series)
+          }
 
           // Scroll to top again
           systemHelper.scrollTo(document.documentElement);
         })
-        .catch(err => {
-          console.error(err);
-          this.loadingStatus = false
+      },
 
-          // If invalid id, return to home
-          this.$router.push('/');
-        });
-      }
+      /**
+        * When this function is called, configure
+        * and return a new list of products
+        *
+      */
+
+      configureProductDetails(response) {
+
+        return productHelper.createList(response.data.data.results)
+      },
     },
     watch: {
       id () {
-        this.getProductFromApi();
+
+        // when id is changed call this function
+        this.getProducts();
       }
     },
     created(){
-      this.getProductFromApi()
+
+      // when component is initialized call this functions
+      this.getProducts()
     }
   }
 </script>

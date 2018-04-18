@@ -106,6 +106,7 @@
     },
     created() {
 
+      // when component is initialized call this functions
       this.updateCartQtd(this.getCartProducts.length);
       this.sumCartValues();
       this.setStatusCart(false)

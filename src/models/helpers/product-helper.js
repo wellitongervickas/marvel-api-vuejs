@@ -64,6 +64,7 @@ const productHelper = (() => {
         upc: product.upc,
         format: product.format,
         stories: product.stories,
+        series: product.series,
       });
 
       newList.push(obj);

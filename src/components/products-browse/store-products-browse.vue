@@ -91,7 +91,9 @@
           return response;
         })
         .catch(err => {
-          console.error(err)
+
+          this.loadingStatus = false;
+          return err
         });
       },
 
@@ -146,12 +148,10 @@
     },
     created() {
 
-      // Initial getter of products
+      // when component is initialized call this functions
       this.loadProducts();
     },
     filters: {
-
-      // Change creator name
       inverseCreator(name) {
         if (name) {
           return productHelper.inverseCreator(name);

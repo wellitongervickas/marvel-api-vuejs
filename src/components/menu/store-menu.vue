@@ -45,7 +45,7 @@
     },
     created() {
 
-      // On load this component, get menu from endpoint
+      // when component is initialized call this functions
       this.getMenuList();
     }
   };
