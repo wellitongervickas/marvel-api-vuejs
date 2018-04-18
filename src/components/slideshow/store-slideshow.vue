@@ -56,6 +56,7 @@
     data() {
       return {
         langTitles: this.$appConfig.lang.TITLES,
+        timeToNextSlide: 5000,
         sliderList: [],
       }
     },
@@ -70,10 +71,12 @@
       getSliderList() {
         this.$http.get('/local-api/slideshow/slideshow.json')
         .then(response => {
+
           const sliderList = response.data.sliders.map(item => new Slider(item));
           this.sliderList = slideshowHelper.setInitialSliderStatus(sliderList);
         })
         .catch(err => {
+
           console.error(err)
         })
       },
@@ -113,7 +116,7 @@
       autoChangeSlider () {
         setInterval(() => {
           this.changeActiveSlider('next');
-        }, 5000)
+        }, this.timeToNextSlide)
       }
     },
     created() {

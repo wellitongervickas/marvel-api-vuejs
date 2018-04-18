@@ -1,5 +1,7 @@
 'use strict';
 
+import listChangesUtils from '../utils/list-changes-utils';
+
 const slideshowHelper = (() => {
 
 
@@ -11,8 +13,7 @@ const slideshowHelper = (() => {
 
   function setInitialSliderStatus(list) {
 
-    list[0].status = true;
-    return list;
+    return listChangesUtils.changeActiveItem(list, list[0]);;
   };
 
   /**
@@ -65,14 +66,8 @@ const slideshowHelper = (() => {
       nextItem = index;
     }
 
-    // Set a new item to show
-    list[nextItem].status = true;
-
-    for (let i in list) {
-      if (i != nextItem) list[i].status = false;
-    };
-
-    return list;
+    // Change active slider using utils
+    return listChangesUtils.changeActiveItem(list, list[nextItem]);
   };
 
   return {
