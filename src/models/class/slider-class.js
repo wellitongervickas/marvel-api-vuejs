@@ -2,6 +2,7 @@
 
 class Slider {
   constructor (slider) {
+    this.id = slider.id;
     this.image = slider.image;
     this.title = slider.title;
     this.description = slider.description;

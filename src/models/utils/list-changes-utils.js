@@ -5,24 +5,37 @@ const listChangesUtils = (() => {
   /**
     * This function change a item in the list,
     * also when passing a "index" value of change
-    * is in the specific item
+    * is of the specific item and otherwise get
+    * a false status
+    *
+    * @params {list} Array
+    *
+    * @params {item} Object
+    * -> Nneed get status and id property to use this function
+    *
+    * @params {index} Number
+    * -> Is optional value of index in the array list
     *
   */
 
   function changeActiveItem(list, item, index = null) {
 
-    for (let i in list) {
-      if (list[i].id == item.id) {
+    if (list && item) {
+      for (let i in list) {
+        if (list[i].id == item.id) {
 
-        let indexToChange = (!index) ? i : index;
-        list[indexToChange].status = true;
-      } else {
+          let indexToChange = (!index) ? i : index;
+          list[indexToChange].status = true;
+        } else {
 
-        list[i].status = false;
+          list[i].status = false;
+        }
       }
+
+      return list;
     }
 
-    return list;
+    return;
   };
 
   return {

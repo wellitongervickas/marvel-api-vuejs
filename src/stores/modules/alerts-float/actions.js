@@ -1,3 +1,11 @@
 'use strict';
 
-export default {}
+export default {
+  addAlert(context, payload) {
+    context.commit('ADD_ALERT', payload);
+  },
+
+  removeAlert(context, payload) {
+    context.commit('REMOVE_ALERT', payload);
+  }
+};
