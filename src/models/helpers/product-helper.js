@@ -84,15 +84,7 @@ const productHelper = (() => {
   */
 
   function isDigitalRead (prices) {
-
-    for (let i in prices) {
-      if (prices[i].type == 'digitalPurchasePrice') {
-        return true;
-        break;
-      }
-    }
-
-    return false;
+    if (prices) return prices.find(item => item.type == 'digitalPurchasePrice');
   };
 
   /**
@@ -144,7 +136,7 @@ const productHelper = (() => {
   function getCreator (creators, type) {
     if (creators.available > 0) {
 
-      const editor = creators.items.find(item => item.role == type)
+      const editor = creators.items.find(item => item.role == type);
       return (editor) ? editor.name : null;
     }
 

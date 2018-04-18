@@ -39,9 +39,10 @@ const alertHelper = (() => {
         for (let i in list) {
 
           let date = Date.now();
-          if ((list[i].timestamp + 5000) < date) {
+          if ((list[i].timestamp + 5000) <= date) {
 
-            list.splice(i, 1)
+            list.splice(i, 1);
+            break;
           }
         }
       }, 500)
