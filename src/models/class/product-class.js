@@ -1,6 +1,6 @@
 'use strict';
 
-class Product {
+export default class Product {
   constructor(product) {
     this.id = product.id;
     this.image = product.image;
@@ -20,5 +20,3 @@ class Product {
     this.series = product.series;
   }
 };
-
-export default Product;

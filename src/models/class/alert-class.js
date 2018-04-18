@@ -1,11 +1,9 @@
 'use strict';
 
-class AlertFloat {
+export default class Alert {
   constructor(alert) {
-    this.status = alert.status;
     this.message = alert.message;
     this.type = alert.type;
+    this.timestamp = alert.timestamp;
   }
 };
-
-export default AlertFloat;

@@ -1,6 +1,6 @@
 'use strict';
 
-class Cart {
+export default class Cart {
   constructor () {
     this.products = [];
     this.qtd = 0;
@@ -8,5 +8,3 @@ class Cart {
     this.show = false;
   }
 };
-
-export default Cart;

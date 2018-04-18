@@ -65,7 +65,9 @@ const eng = (() => {
     },
     SUCCESS: {
       purchase: 'Your Purchase is successfully!',
-      productAddPurchase: 'You have added %s to your shopping cart!',
+      productAddPurchase: 'This product has added in the shopping cart',
+      productWasRemoved: 'Product was removed!',
+      productWasUpdated: 'Product was updated!',
     },
     SOCIAL: {
       facebook: 'Facebook',

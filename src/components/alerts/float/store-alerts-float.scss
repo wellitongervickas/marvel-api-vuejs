@@ -1,0 +1,33 @@
+.alert-float {
+  .alert-float-list {
+    position: fixed;
+    top: 20px;
+    z-index: 22;
+
+    .alert-float-item {
+      font-size: 16px;
+      padding: 15px 35px;
+      margin-bottom: 10px;
+      background-color: #fff;
+
+      &.alert-float-item--success {
+        color: #fff;
+        background-color: rgba(46, 204, 113, 0.9);
+        border: 1px solid #27ae60;
+      }
+
+      &.alert-float-item--warning {
+        color: #fff;
+        background-color: rgba(241, 196, 15, 0.9);
+        border: 1px solid #f39c12;
+      }
+
+      &.alert-float-item--danger {
+        color: #fff;
+        background-color: rgba(231, 76, 60, 0.9);
+        border: 1px solid #c0392b;
+      }
+
+    }
+  }
+}

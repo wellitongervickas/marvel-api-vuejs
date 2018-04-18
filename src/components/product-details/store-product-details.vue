@@ -128,6 +128,7 @@
   import { mapActions } from 'vuex';
   import productHelper from '../../models/helpers/product-helper';
   import systemHelper from '../../models/helpers/system-helper';
+  import alertHelper from '../../models/helpers/alert-helper';
   import StoreRating from '../rating/store-rating.vue';
 
   export default {
@@ -139,6 +140,7 @@
     data() {
       return {
         langTitles: this.$appConfig.lang.TITLES,
+        langSuccess: this.$appConfig.lang.SUCCESS,
         showMoreDescription: true,
         tabList: []
       }
@@ -146,7 +148,8 @@
     methods: {
 
       ...mapActions([
-        'addTocart'
+        'addTocart',
+        'addAlert'
       ]),
 
       /**
@@ -157,8 +160,12 @@
 
       addProductToCart(product) {
 
-        systemHelper.scrollTo(document.documentElement);
+        const alert = alertHelper.createAlert(this.langSuccess.productAddPurchase, 'success');
+        this.addAlert(alert);
         this.addTocart(product);
+
+        // Moving to top
+        systemHelper.scrollTo(document.documentElement);
       },
 
       /**
