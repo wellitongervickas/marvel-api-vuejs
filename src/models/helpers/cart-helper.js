@@ -66,7 +66,7 @@ const cartHelper = (() => {
   function updateProductsInStorage(list) {
 
     storageHelper.save('cartProducts', list);
-    return storageHelper.get('cartProducts');;
+    return storageHelper.get('cartProducts');
   };
 
 
