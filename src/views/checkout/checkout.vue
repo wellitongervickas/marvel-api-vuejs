@@ -40,10 +40,9 @@
       StoreLoading,
       StoreCheckoutDetails
     },
-    data() {
-      return {}
-    },
     created() {
+
+      // when component is initialized call this functions
       systemHelper.scrollTo(document.documentElement);
     }
   }

@@ -36,7 +36,6 @@
 
 <script>
 
-  import { mapState, mapActions, mapGetters } from 'vuex';
   import requestHelper from '../../models/helpers/request-helper';
   import productHelper from '../../models/helpers/product-helper';
   import Product from '../../models/class/product-class';
@@ -92,7 +91,9 @@
           return response;
         })
         .catch(err => {
-          console.error(err)
+
+          this.loadingStatus = false;
+          return err
         });
       },
 
@@ -147,12 +148,10 @@
     },
     created() {
 
-      // Initial getter of products
+      // when component is initialized call this functions
       this.loadProducts();
     },
     filters: {
-
-      // Change creator name
       inverseCreator(name) {
         if (name) {
           return productHelper.inverseCreator(name);

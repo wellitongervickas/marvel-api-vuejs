@@ -20,11 +20,20 @@
       }
     },
     methods: {
+
+      /**
+        * This function change div width
+        * based on value of rating
+        *
+      */
+
       getRating() {
         this.counterWidth = productHelper.ratingCount(this.rating);
       }
     },
     created() {
+
+      // when component is initialized call this functions
       this.getRating(this.rating)
     }
   };

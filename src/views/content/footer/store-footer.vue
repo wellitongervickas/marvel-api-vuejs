@@ -56,17 +56,20 @@
         </ul>
       </div>
     </div>
+    <store-alerts-float></store-alerts-float>
   </div>
 </template>
 
 <script>
 
   import StoreAds from '../../../components/ads/store-ads.vue';
+  import StoreAlertsFloat from '../../../components/alerts/float/store-alerts-float.vue';
 
   export default {
     name: 'StoreFooter',
     components: {
       StoreAds,
+      StoreAlertsFloat,
     },
     data() {
       return {

@@ -1,6 +1,7 @@
 'use strict';
 
 import Product from '../class/product-class';
+import listChangesUtils from '../utils/list-changes-utils';
 
 const productHelper = (() => {
 
@@ -11,15 +12,7 @@ const productHelper = (() => {
 
   function changeActiveTab(list, item) {
 
-    for (let i in list) {
-      if (list[i].id == item.id) {
-        list[i].status = true
-      } else {
-        list[i].status = false;
-      }
-    }
-
-    return list;
+    return listChangesUtils.changeActiveItem(list, item);
   };
 
   /*
@@ -64,6 +57,7 @@ const productHelper = (() => {
         upc: product.upc,
         format: product.format,
         stories: product.stories,
+        series: product.series,
       });
 
       newList.push(obj);

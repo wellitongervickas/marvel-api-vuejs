@@ -20,5 +20,9 @@ export default {
 
   updateProductQuantity(context, payload) {
     context.commit('UPDATE_PRODUCT_QUANTITY', payload);
+  },
+
+  setStatusCart(context, payload) {
+    context.commit('SET_STATUS', payload);
   }
 }

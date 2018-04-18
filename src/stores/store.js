@@ -18,6 +18,7 @@ import getters from './getters';
 
 // Cart
 import cart from './modules/cart/main';
+import aletsFloat from './modules/alerts-float/main';
 
 /**
   * Vue Project Uses
@@ -37,6 +38,7 @@ export default new Vuex.Store({
   actions,
   getters,
   modules: {
-    cart
+    cart,
+    aletsFloat
   }
 });

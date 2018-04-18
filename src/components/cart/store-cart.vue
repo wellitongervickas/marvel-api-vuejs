@@ -4,7 +4,7 @@
 
 <template>
   <div class="store-cart relative">
-    <div class="store-cart-icon pointer" @click="showCartDetails = !showCartDetails">
+    <div class="store-cart-icon pointer" @click="showCartDetails = !showCartDetails;setStatusCart(showCartDetails)">
       <div v-if="getCartQtd" class="cart-label-qtd flex-around-center text-white">{{getCartQtd}}</div>
       <img src="/images/icons/cart/shopping-cart.png" :alt="langTitles.shoppingCart">
     </div>
@@ -48,7 +48,7 @@
 
 <script>
 
-  import { mapGetters, mapState, mapActions  } from 'vuex';
+  import { mapGetters, mapActions  } from 'vuex';
   import cartHelper from '../../models/helpers/cart-helper';
   import productHelper from '../../models/helpers/product-helper';
 
@@ -75,7 +75,8 @@
       // From vuex
       ...mapActions([
         'updateCartQtd',
-        'updateCartSubtotal'
+        'updateCartSubtotal',
+        'setStatusCart'
       ]),
 
       /**
@@ -105,8 +106,10 @@
     },
     created() {
 
+      // when component is initialized call this functions
       this.updateCartQtd(this.getCartProducts.length);
       this.sumCartValues();
+      this.setStatusCart(false)
     },
     filters: {
 

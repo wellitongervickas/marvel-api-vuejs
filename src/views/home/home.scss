@@ -7,3 +7,13 @@
     padding-top: 150px; // fix to slider label
   }
 }
+
+.shadow-cart {
+  background-color: rgba(0,0,0, 0.9);
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 8;
+  top: 0px;
+  bottom: 0px;
+}
