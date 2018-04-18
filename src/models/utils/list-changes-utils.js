@@ -20,22 +20,22 @@ const listChangesUtils = (() => {
 
   function changeActiveItem(list, item, index = null) {
 
-    if (list && item) {
+    if (list.length) {
       for (let i in list) {
-        if (list[i].id == item.id) {
+        if (list[i].id == item.id && !index) {
 
-          let indexToChange = (!index) ? i : index;
-          list[indexToChange].status = true;
+          list[i].status = true;
+        } else if (index >= 0) {
+
+          list[index].status = true;
         } else {
 
           list[i].status = false;
         }
       }
-
-      return list;
     }
 
-    return;
+    return list;
   };
 
   return {

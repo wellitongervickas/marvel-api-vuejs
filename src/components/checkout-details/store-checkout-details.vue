@@ -90,12 +90,14 @@
   import cartHelper from '../../models/helpers/cart-helper';
   import checkoutHelper from '../../models/helpers/checkout-helper';
   import productHelper from '../../models/helpers/product-helper';
+  import alertHelper from '../../models/helpers/alert-helper';
 
   export default {
     name: 'StoreCheckoutDetails',
     data() {
       return {
         langTitles: this.$appConfig.lang.TITLES,
+        langSuccess: this.$appConfig.lang.SUCCESS,
         currency: this.$appConfig.currency,
       }
     },
@@ -109,15 +111,32 @@
 
       ...mapActions([
         'deleteProduct',
-        'updateProductQuantity'
+        'updateProductQuantity',
+        'addAlert',
       ]),
 
+      /**
+        * This function remove a specific
+        * product of cart list with id
+        *
+      */
+
       deleteProductById(id) {
+        const alert = alertHelper.createAlert(this.langSuccess.productWasRemoved, 'success');
+        this.addAlert(alert);
         this.deleteProduct(id);
       },
 
+      /**
+        * This function update a specific
+        * product of cart list with object
+        *
+      */
+
       changeProductQtd(product) {
-        this.updateProductQuantity(product)
+        const alert = alertHelper.createAlert(this.langSuccess.productWasUpdated, 'success');
+        this.addAlert(alert);
+        this.updateProductQuantity(product);
       },
 
     },

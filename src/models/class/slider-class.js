@@ -1,6 +1,6 @@
 'use strict';
 
-class Slider {
+export default class Slider {
   constructor (slider) {
     this.id = slider.id;
     this.image = slider.image;
@@ -10,5 +10,3 @@ class Slider {
     this.status = false;
   }
 };
-
-export default Slider;
