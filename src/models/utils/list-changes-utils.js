@@ -40,8 +40,23 @@ const listChangesUtils = (() => {
     return list;
   };
 
+  /**
+    * This function append a status property
+    * in object of list and return new list
+    *
+  */
+
+  function appendStatusProperty(list) {
+    for (let i in list) {
+      list[i].status = false;
+    };
+
+    return list;
+  }
+
   return {
-    changeActiveItem
+    changeActiveItem,
+    appendStatusProperty
   };
 
 })();

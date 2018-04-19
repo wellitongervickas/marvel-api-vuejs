@@ -1,0 +1,18 @@
+.store-product-details-related {
+  background-color: #353535;
+  padding: 50px 0px;
+
+  .details-related-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-column-gap: 70px;
+
+    .related-item {
+      .related-item-thumbnail {
+        img {
+          max-width: 100%;
+        }
+      }
+    }
+  }
+}

@@ -112,6 +112,7 @@
         </div>
       </div>
     </div>
+    <store-product-details-related></store-product-details-related>
   </div>
 </template>
 
@@ -122,11 +123,13 @@
   import systemHelper from '../../models/helpers/system-helper';
   import alertHelper from '../../models/helpers/alert-helper';
   import StoreRating from '../rating/store-rating.vue';
+  import StoreProductDetailsRelated from '../product-details-related/store-product-details-related.vue';
 
   export default {
     name: 'StoreProductDetails',
     components: {
-      StoreRating
+      StoreRating,
+      StoreProductDetailsRelated
     },
     props: ['details'],
     data() {
@@ -176,13 +179,15 @@
       details: function () {
         this.tabList = productHelper.changeActiveTab(this.tabList, this.tabList[0]);
       },
-      relateds: function() {
-        console.log(this.relateds)
-      }
     },
     filters: {
 
-      // Crop description
+      /**
+        * This filter get an description with status to show more or less
+        * and return a new description with more or less characters
+        *
+      */
+
       cropDescription(description, status) {
 
         // Wait to get a description

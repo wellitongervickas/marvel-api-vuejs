@@ -49,6 +49,7 @@
 <script>
 
   import slideshowHelper from '../../models/helpers/slideshow-helper';
+  import listChangesUtils from '../../models/utils/list-changes-utils';
   import Slider from '../../models/class/slider-class';
 
   export default {
@@ -72,8 +73,9 @@
         this.$http.get('/local-api/slideshow/slideshow.json')
         .then(response => {
 
-          const sliderList = response.data.sliders.map(item => new Slider(item));
-          this.sliderList = slideshowHelper.setInitialSliderStatus(sliderList);
+          let list = response.data.sliders.map(item => new Slider(item));
+          list = listChangesUtils.appendStatusProperty(list);
+          this.sliderList = slideshowHelper.setInitialSliderStatus(list);
         })
         .catch(err => {
 
