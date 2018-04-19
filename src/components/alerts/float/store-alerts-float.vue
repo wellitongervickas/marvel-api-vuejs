@@ -5,7 +5,7 @@
 <template>
   <div class="alert-float flex-around">
     <transition-group tag="div" class="alert-float-list" name="fade">
-      <div class="alert-float-item" :class="`alert-float-item--${item.type}`" v-for="(item, index) in getAlertList" :key="index">
+      <div class="alert-float-item" :class="`alert-float-item--${item.type}`" v-for="(item, index) in aletsFloat.list" :key="index">
         <div class="alert-float-item-message align-center">{{item.message}}</div>
       </div>
     </transition-group>
@@ -14,15 +14,14 @@
 
 <script>
 
-  import { mapGetters, mapActions  } from 'vuex';
+  import { mapGetters, mapActions, mapState } from 'vuex';
   import alertHelper from '../../../models/helpers/alert-helper';
 
   export default {
     name: 'StoreAlertsFloat',
     computed: {
-      ...mapGetters([
-        'getAlertList'
-      ])
+      ...mapGetters(['getAlertList']),
+      ...mapState(['aletsFloat'])
     },
     methods: {
       ...mapActions([
@@ -38,7 +37,7 @@
       */
 
       getAlertList: function() {
-        this.updateAlertList = alertHelper.removeAlerts(this.getAlertList);
+        this.updateAlertList = alertHelper.removeAlerts(this.aletsFloat.list);
       }
     }
   }

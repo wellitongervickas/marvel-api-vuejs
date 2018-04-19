@@ -10,8 +10,8 @@
     </div>
     <transition name="fade">
       <div class="store-cart-details" v-show="showCartDetails">
-        <ul class="cart-details-list scrolled scrolled-y unstyled-list" v-show="getCartProducts.length">
-          <li class="cart-details-item" v-for="(item, index) in getCartProducts" :key="item.id">
+        <ul class="cart-details-list scrolled scrolled-y unstyled-list" v-show="cart.products.length">
+          <li class="cart-details-item" v-for="(item, index) in cart.products" :key="item.id">
             <div class="item-image">
               <router-link :to="{ name: 'product', params: { id: item.id }}">
                 <img :src="item.image" :alt="item.title">
@@ -30,10 +30,10 @@
             </div>
           </li>
         </ul>
-        <div class="cart-details-list--empty align-center" v-show="!getCartProducts.length">
+        <div class="cart-details-list--empty align-center" v-show="!cart.products.length">
           {{langTitles.cartEmpty}}
         </div>
-        <div class="cart-details-subtotal text-uppercase align-center" v-show="getCartProducts.length">
+        <div class="cart-details-subtotal text-uppercase align-center" v-show="cart.products.length">
           {{`${langTitles.subTotal}: ${currency} ${subtotal}`}}
         </div>
         <div class="cart-button flex-around-center relative">
@@ -48,7 +48,7 @@
 
 <script>
 
-  import { mapGetters, mapActions  } from 'vuex';
+  import { mapGetters, mapActions , mapState } from 'vuex';
   import cartHelper from '../../models/helpers/cart-helper';
   import productHelper from '../../models/helpers/product-helper';
 
@@ -65,10 +65,8 @@
     computed: {
 
       // From vuex
-      ...mapGetters([
-        'getCartProducts',
-        'getCartQtd'
-      ])
+      ...mapGetters(['getCartProducts', 'getCartQtd']),
+      ...mapState(['cart'])
     },
     methods: {
 
@@ -85,7 +83,7 @@
       */
 
       sumCartValues() {
-        this.subtotal = cartHelper.sum(this.getCartProducts);
+        this.subtotal = cartHelper.sum(this.cart.products);
         this.updateCartSubtotal(this.subtotal);
       },
 
@@ -100,14 +98,14 @@
 
       getCartProducts: function() {
 
-        this.updateCartQtd(this.getCartProducts.length);
+        this.updateCartQtd(this.cart.products.length);
         this.sumCartValues();
       }
     },
     created() {
 
       // when component is initialized call this functions
-      this.updateCartQtd(this.getCartProducts.length);
+      this.updateCartQtd(this.cart.products.length);
       this.sumCartValues();
       this.setStatusCart(false)
     },
