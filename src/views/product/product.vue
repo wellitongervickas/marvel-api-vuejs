@@ -11,7 +11,7 @@
     </section>
     <section>
       <main>
-        <store-product-details :details="productDetails" :relateds="productDetailsRelated"></store-product-details>
+        <store-product-details :details="productDetails"></store-product-details>
       </main>
     </section>
     </section>
@@ -46,7 +46,6 @@
     data() {
       return {
         productDetails: {},
-        productDetailsRelated: {},
         loadingStatus: false,
         apikey: this.$appConfig.api.publicKey,
         privateKey: this.$appConfig.api.privateKey
@@ -90,23 +89,6 @@
       },
 
       /**
-        * After get an product this function is
-        * responsible for get related products
-        *
-      */
-
-      getRelatedProduct(data) {
-
-        const url = data.resourceURI;
-        this.getProductFromApi(url)
-        .then(response => {
-
-          // Get product from list and change to product class
-          this.productDetailsRelated = this.configureProductDetails(response);
-        })
-      },
-
-      /**
         * This function process informations when
         * global function return a valid product
         *
@@ -121,12 +103,6 @@
           // Get product from list and change to product class
           const products = this.configureProductDetails(response);
           this.productDetails = products[0];
-
-          // Get related products
-          if (this.productDetails.series) {
-
-            this.getRelatedProduct(this.productDetails.series)
-          }
 
           // Scroll to top again
           systemHelper.scrollTo(document.documentElement);

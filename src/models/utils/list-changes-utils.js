@@ -21,13 +21,15 @@ const listChangesUtils = (() => {
   function changeActiveItem(list, item, index = null) {
 
     if (list.length) {
+
+      if (index) {
+        list[index].status = true;
+      }
+
       for (let i in list) {
         if (list[i].id == item.id && !index) {
 
           list[i].status = true;
-        } else if (index >= 0) {
-
-          list[index].status = true;
         } else {
 
           list[i].status = false;

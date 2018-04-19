@@ -112,14 +112,6 @@
         </div>
       </div>
     </div>
-
-    <div class="relateds">
-      <div class="relateds-slide">
-        <div class="relateds-slide-item" v-for="(item, index) in relateds">
-          {{item.title}}
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 
@@ -136,7 +128,7 @@
     components: {
       StoreRating
     },
-    props: ['details', 'relateds'],
+    props: ['details'],
     data() {
       return {
         langTitles: this.$appConfig.lang.TITLES,
