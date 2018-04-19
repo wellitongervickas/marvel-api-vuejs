@@ -17,6 +17,7 @@ export default class Product {
     this.upc = product.upc;
     this.format = product.format;
     this.stories = product.stories;
+    this.characters = product.characters;
     this.series = product.series;
   }
 };

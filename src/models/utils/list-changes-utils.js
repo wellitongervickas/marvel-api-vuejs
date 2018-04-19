@@ -21,13 +21,15 @@ const listChangesUtils = (() => {
   function changeActiveItem(list, item, index = null) {
 
     if (list.length) {
+
+      if (index) {
+        list[index].status = true;
+      }
+
       for (let i in list) {
         if (list[i].id == item.id && !index) {
 
           list[i].status = true;
-        } else if (index >= 0) {
-
-          list[index].status = true;
         } else {
 
           list[i].status = false;
@@ -38,8 +40,23 @@ const listChangesUtils = (() => {
     return list;
   };
 
+  /**
+    * This function append a status property
+    * in object of list and return new list
+    *
+  */
+
+  function appendStatusProperty(list) {
+    for (let i in list) {
+      list[i].status = false;
+    };
+
+    return list;
+  }
+
   return {
-    changeActiveItem
+    changeActiveItem,
+    appendStatusProperty
   };
 
 })();
