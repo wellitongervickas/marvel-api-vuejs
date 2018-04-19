@@ -17,9 +17,9 @@
     </div>
     <div class="checkout-details-body">
       <div class="details-body-products">
-        <div class="products-list" v-show="getCartProducts.length">
+        <div class="products-list" v-show="cart.products.length">
           <transition-group name="fade" tag="div">
-            <div class="products-item relative" v-for="(item, index) in getCartProducts" :key="item.id">
+            <div class="products-item relative" v-for="(item, index) in cart.products" :key="item.id">
               <div class="item-info flex relative">
                 <div class="info-image">
                   <router-link :to="{ name: 'product', params: { id: item.id }}">
@@ -71,9 +71,9 @@
             </div>
           </transition-group>
         </div>
-        <div class="products-list--empty" v-show="!getCartProducts.length">{{langTitles.cartEmpty}}</div>
+        <div class="products-list--empty" v-show="!cart.products.length">{{langTitles.cartEmpty}}</div>
       </div>
-      <div class="details-body-subtotal flex-between-center" v-show="getCartProducts.length">
+      <div class="details-body-subtotal flex-between-center" v-show="cart.products.length">
         <div class="separator-subotal"></div>
         <div class="values-subotal text-uppercase">Total {{`${currency} ${getCartSubtotal}`}}</div>
       </div>
@@ -102,10 +102,8 @@
       }
     },
     computed: {
-      ...mapGetters([
-        'getCartProducts',
-        'getCartSubtotal',
-      ]),
+      ...mapGetters(['getCartSubtotal']),
+      ...mapState(['cart'])
     },
     methods: {
 

@@ -54,12 +54,12 @@
     methods: {
 
       /**
-        * This a global function to consult
-        * endpoint and return a data values
+        * This function process informations when
+        * global function return a valid product
         *
       */
 
-      getProductFromApi(url) {
+      getProducts() {
 
         // Enable Loading
         this.loadingStatus = true;
@@ -69,35 +69,13 @@
         const apikey = this.apikey;
         const privateKey = this.privateKey;
         const hash = requestHelper.getHash(ts, privateKey, apikey);
+        const url = `${this.$appConfig.api.url}/comics/${this.id}`;
 
-        return this.$http.get(url, {
+        this.$http.get(url, {
           params: {
             ts, apikey, hash
           }
         })
-        .then(response => {
-
-          this.loadingStatus = false
-          return response;
-        })
-        .catch(err => {
-
-          console.error(err);
-          this.loadingStatus = false
-          this.$router.push('/');
-        });
-      },
-
-      /**
-        * This function process informations when
-        * global function return a valid product
-        *
-      */
-
-      getProducts() {
-
-        const url = `${this.$appConfig.api.url}/comics/${this.id}`;
-        this.getProductFromApi(url)
         .then(response => {
 
           // Get product from list and change to product class
@@ -106,7 +84,16 @@
 
           // Scroll to top again
           systemHelper.scrollTo(document.documentElement);
+
+          // Disable loading
+          this.loadingStatus = false
         })
+        .catch(err => {
+
+          console.error(err);
+          this.loadingStatus = false
+          this.$router.push('/');
+        });
       },
 
       /**
