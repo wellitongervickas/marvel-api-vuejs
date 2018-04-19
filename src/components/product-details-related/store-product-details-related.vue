@@ -4,6 +4,9 @@
 
 <template>
   <div class="store-product-details-related text-white">
+    <div class="details-related-header container" v-show="characters && characters.available > 0">
+      <h2 class="text-uppercase">More from: <span class="text-white">{{characters | getFirstCharacterName}}</span></h2>
+    </div>
     <div class="details-related-content container">
       <div class="details-related-list">
         <div
@@ -41,6 +44,7 @@
 
   export default {
     name: 'StoreProductDetailsRelated',
+    props: ['characters'],
     data() {
       return {
         relatedList: [],
@@ -113,10 +117,21 @@
       // when component is initialized call this functions
       this.loadProducts();
     },
+    watch: {
+
+      // Reload products if will main product is changed
+      characters: function () {
+
+        this.loadProducts();
+      }
+    },
     filters: {
       inverseCreator(name) {
-        if (name) {
-          return productHelper.inverseCreator(name);
+        if (name) return productHelper.inverseCreator(name);
+      },
+      getFirstCharacterName(list) {
+        if (list && list.available > 0) {
+          return list.items[0].name;
         }
       }
     },

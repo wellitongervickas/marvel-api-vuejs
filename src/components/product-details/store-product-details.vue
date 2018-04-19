@@ -112,7 +112,7 @@
         </div>
       </div>
     </div>
-    <store-product-details-related></store-product-details-related>
+    <store-product-details-related :characters="details.characters"></store-product-details-related>
   </div>
 </template>
 

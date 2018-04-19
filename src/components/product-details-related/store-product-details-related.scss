@@ -2,6 +2,15 @@
   background-color: #353535;
   padding: 50px 0px;
 
+  .details-related-header {
+    margin-bottom: 50px;
+    font-size: 22px;
+
+    h2 {
+      color: #fe3942;
+    }
+  }
+
   .details-related-list {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;

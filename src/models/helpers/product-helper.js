@@ -58,6 +58,7 @@ const productHelper = (() => {
         format: product.format,
         stories: product.stories,
         series: product.series,
+        characters: product.characters,
       });
 
       newList.push(obj);
