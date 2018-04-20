@@ -1,3 +1,6 @@
+$slide-height: 370px;
+$negative-controls: -50px;
+
 .store-product-details-related {
   background-color: #353535;
   padding: 50px 0px;
@@ -44,10 +47,11 @@
       }
 
       .related-item-thumbnail {
+        width: 100%;
         border: 1px solid #eee;
         background-image: url(/images/layout/image_not_found.jpg);
         background-color: #222;
-        height: 370px;
+        height: $slide-height;
         position: relative;
         overflow:hidden;
 
@@ -57,4 +61,28 @@
       }
     }
   }
+
+  .details-related-controls {
+    .details-related-controls-btn {
+      position: absolute;
+    }
+
+    .details-related-controls-btn {
+      top: 45%;
+      z-index: 3;
+
+      div {
+        position: absolute;
+      }
+
+      .related-controls--prev {
+        left: $negative-controls;
+      }
+
+      .related-controls--next {
+        right: $negative-controls;
+      }
+    }
+  }
+
 }
