@@ -13,21 +13,13 @@ const listChangesUtils = (() => {
     * @params {Object} item
     * -> Nneed get status and id property to use this function
     *
-    * @params {Number} index
-    * -> Is optional value of index in the array list
-    *
   */
 
-  function changeActiveItem(list, item, index = null) {
+  function changeActiveItem(list, item) {
 
     if (list.length) {
-
-      if (index) {
-        list[index].status = true;
-      }
-
       for (let i in list) {
-        if (list[i].id == item.id && !index) {
+        if (list[i].id == item.id) {
 
           list[i].status = true;
         } else {
