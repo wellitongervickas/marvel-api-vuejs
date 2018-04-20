@@ -59,7 +59,8 @@
       return {
         relatedList: [],
         apikey: this.$appConfig.api.publicKey,
-        privateKey: this.$appConfig.api.privateKey
+        privateKey: this.$appConfig.api.privateKey,
+        timeToNextSlide: 5000,
       }
     },
     methods: {
@@ -114,11 +115,26 @@
         this.relatedList = productRelatedHelper.prev(this.relatedList)
       },
 
+      /**
+        * On called this method change a
+        * new slider to active (next)
+        *
+      */
+
+      autoChangeSlider () {
+        setInterval(() => {
+          this.nextSlide();
+        }, this.timeToNextSlide)
+      }
+
     },
     created() {
 
       // when component is initialized call this functions
       this.getProducts();
+
+      // Auto change slide list
+      this.autoChangeSlider()
     },
     watch: {
 

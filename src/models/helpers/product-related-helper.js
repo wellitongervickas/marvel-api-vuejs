@@ -33,18 +33,32 @@ const productRelatedHelper = (() => {
 
   function changeNextSlide(list) {
 
+    // Change first item to false
     list[0].status = false;
 
+    // Wait mileseconds to remove and append again in this list
+    // call set initial slides again
     setTimeout(() => {
       list.push(list.shift());
       list = setInitialSlides(list);
 
-    }, 500);
+    }, 100);
 
     return list;
   };
 
   function changePrevSlide(list) {
+
+    // Change first item to false
+    list[0].status = false;
+
+    // Wait mileseconds to remove and append again in this list
+    // call set initial slides again
+    setTimeout(() => {
+      list.unshift(list.pop());
+      list = setInitialSlides(list);
+
+    }, 100);
 
     return list;
   };
