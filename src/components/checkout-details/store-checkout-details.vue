@@ -18,7 +18,7 @@
     <div class="checkout-details-body">
       <div class="details-body-products">
         <div class="products-list" v-show="cart.products.length">
-          <transition-group name="fade" tag="div">
+          <transition-group name="list" tag="div">
             <div class="products-item relative" v-for="(item, index) in cart.products" :key="item.id">
               <div class="item-info flex relative">
                 <div class="info-image">

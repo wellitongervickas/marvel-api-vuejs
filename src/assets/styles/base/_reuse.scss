@@ -24,3 +24,12 @@
   float: right;
 }
 
+.set-visible {
+  visibility: visible;
+  opacity: 1;
+}
+
+.set-invisible {
+  visibility: hidden;
+  opacity: 0;
+}

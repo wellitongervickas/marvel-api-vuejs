@@ -4,7 +4,7 @@
 
 <template>
   <div class="alert-float flex-around">
-    <transition-group tag="div" class="alert-float-list" name="fade">
+    <transition-group tag="div" class="alert-float-list" name="list">
       <div class="alert-float-item" :class="`alert-float-item--${item.type}`" v-for="(item, index) in aletsFloat.list" :key="index">
         <div class="alert-float-item-message align-center">{{item.message}}</div>
       </div>

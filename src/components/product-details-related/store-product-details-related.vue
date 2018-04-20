@@ -4,16 +4,20 @@
 
 <template>
   <div class="store-product-details-related text-white">
+
     <div class="details-related-header container" v-show="characters && characters.available > 0">
       <h2 class="text-uppercase">More from: <span class="text-white">{{characters | getFirstCharacterName}}</span></h2>
     </div>
-    <div class="details-related-content container">
-      <div class="details-related-list">
+
+    <div class="details-related-content container relative">
+      <transition-group name="list" tag="div" class="details-related-list">
         <div
-          class="related-item flex-column-center"
+          class="related-item flex-column-center transition-fast"
+          :class="{'set-invisible': !item.status, 'set-visible': item.status}"
           v-for="(item, index) in relatedList"
-          :key="index"
-          :data-id="item.id">
+          :key="item.id"
+          :data-id="item.id"
+          v-show="item.status">
           <div class="related-item-thumbnail flex-around-center">
             <router-link :to="{ name: 'product', params: { id: item.id }}">
               <img :src="item.image" :alt="item.title">
@@ -30,7 +34,14 @@
             </span>
           </div>
         </div>
+      </transition-group>
+
+      <div class="details-related-controls">
+        <div @click.stop.prevent="prevSlide()">Prev</div>
+        <div @click.stop.prevent="nextSlide()">Next</div>
       </div>
+
+
     </div>
   </div>
 </template>
@@ -39,8 +50,7 @@
 
   import requestHelper from '../../models/helpers/request-helper';
   import productHelper from '../../models/helpers/product-helper';
-  import listChangesUtils from '../../models/utils/list-changes-utils';
-  import Product from '../../models/class/product-class';
+  import productRelatedHelper from '../../models/helpers/product-related-helper';
 
   export default {
     name: 'StoreProductDetailsRelated',
@@ -55,12 +65,12 @@
     methods: {
 
       /**
-        * This method was created to search the list of products
-        * in the api and also to be able to use it in the update method
+        * This method together with the search method in the api makes
+        * the initial insertion of the products on the screen
         *
       */
 
-      getProductsFromApi (parameters = null) {
+      getProducts () {
 
         // Create a object of parameters
         const ts = Date.now();
@@ -82,57 +92,50 @@
         })
         .then(response => {
 
-          // Disable loading
-          this.loadingStatus = false;
-          return response;
-        })
-        .catch(err => {
-
-          this.loadingStatus = false;
-          return err
-        });
-      },
-
-      /**
-        * This method together with the search method in the api makes
-        * the initial insertion of the products on the screen
-        *
-      */
-
-      loadProducts() {
-        this.getProductsFromApi()
-        .then(response => {
-
           // Get products from api and return new list
           const productsList = productHelper.createList(response.data.data.results);
-          this.relatedList = listChangesUtils.appendStatusProperty(productsList);
+          this.relatedList = productRelatedHelper.init(productsList);
+
+          // Disable loading
+          this.loadingStatus = false;
         })
         .catch(err => {
+
+          this.loadingStatus = false;
           console.error(err)
         });
       },
+
+      nextSlide() {
+        this.relatedList = productRelatedHelper.next(this.relatedList)
+      },
+
+      prevSlide() {
+        this.relatedList = productRelatedHelper.prev(this.relatedList)
+      },
+
     },
     created() {
 
       // when component is initialized call this functions
-      this.loadProducts();
+      this.getProducts();
     },
     watch: {
 
       // Reload products if will main product is changed
       characters: function () {
 
-        this.loadProducts();
+        this.getProducts();
       }
     },
     filters: {
+
       inverseCreator(name) {
         if (name) return productHelper.inverseCreator(name);
       },
+
       getFirstCharacterName(list) {
-        if (list && list.available > 0) {
-          return list.items[0].name;
-        }
+        if (list && list.available > 0) return list.items[0].name;
       }
     },
   };

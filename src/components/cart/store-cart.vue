@@ -107,7 +107,7 @@
       // when component is initialized call this functions
       this.updateCartQtd(this.cart.products.length);
       this.sumCartValues();
-      this.setStatusCart(false)
+      this.setStatusCart(false);
     },
     filters: {
 

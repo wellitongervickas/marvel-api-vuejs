@@ -12,6 +12,9 @@
   }
 
   .details-related-list {
+    height: 500px;
+    position: relative;
+    overflow: hidden;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-column-gap: 70px;

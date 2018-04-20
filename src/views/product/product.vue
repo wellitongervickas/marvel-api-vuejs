@@ -54,8 +54,8 @@
     methods: {
 
       /**
-        * This function process informations when
-        * global function return a valid product
+        * This function get product list from API and
+        * configure before create a valid list to show
         *
       */
 
