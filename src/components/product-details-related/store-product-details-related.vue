@@ -5,6 +5,8 @@
 <template>
   <div class="store-product-details-related text-white">
 
+    <store-loading-content v-show="loadingStatus"></store-loading-content>
+
     <div class="details-related-header container" v-show="characters && characters.available > 0">
       <h2 class="text-uppercase">More from: <span class="text-white">{{characters | getFirstCharacterName}}</span></h2>
     </div>
@@ -51,13 +53,18 @@
   import requestHelper from '../../models/helpers/request-helper';
   import productHelper from '../../models/helpers/product-helper';
   import productRelatedHelper from '../../models/helpers/product-related-helper';
+  import StoreLoadingContent from '../loading-content/store-loading-content.vue';
 
   export default {
     name: 'StoreProductDetailsRelated',
     props: ['characters'],
+    components: {
+      StoreLoadingContent
+    },
     data() {
       return {
         relatedList: [],
+        loadingStatus: false,
         apikey: this.$appConfig.api.publicKey,
         privateKey: this.$appConfig.api.privateKey,
         timeToNextSlide: 5000,
@@ -72,6 +79,8 @@
       */
 
       getProducts () {
+
+        this.loadingStatus = true;
 
         // Create a object of parameters
         const ts = Date.now();
