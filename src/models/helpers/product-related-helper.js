@@ -31,6 +31,12 @@ const productRelatedHelper = (() => {
     return list;
   };
 
+  /**
+    * This function move to next slide
+    * remove or append the first index
+    * and set initial status of list again
+  */
+
   function moveSlide(list, type) {
 
     // Change first item to false
