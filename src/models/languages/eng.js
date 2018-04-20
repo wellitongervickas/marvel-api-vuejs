@@ -23,7 +23,7 @@ const eng = (() => {
       welcome: 'Welcome',
       account: 'My Account',
       buy: 'Buy',
-      cancel: 'Cancelar',
+      cancel: 'Cancel',
       add: 'Add',
       addToCart: 'Add to Cart',
       finish: 'Finish',
@@ -55,6 +55,9 @@ const eng = (() => {
       rating: 'Rating',
       format: 'Format',
       price: 'Price',
+      extendCreditInfo: 'Extended credits and info',
+      coverInformation: 'Cover information',
+      stories: 'Stories',
     },
     WARNINGS: {
       emptyCart: 'Your shopping cart is empty!',

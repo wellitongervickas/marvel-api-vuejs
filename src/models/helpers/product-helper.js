@@ -21,11 +21,11 @@ const productHelper = (() => {
     *
   */
 
-  function createTabList () {
+  function createTabList (language) {
     return [
-      { id:0, title:'Extended credits and info', status: true},
-      { id:1, title:'Cover information', status: false},
-      { id:2, title:'Stories', status: false},
+      { id:0, title: language.extendCreditInfo , status: true},
+      { id:1, title: language.coverInformation, status: false},
+      { id:2, title: language.stories, status: false},
     ];
   }
 
