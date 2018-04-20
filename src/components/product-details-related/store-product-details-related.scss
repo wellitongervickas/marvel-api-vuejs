@@ -20,9 +20,39 @@
     grid-column-gap: 70px;
 
     .related-item {
+      .related-item-title {
+        .related-item-title-name {
+          font-size: 20px;
+          margin: 10px;
+
+          a {
+            color: #fff;
+          }
+        }
+
+        .related-item-title-creator {
+          font-size: 16px;
+          margin-bottom: 15px;
+        }
+
+        .related-item-title-break {
+          width: 50%;
+          height: 2px;
+          background-color: #4b4b4b;
+          margin: 0 auto;
+        }
+      }
+
       .related-item-thumbnail {
+        border: 1px solid #eee;
+        background-image: url(/images/layout/image_not_found.jpg);
+        background-color: #222;
+        height: 370px;
+        position: relative;
+        overflow:hidden;
+
         img {
-          max-width: 100%;
+          width: 100%;
         }
       }
     }

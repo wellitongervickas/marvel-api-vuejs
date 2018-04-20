@@ -26,7 +26,7 @@
           <div class="related-item-title flex-column-between align-center">
             <h3 class="related-item-title-name">
               <router-link :to="{ name: 'product', params: { id: item.id }}">
-                {{item.title}} - {{item.status}}
+                {{item.title}}
               </router-link>
             </h3>
             <span class="details-related-item-title-creator text-uppercase" v-if="item.creator">
