@@ -108,11 +108,11 @@
       },
 
       nextSlide() {
-        this.relatedList = productRelatedHelper.next(this.relatedList)
+        this.relatedList = productRelatedHelper.move(this.relatedList, 'next')
       },
 
       prevSlide() {
-        this.relatedList = productRelatedHelper.prev(this.relatedList)
+        this.relatedList = productRelatedHelper.move(this.relatedList, 'prev')
       },
 
       /**

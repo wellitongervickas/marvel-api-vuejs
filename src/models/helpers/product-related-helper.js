@@ -31,7 +31,7 @@ const productRelatedHelper = (() => {
     return list;
   };
 
-  function changeNextSlide(list) {
+  function moveSlide(list, type) {
 
     // Change first item to false
     list[0].status = false;
@@ -39,34 +39,34 @@ const productRelatedHelper = (() => {
     // Wait mileseconds to remove and append again in this list
     // call set initial slides again
     setTimeout(() => {
-      list.push(list.shift());
+
+      switch (type) {
+        case 'next':
+
+          list.push(list.shift());
+          break;
+        case 'prev':
+
+          list.unshift(list.pop());
+          break;
+
+        default:
+
+          list.push(list.shift());
+          break;
+      };
+
       list = setInitialSlides(list);
 
     }, 100);
 
     return list;
-  };
 
-  function changePrevSlide(list) {
-
-    // Change first item to false
-    list[0].status = false;
-
-    // Wait mileseconds to remove and append again in this list
-    // call set initial slides again
-    setTimeout(() => {
-      list.unshift(list.pop());
-      list = setInitialSlides(list);
-
-    }, 100);
-
-    return list;
   };
 
   return {
     init: setInitialSlides,
-    next: changeNextSlide,
-    prev: changePrevSlide
+    move: moveSlide
   };
 
 })();
