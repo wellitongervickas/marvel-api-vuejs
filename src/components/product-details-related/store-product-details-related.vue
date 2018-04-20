@@ -118,9 +118,21 @@
         });
       },
 
+      /**
+        * This function is responsible to change
+        * to next slide when type is 'next' in parameters
+        *
+      */
+
       nextSlide() {
         this.relatedList = productRelatedHelper.move(this.relatedList, 'next')
       },
+
+      /**
+        * This function is responsible to change
+        * to next slide when type is 'prev' in parameters
+        *
+      */
 
       prevSlide() {
         this.relatedList = productRelatedHelper.move(this.relatedList, 'prev')

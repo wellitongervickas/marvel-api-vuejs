@@ -218,7 +218,7 @@
     created() {
 
       // when component is initialized call this functions
-      this.tabList = productHelper.createTabList();
+      this.tabList = productHelper.createTabList(this.langTitles);
     },
   };
 
