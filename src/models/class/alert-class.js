@@ -5,5 +5,6 @@ export default class Alert {
     this.message = alert.message;
     this.type = alert.type;
     this.timestamp = alert.timestamp;
+    this.status = true;
   }
 };

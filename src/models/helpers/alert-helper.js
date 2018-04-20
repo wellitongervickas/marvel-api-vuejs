@@ -29,7 +29,6 @@ const alertHelper = (() => {
   function removeAlerts(list) {
 
     if (list.length >= 5) {
-
       list.shift();
     }
 
@@ -40,7 +39,7 @@ const alertHelper = (() => {
 
           let date = Date.now();
           if ((list[i].timestamp + 5000) <= date) {
-
+            list[i].status = false;
             list.splice(i, 1);
             break;
           }

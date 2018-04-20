@@ -36,8 +36,10 @@
 
 <script>
 
+  import { mapActions, mapGetters, mapState } from 'vuex';
   import requestHelper from '../../models/helpers/request-helper';
   import productHelper from '../../models/helpers/product-helper';
+  import productsFilterHelper from '../../models/helpers/products-filter-helper';
   import Product from '../../models/class/product-class';
   import StoreLoadingContent from '../loading-content/store-loading-content';
 
@@ -54,7 +56,12 @@
         productsList: [],
       }
     },
+    computed: {
+      ...mapGetters(['getAvailableFilters']),
+    },
     methods: {
+
+      ...mapActions(['updateAvailableFilters']),
 
       /**
         * This method was created to search the list of products
@@ -88,6 +95,10 @@
 
           // Disable loading
           this.loadingStatus = false;
+
+          // Update filters
+          this.updateAvailableFilters(productsFilterHelper.getFilters(response.data.data.results))
+
           return response;
         })
         .catch(err => {
@@ -139,7 +150,6 @@
 
           // Update the list
           this.productsList = requestHelper.mergeUpdatedList(this.productsList, newProductList);
-
         })
         .catch(err => {
           console.error(err)
