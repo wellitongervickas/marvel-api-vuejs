@@ -34,7 +34,7 @@
           </div>
         </div>
       </transition-group>
-      <div class="details-related-controls">
+      <div class="details-related-controls" v-show="relatedList.length">
         <div class="details-related-controls-btn container">
           <div class="related-controls--prev pointer transition-slow" @click.stop.prevent="prevSlide()">
             <img src="/images/layout/prev.png" :alt="langTitles.prev">

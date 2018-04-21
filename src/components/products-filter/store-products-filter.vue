@@ -8,18 +8,21 @@
       <div class="filter-nav-item"><b>Browser By</b></div>
       <div
         class="filter-nav-item nav-item-dropdown"
+        :class="{'nav-item-dropdown--active': filterSeriesStatus == true}"
         @mouseenter="disableAllNavs()"
         @click="filterSeriesStatus = true">
         Series
       </div>
       <div
         class="filter-nav-item nav-item-dropdown"
+        :class="{'nav-item-dropdown--active': filterCharactersStatus == true}"
         @mouseenter="disableAllNavs()"
         @click="filterCharactersStatus = true">
         Characters
       </div>
       <div
         class="filter-nav-item nav-item-dropdown"
+        :class="{'nav-item-dropdown--active': filterCreatorsStatus == true}"
         @mouseenter="disableAllNavs()"
         @click="filterCreatorsStatus = true">
         Creators
@@ -31,21 +34,35 @@
         v-show="filterSeriesStatus"
         @mouseleave="filterSeriesStatus = false"
         :key="0">
-        {{getAvailableFilters.series}}
+        <ul class="filter-content-item-options unstyled-list">
+          <li v-for="(item, index) in getAvailableFilters.series" :key="index">
+            <input
+            :id="`series-${index}-options`"
+            v-model="item.status"
+            :checked="item.status"
+            class="hide"
+            type="checkbox">
+            <label :for="`series-${index}-options`">{{item.name}} -> {{item.status}}</label>
+          </li>
+        </ul>
       </div>
       <div
         class="filter-content-item text-white"
         v-show="filterCharactersStatus"
         @mouseleave="filterCharactersStatus = false"
         :key="1">
-        {{getAvailableFilters.characters}}
+        <!-- <ul class="filter-content-item-options unstyled-list">
+          <li v-for="(item, index) in getAvailableFilters.characters" :key="index">{{item}}</li>
+        </ul> -->
       </div>
       <div
         class="filter-content-item text-white"
         v-show="filterCreatorsStatus"
         @mouseleave="filterCreatorsStatus = false"
         :key="2">
-        {{getAvailableFilters.creators}}
+       <!--  <ul class="filter-content-item-options unstyled-list">
+          <li v-for="(item, index) in getAvailableFilters.creators" :key="index">{{item}}</li>
+        </ul> -->
       </div>
     </transition-group>
   </div>
@@ -68,6 +85,12 @@
       ...mapGetters(['getAvailableFilters'])
     },
     methods: {
+
+      /**
+        * When called this function, all nav won disabled status
+        *
+      */
+
       disableAllNavs() {
         this.filterSeriesStatus = false;
         this.filterCharactersStatus = false;

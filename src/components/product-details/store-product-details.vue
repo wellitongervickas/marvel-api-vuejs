@@ -98,7 +98,7 @@
               <li><b>{{langTitles.published}}:</b> {{details.modified}}</li>
             </ul>
             <div class="content-info-text flex-around-center">
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tincidunt dignissim mi, ac eleifend quam scelerisque eu. Donec at arcu in sapien ultricies posuere. Fusce mattis rutrum imperdiet. Quisque finibus massa quis imperdiet vestibulum. Aliquam metus nisl, finibus et ex at, commodo molestie turpis. Nam ut mattis lectus. Donec convallis arcu nec nibh sagittis, a mollis mi ullamcorper. Ut tristique arcu vel felis fermentum elementum.</p>
+              <p>{{details.description}}</p>
             </div>
           </div>
           <div class="tabs-content-cover" v-show="tabList[1].status" :key="2">

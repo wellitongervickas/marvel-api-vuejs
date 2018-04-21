@@ -16,6 +16,17 @@
         cursor: pointer;
         position: relative;
 
+        &.nav-item-dropdown--active, &:hover {
+          color: #fff;
+          background-color: #333;
+
+          &:after {
+            border-left: 7px solid transparent;
+            border-right: 7px solid transparent;
+            border-top: 7px solid #f0141e;
+          }
+        }
+
         &:after {
           content: '';
           position: absolute;
@@ -26,16 +37,7 @@
           right: 15px;
         }
 
-        &:hover {
-          color: #fff;
-          background-color: #333;
 
-          &:after {
-            border-left: 7px solid transparent;
-            border-right: 7px solid transparent;
-            border-top: 7px solid #f0141e;
-          }
-        }
       }
     }
   }

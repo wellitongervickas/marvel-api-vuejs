@@ -6,9 +6,5 @@ export default {
     characters: [],
     creators: []
   },
-  enabledFilters: {
-    series: [],
-    characters: [],
-    creators: []
-  }
+  enabledFilters: []
 }

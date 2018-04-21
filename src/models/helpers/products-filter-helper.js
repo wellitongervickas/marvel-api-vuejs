@@ -1,5 +1,7 @@
 'use strict';
 
+import listChangesUtils from '../utils/list-changes-utils';
+
 const productsFilterHelper = (() => {
 
   /**
@@ -9,6 +11,8 @@ const productsFilterHelper = (() => {
   */
 
   function getFilters(list) {
+
+    let tmpSeries = [];
 
     // Create objecto to return
     let availablesFilters = {
@@ -23,7 +27,7 @@ const productsFilterHelper = (() => {
 
       if (product.characters && product.characters.available > 0) {
 
-        let allCharacters = product.characters.items.map(item => item.name);
+        let allCharacters = listChangesUtils.appendStatusProperty(product.characters.items);
 
         // Get unique names
         availablesFilters.characters = [...new Set(availablesFilters.characters.concat(allCharacters))]
@@ -31,7 +35,7 @@ const productsFilterHelper = (() => {
 
       if (product.creators && product.creators.available > 0) {
 
-        let allCreators = product.creators.items.map(item => item.name);
+        let allCreators = listChangesUtils.appendStatusProperty(product.creators.items);
 
         // Get unique names
         availablesFilters.creators = [...new Set(availablesFilters.creators.concat(allCreators))]
@@ -39,7 +43,9 @@ const productsFilterHelper = (() => {
 
       if (product.series) {
 
-        availablesFilters.series.push(product.series.name)
+        tmpSeries.push(product.series);
+        availablesFilters.series = listChangesUtils.appendStatusProperty(tmpSeries);
+
       }
     }
 
