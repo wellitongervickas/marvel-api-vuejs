@@ -1,5 +1,8 @@
 'use strict';
 
+import listChangesUtils from '../utils/list-changes-utils';
+import listUtils from '../utils/list-utils';
+
 const productsFilterHelper = (() => {
 
   /**
@@ -9,6 +12,8 @@ const productsFilterHelper = (() => {
   */
 
   function getFilters(list) {
+
+    let tmpSeries = [];
 
     // Create objecto to return
     let availablesFilters = {
@@ -20,26 +25,26 @@ const productsFilterHelper = (() => {
     for (let i in list) {
 
       let product = list[i];
-
       if (product.characters && product.characters.available > 0) {
 
-        let allCharacters = product.characters.items.map(item => item.name);
-
-        // Get unique names
-        availablesFilters.characters = [...new Set(availablesFilters.characters.concat(allCharacters))]
+        let allCharacters = listChangesUtils.appendStatusProperty(product.characters.items);
+        availablesFilters.characters = availablesFilters.characters.concat(allCharacters);
+        availablesFilters.characters = listUtils.uniqueValuesObject(availablesFilters.characters);
       }
 
       if (product.creators && product.creators.available > 0) {
 
-        let allCreators = product.creators.items.map(item => item.name);
-
-        // Get unique names
-        availablesFilters.creators = [...new Set(availablesFilters.creators.concat(allCreators))]
+        let allCreators = listChangesUtils.appendStatusProperty(product.creators.items);
+        availablesFilters.creators = availablesFilters.creators.concat(allCreators);
+        availablesFilters.creators = listUtils.uniqueValuesObject(availablesFilters.creators);
       }
 
       if (product.series) {
 
-        availablesFilters.series.push(product.series.name)
+        tmpSeries.push(product.series);
+        tmpSeries = listChangesUtils.appendStatusProperty(tmpSeries);
+        availablesFilters.series = listUtils.uniqueValuesObject(tmpSeries);
+
       }
     }
 
