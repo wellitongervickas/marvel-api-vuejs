@@ -54,31 +54,35 @@
         grid-template-columns: 40% 40%;
 
         .options-item {
-          padding-left: 40px;
+          label {
+            padding-left: 40px;
 
-          &:before, &:after {
-            position: absolute;
-            width: 15px;
-            height: 15px;
-          }
+            &:before, &:after {
+              position: absolute;
+              width: 15px;
+              height: 15px;
+            }
 
-          &:before {
-            left: 4px;
-            top: 4px;
-            content: '';
-            background-color: transparent;
-            border: 1px solid #eee;
+            &:before {
+              left: 4px;
+              top: 4px;
+              content: '';
+              background-color: transparent;
+              border: 1px solid #eee;
+            }
           }
 
           &.options-item--active {
-            &:before {
-              background-color: #f0141e;
-              border: 1px solid transparent;
-            }
+            label {
+              &:before {
+                background-color: #f0141e;
+                border: 1px solid transparent;
+              }
 
-            &:after {
-              content: "\2713";
-              left: 7px;
+              &:after {
+                content: "\2713";
+                left: 7px;
+              }
             }
           }
         }

@@ -11,6 +11,6 @@ export default {
   },
 
   REMOVE_FILTER(state, payload) {
-    state.enabledFilters = state.enabledFilters.map(item => item != payload);
+    state.enabledFilters = state.enabledFilters.filter(item => item != payload);
   }
 }

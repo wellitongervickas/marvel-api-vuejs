@@ -3,10 +3,8 @@
 const listChangesUtils = (() => {
 
   /**
-    * This function change a item in the list,
-    * also when passing a "index" value of change
-    * is of the specific item and otherwise get
-    * a false status
+    * This function change a item in the list
+    * creating new property status
     *
     * @params {Array} list
     *
