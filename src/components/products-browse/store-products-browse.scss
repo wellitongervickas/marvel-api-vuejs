@@ -1,12 +1,11 @@
 .store-products-list {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
   border-bottom: 1px solid #222;
   padding-bottom: 50px;
 
   .products-list-item {
-    width: 25%;
-    height: 550px;
+    height: 580px;
 
     .products-item-title, .products-item-thumbnail {
       width: 90%;
