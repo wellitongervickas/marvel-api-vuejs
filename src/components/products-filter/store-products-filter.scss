@@ -1,92 +1,99 @@
 .store-products-filter {
-  margin-top: 30px;
-  margin-bottom: 70px;
-  background-color: #eee;
 
-  .filter-nav-list {
-    .filter-nav-item {
-      font-size: 20px;
-      padding: 30px 50px 30px 30px;
+  .products-filter {
+    margin-top: 30px;
+    margin-bottom: 35px;
+    background-color: #eee;
 
-      &:first-of-type {
-        padding: 30px;
-      }
+    .filter-nav-list {
+      .filter-nav-item {
+        font-size: 20px;
+        padding: 30px 50px 30px 30px;
 
-      &.nav-item-dropdown {
-        cursor: pointer;
-        position: relative;
-
-        &.nav-item-dropdown--active, &:hover {
-          color: #fff;
-          background-color: #333;
-
-          &:after {
-            border-left: 7px solid transparent;
-            border-right: 7px solid transparent;
-            border-top: 7px solid #f0141e;
-          }
+        &:first-of-type {
+          padding: 30px;
         }
 
-        &:after {
-          content: '';
-          position: absolute;
-          border-left: 7px solid transparent;
-          border-right: 7px solid transparent;
-          border-top: 7px solid #333;
-          top: 45%;
-          right: 15px;
+        &.nav-item-dropdown {
+          cursor: pointer;
+          position: relative;
+
+          &.nav-item-dropdown--active, &:hover {
+            color: #fff;
+            background-color: #333;
+
+            &:after {
+              border-left: 7px solid transparent;
+              border-right: 7px solid transparent;
+              border-top: 7px solid #f0141e;
+            }
+          }
+
+          &:after {
+            content: '';
+            position: absolute;
+            border-left: 7px solid transparent;
+            border-right: 7px solid transparent;
+            border-top: 7px solid #333;
+            top: 45%;
+            right: 15px;
+          }
+        }
+      }
+    }
+
+    .filter-content-list {
+      .filter-content-item {
+        position: absolute;
+        background-color: #333;
+        width: 85%;
+        padding: 40px;
+        z-index: 23;
+
+        .filter-content-options {
+          line-height: 25px;
+          display: grid;
+          grid-template-columns: 40% 40%;
+
+          .options-item {
+            label {
+              padding-left: 40px;
+
+              &:before, &:after {
+                position: absolute;
+                width: 15px;
+                height: 15px;
+              }
+
+              &:before {
+                left: 4px;
+                top: 4px;
+                content: '';
+                background-color: transparent;
+                border: 1px solid #eee;
+              }
+            }
+
+            &.options-item--active {
+              label {
+                &:before {
+                  background-color: #f0141e;
+                  border: 1px solid transparent;
+                }
+
+                &:after {
+                  content: "\2713";
+                  left: 7px;
+                }
+              }
+            }
+          }
         }
       }
     }
   }
 
-  .filter-content-list {
-    .filter-content-item {
-      position: absolute;
-      background-color: #333;
-      width: 85%;
-      padding: 40px;
-      z-index: 23;
-
-      .filter-content-options {
-        line-height: 25px;
-        display: grid;
-        grid-template-columns: 40% 40%;
-
-        .options-item {
-          label {
-            padding-left: 40px;
-
-            &:before, &:after {
-              position: absolute;
-              width: 15px;
-              height: 15px;
-            }
-
-            &:before {
-              left: 4px;
-              top: 4px;
-              content: '';
-              background-color: transparent;
-              border: 1px solid #eee;
-            }
-          }
-
-          &.options-item--active {
-            label {
-              &:before {
-                background-color: #f0141e;
-                border: 1px solid transparent;
-              }
-
-              &:after {
-                content: "\2713";
-                left: 7px;
-              }
-            }
-          }
-        }
-      }
-    }
+  .products-filter-list {
+    margin-bottom: 35px;
   }
 }

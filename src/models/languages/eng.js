@@ -58,6 +58,9 @@ const eng = (() => {
       extendCreditInfo: 'Extended credits and info',
       coverInformation: 'Cover information',
       stories: 'Stories',
+      series: 'Series',
+      characters: 'Characters',
+      creators: 'Creators',
     },
     WARNINGS: {
       emptyCart: 'Your shopping cart is empty!',
@@ -71,6 +74,7 @@ const eng = (() => {
       productAddPurchase: 'This product has added in the shopping cart',
       productWasRemoved: 'Product was removed!',
       productWasUpdated: 'Product was updated!',
+      filterWasRemoved: 'Filter was removed!',
     },
     SOCIAL: {
       facebook: 'Facebook',

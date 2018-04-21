@@ -155,8 +155,7 @@
 
       addProductToCart(product) {
 
-        const alert = alertHelper.createAlert(this.langSuccess.productAddPurchase, 'success');
-        this.addAlert(alert);
+        this.addAlert(alertHelper.createAlert(this.langSuccess.productAddPurchase, 'success'));
         this.addTocart(product);
 
         // Moving to top
