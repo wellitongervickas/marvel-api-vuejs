@@ -42,8 +42,8 @@ const productsFilterHelper = (() => {
       if (product.series) {
 
         tmpSeries.push(product.series);
-        availablesFilters.series = listChangesUtils.appendStatusProperty(tmpSeries);
-        availablesFilters.series = listUtils.uniqueValuesObject(availablesFilters.series);
+        tmpSeries = listChangesUtils.appendStatusProperty(tmpSeries);
+        availablesFilters.series = listUtils.uniqueValuesObject(tmpSeries);
 
       }
     }

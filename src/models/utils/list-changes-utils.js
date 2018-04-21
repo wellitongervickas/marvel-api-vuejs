@@ -11,7 +11,7 @@ const listChangesUtils = (() => {
     * @params {Array} list
     *
     * @params {Object} item
-    * -> Nneed get status and id property to use this function
+    * -> Need get status and id property to use this function
     *
   */
 

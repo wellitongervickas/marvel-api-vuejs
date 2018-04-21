@@ -44,20 +44,43 @@
     .filter-content-item {
       position: absolute;
       background-color: #333;
-      width: 90%;
+      width: 85%;
       padding: 40px;
       z-index: 23;
 
-      .filter-content-item-options {
+      .filter-content-options {
         line-height: 25px;
         display: grid;
+        grid-template-columns: 40% 40%;
 
-        &.option-series {
-          grid-template-columns: 50% 50%;
-        }
+        .options-item {
+          padding-left: 40px;
 
-        &.option-characters,  &.option-creators {
-          grid-template-columns: 25% 25% 25% 25%;
+          &:before, &:after {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+          }
+
+          &:before {
+            left: 4px;
+            top: 4px;
+            content: '';
+            background-color: transparent;
+            border: 1px solid #eee;
+          }
+
+          &.options-item--active {
+            &:before {
+              background-color: #f0141e;
+              border: 1px solid transparent;
+            }
+
+            &:after {
+              content: "\2713";
+              left: 7px;
+            }
+          }
         }
       }
     }
