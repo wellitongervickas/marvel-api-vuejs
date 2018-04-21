@@ -2,6 +2,7 @@
 
 import Product from '../class/product-class';
 import listChangesUtils from '../utils/list-changes-utils';
+import textCropUtils from '../utils/text-crop-utils';
 
 const productHelper = (() => {
 
@@ -101,10 +102,10 @@ const productHelper = (() => {
 
     if (status && description.length >= maxLengthLess) {
 
-      return `${description.substring(0, maxLengthLess)} ...`;
+      return textCropUtils.cropSimple(description, maxLengthLess)
     } else if (description.length >= maxLengthMore) {
 
-      return `${description.substring(0, maxLengthMore)} ...`;
+      return textCropUtils.cropSimple(description, maxLengthMore)
     } else {
 
       return description;
