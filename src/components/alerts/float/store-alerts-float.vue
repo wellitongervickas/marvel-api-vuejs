@@ -4,11 +4,11 @@
 
 <template>
   <div class="alert-float flex-around">
-    <transition-group tag="div" class="alert-float-list" name="list">
+    <transition-group tag="div" class="alert-float-list" name="fade">
       <div
         class="alert-float-item"
         :class="`alert-float-item--${item.type}`"
-        v-for="(item, index) in aletsFloat.list" :key="index">
+        v-for="(item, index) in aletsFloat.list" :key="item.timestamp">
         <div class="alert-float-item-message align-center transition-slow" v-show="item.status">{{item.message}}</div>
       </div>
     </transition-group>

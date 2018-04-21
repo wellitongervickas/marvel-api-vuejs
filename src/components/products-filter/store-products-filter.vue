@@ -3,39 +3,41 @@
 </style>
 
 <template>
-  <div class="store-products-filter user-select">
-
+  <div class="store-products-filter user-select" v-show="getAvailableFilters">
     <div class="products-filter">
       <div class="filter-nav-list container flex-around-center text-uppercase">
         <div class="filter-nav-item"><b>Browser By</b></div>
         <div
+          v-show="getAvailableFilters.series.length"
           class="filter-nav-item nav-item-dropdown"
           :class="{ 'nav-item-dropdown--active': filterSeriesStatus == true }"
           @mouseenter="disableAllNavs()"
           @click="filterSeriesStatus = !filterSeriesStatus">
-          Series
+          {{langTitles.series}}
         </div>
         <div
+          v-show="getAvailableFilters.characters.length"
           class="filter-nav-item nav-item-dropdown"
           :class="{ 'nav-item-dropdown--active': filterCharactersStatus == true }"
           @mouseenter="disableAllNavs()"
           @click="filterCharactersStatus = !filterCharactersStatus">
-          Characters
+          {{langTitles.characters}}
         </div>
         <div
+          v-show="getAvailableFilters.creators.length"
           class="filter-nav-item nav-item-dropdown"
           :class="{ 'nav-item-dropdown--active': filterCreatorsStatus == true }"
           @mouseenter="disableAllNavs()"
           @click="filterCreatorsStatus = !filterCreatorsStatus">
-          Creators
+          {{langTitles.creators}}
         </div>
       </div>
       <transition-group tag="div" class="filter-content-list container relative flex-around" name="list">
         <div
           class="filter-content-item text-white"
-          v-show="filterSeriesStatus"
           @mouseleave="filterSeriesStatus = false"
-          :key="0">
+          :key="0"
+          v-show="filterSeriesStatus && getAvailableFilters.series.length">
           <ul class="filter-content-options option-series unstyled-list flex-around-center">
             <li
               v-for="(item, index) in getAvailableFilters.series"
@@ -57,9 +59,9 @@
         </div>
         <div
           class="filter-content-item text-white"
-          v-show="filterCharactersStatus"
           @mouseleave="filterCharactersStatus = false"
-          :key="1">
+          :key="1"
+          v-show="filterCharactersStatus && getAvailableFilters.characters.length">
           <ul class="filter-content-options characters-series unstyled-list flex-around-center">
             <li
               v-for="(item, index) in getAvailableFilters.characters"
@@ -81,9 +83,9 @@
         </div>
         <div
           class="filter-content-item text-white"
-          v-show="filterCreatorsStatus"
           @mouseleave="filterCreatorsStatus = false"
-          :key="2">
+          :key="2"
+          v-show="filterCreatorsStatus && getAvailableFilters.creators.length">
           <ul class="filter-content-options creators-series unstyled-list flex-around-center">
             <li
               v-for="(item, index) in getAvailableFilters.creators"
@@ -105,18 +107,19 @@
         </div>
       </transition-group>
     </div>
-
     <div class="products-filter-list container" v-show="productsFilter.enabledFilters.length">
-      <ul>
+      <transition-group name="fade" tag="ul" class="products-filter-enabled flex-around-center unstyled-list">
         <li
+          :title="item"
+          class="filter-enabled-item text-uppercase pointer relative"
           v-for="(item, index) in productsFilter.enabledFilters"
-          :key="index"
-          @click="removeFilterFromList(item)">
-          {{item}}
+          @click="removeFilterFromList(item)"
+          :key="item">
+          <b>{{item | crop}}</b>
         </li>
       </ul>
+      </transition-group>
     </div>
-
   </div>
 </template>
 
@@ -124,6 +127,7 @@
 
   import { mapGetters, mapActions , mapState } from 'vuex';
   import alertHelper from '../../models/helpers/alert-helper';
+  import textCropUtils from '../../models/utils/text-crop-utils';
 
   export default {
     name: 'StoreProductsFilter',
@@ -186,11 +190,18 @@
         if (name) {
           this.addAlert(alertHelper.createAlert(this.langSuccess.filterWasRemoved, 'success'));
           this.removeFilter(name);
-          this.verifyFilterToChangeStatus(name)
+          this.disableSingleFilterStatus(name)
         };
       },
 
-      verifyFilterToChangeStatus(name) {
+      /**
+        * When called this function is created a new array
+        * of all availables filters to find a single name
+        * in availabes filters and change status
+        *
+      */
+
+      disableSingleFilterStatus(name) {
 
         let concatToFind = [].concat(
           this.getAvailableFilters.creators,
@@ -201,6 +212,11 @@
         for (let i in concatToFind) {
           if (concatToFind[i].name == name) concatToFind[i].status = false;
         };
+      }
+    },
+    filters: {
+      crop(text) {
+        return textCropUtils.cropSimple(text, 12);
       }
     }
   };
