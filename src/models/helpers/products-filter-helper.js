@@ -2,6 +2,12 @@
 
 const productsFilterHelper = (() => {
 
+  /**
+    * This function return filtered creators,
+    * characters and series of all products in the list
+    *
+  */
+
   function getFilters(list) {
 
     // Create objecto to return

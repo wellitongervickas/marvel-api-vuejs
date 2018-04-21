@@ -21,8 +21,8 @@
           <div class="products-item-title-break"></div>
         </div>
       </div>
-      <store-loading-content v-show="loadingStatus"></store-loading-content>
     </div>
+    <store-loading-content v-show="loadingStatus"></store-loading-content>
     <div class="store-products-loadmore flex-around" v-show="productsList.length">
       <button
         :disabled="loadingStatus"

@@ -13,8 +13,8 @@
       <main class="relative">
         <div class="shadow-cart" v-show="getStatusCart"></div>
         <store-slideshow></store-slideshow>
-        <div
-          class="store-content store-content-home relative">
+        <div class="store-content store-content-home relative">
+          <store-products-filter></store-products-filter>
           <div class="container">
             <store-products-browse></store-products-browse>
           </div>
@@ -36,6 +36,7 @@
   import StoreFooter from '../content/footer/store-footer.vue';
   import StoreSlideshow from '../../components/slideshow/store-slideshow.vue';
   import StoreProductsBrowse from '../../components/products-browse/store-products-browse.vue';
+  import StoreProductsFilter from '../../components/products-filter/store-products-filter.vue';
   import { mapGetters } from 'vuex';
 
   export default {
@@ -44,7 +45,8 @@
       StoreHeader,
       StoreFooter,
       StoreSlideshow,
-      StoreProductsBrowse
+      StoreProductsBrowse,
+      StoreProductsFilter
     },
     computed: {
       ...mapGetters([
