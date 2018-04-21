@@ -34,7 +34,7 @@
         v-show="filterSeriesStatus"
         @mouseleave="filterSeriesStatus = false"
         :key="0">
-        <ul class="filter-content-item-options unstyled-list">
+        <ul class="filter-content-item-options option-series unstyled-list">
           <li v-for="(item, index) in getAvailableFilters.series" :key="index">
             <input
             :id="`series-${index}-options`"
@@ -51,18 +51,34 @@
         v-show="filterCharactersStatus"
         @mouseleave="filterCharactersStatus = false"
         :key="1">
-        <!-- <ul class="filter-content-item-options unstyled-list">
-          <li v-for="(item, index) in getAvailableFilters.characters" :key="index">{{item}}</li>
-        </ul> -->
+        <ul class="filter-content-item-options option-characters unstyled-list">
+          <li v-for="(item, index) in getAvailableFilters.characters" :key="index">
+            <input
+            :id="`characters-${index}-options`"
+            v-model="item.status"
+            :checked="item.status"
+            class="hide"
+            type="checkbox">
+            <label :for="`characters-${index}-options`">{{item.name}} -> {{item.status}}</label>
+          </li>
+        </ul>
       </div>
       <div
         class="filter-content-item text-white"
         v-show="filterCreatorsStatus"
         @mouseleave="filterCreatorsStatus = false"
         :key="2">
-       <!--  <ul class="filter-content-item-options unstyled-list">
-          <li v-for="(item, index) in getAvailableFilters.creators" :key="index">{{item}}</li>
-        </ul> -->
+        <ul class="filter-content-item-options option-creators unstyled-list">
+          <li v-for="(item, index) in getAvailableFilters.creators" :key="index">
+            <input
+            :id="`creators-${index}-options`"
+            v-model="item.status"
+            :checked="item.status"
+            class="hide"
+            type="checkbox">
+            <label :for="`creators-${index}-options`">{{item.name}} -> {{item.status}}</label>
+          </li>
+        </ul>
       </div>
     </transition-group>
   </div>

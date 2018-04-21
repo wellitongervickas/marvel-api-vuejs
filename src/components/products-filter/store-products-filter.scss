@@ -36,8 +36,6 @@
           top: 45%;
           right: 15px;
         }
-
-
       }
     }
   }
@@ -49,6 +47,19 @@
       width: 90%;
       padding: 40px;
       z-index: 23;
+
+      .filter-content-item-options {
+        line-height: 25px;
+        display: grid;
+
+        &.option-series {
+          grid-template-columns: 50% 50%;
+        }
+
+        &.option-characters,  &.option-creators {
+          grid-template-columns: 25% 25% 25% 25%;
+        }
+      }
     }
   }
 }

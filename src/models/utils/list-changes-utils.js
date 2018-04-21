@@ -44,7 +44,7 @@ const listChangesUtils = (() => {
     };
 
     return list;
-  }
+  };
 
   return {
     changeActiveItem,

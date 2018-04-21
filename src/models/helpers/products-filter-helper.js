@@ -1,6 +1,7 @@
 'use strict';
 
 import listChangesUtils from '../utils/list-changes-utils';
+import listUtils from '../utils/list-utils';
 
 const productsFilterHelper = (() => {
 
@@ -24,27 +25,25 @@ const productsFilterHelper = (() => {
     for (let i in list) {
 
       let product = list[i];
-
       if (product.characters && product.characters.available > 0) {
 
         let allCharacters = listChangesUtils.appendStatusProperty(product.characters.items);
-
-        // Get unique names
-        availablesFilters.characters = [...new Set(availablesFilters.characters.concat(allCharacters))]
+        availablesFilters.characters = availablesFilters.characters.concat(allCharacters);
+        availablesFilters.characters = listUtils.uniqueValuesObject(availablesFilters.characters);
       }
 
       if (product.creators && product.creators.available > 0) {
 
         let allCreators = listChangesUtils.appendStatusProperty(product.creators.items);
-
-        // Get unique names
-        availablesFilters.creators = [...new Set(availablesFilters.creators.concat(allCreators))]
+        availablesFilters.creators = availablesFilters.creators.concat(allCreators);
+        availablesFilters.creators = listUtils.uniqueValuesObject(availablesFilters.creators);
       }
 
       if (product.series) {
 
         tmpSeries.push(product.series);
         availablesFilters.series = listChangesUtils.appendStatusProperty(tmpSeries);
+        availablesFilters.series = listUtils.uniqueValuesObject(availablesFilters.series);
 
       }
     }
