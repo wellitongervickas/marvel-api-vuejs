@@ -37,10 +37,10 @@
       <div class="details-related-controls" v-show="relatedList.length">
         <div class="details-related-controls-btn container">
           <div class="related-controls--prev pointer transition-slow" @click.stop.prevent="prevSlide()">
-            <img src="/images/layout/prev.png" :alt="langTitles.prev">
+            <img :src="`${location}images/layout/prev.png`" :alt="langTitles.prev">
           </div>
           <div class="related-controls--next pointer transition-slow" @click.stop.prevent="nextSlide()">
-            <img src="/images/layout/next.png" :alt="langTitles.next">
+            <img :src="`${location}images/layout/next.png`" :alt="langTitles.next">
           </div>
         </div>
       </div>
@@ -63,6 +63,7 @@
     },
     data() {
       return {
+        location: this.$appConfig.base,
         langTitles: this.$appConfig.lang.TITLES,
         relatedList: [],
         loadingStatus: false,

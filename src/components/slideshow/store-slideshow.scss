@@ -101,7 +101,7 @@ $negative-controls: -50px;
         font-weight: 600;
 
         &.active {
-          background-color: #f0141e;
+          background-color: var(--site-color-primary);
         }
       }
     }

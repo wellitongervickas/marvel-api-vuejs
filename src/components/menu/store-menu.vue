@@ -21,6 +21,7 @@
     name: 'StoreMenu',
     data() {
       return {
+        location: this.$appConfig.base,
         langTitles: this.$appConfig.lang.TITLES,
         menuList: []
       }
@@ -34,7 +35,7 @@
       */
 
       getMenuList() {
-        this.$http.get('/local-api/menu/menu-header.json')
+        this.$http.get(this.location + 'local-api/menu/menu-header.json')
         .then(response => {
           this.menuList = response.data;
         })

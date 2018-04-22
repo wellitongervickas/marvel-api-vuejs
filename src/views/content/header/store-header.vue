@@ -9,25 +9,25 @@
     </div>
     <div class="store-header-top container flex-between">
       <div class="flex3 store-header-top-logo">
-        <router-link :to="'/'" class="flex">
-          <img src="/images/layout/logo.jpg" :title="storeName" :alt="storeName">
+        <router-link :to="{ name: 'default'}" class="flex">
+          <img :src="`${location}images/layout/logo.jpg`" :title="storeName" :alt="storeName">
         </router-link>
       </div>
       <div class="flex5 store-header-top-social">
         <ul class="unstyled-list top-social-icons flex-end-items">
           <li>
             <a href="#">
-              <img width="25" src="/images/icons/social/facebook.svg" :alt="facebook" :title="facebook">
+              <img width="25" :src="`${location}images/icons/social/facebook.svg`" :alt="facebook" :title="facebook">
             </a>
           </li>
           <li>
             <a href="#">
-              <img width="25" src="/images/icons/social/youtube.svg" :alt="youtube" :title="youtube">
+              <img width="25" :src="`${location}images/icons/social/youtube.svg`" :alt="youtube" :title="youtube">
             </a>
           </li>
           <li>
             <a href="#">
-              <img width="25" src="/images/icons/social/twitter.svg" :alt="twitter" :title="twitter">
+              <img width="25" :src="`${location}images/icons/social/twitter.svg`" :alt="twitter" :title="twitter">
             </a>
           </li>
         </ul>
@@ -74,6 +74,7 @@
     },
     data () {
       return {
+        location: this.$appConfig.base,
         storeName: this.$appConfig.lang.TITLES.storeName,
         account: this.$appConfig.lang.TITLES.account,
         welcome: this.$appConfig.lang.TITLES.welcome,

@@ -1,5 +1,7 @@
 'use strict';
 
+console.log((process.env.NODE_ENV === 'production') ? 'online' : 'local')
+
 /**
   * Vue Project
   *
@@ -53,7 +55,7 @@ const router = new VueRouter({
 
 Vue.prototype.$appConfig = {
   currency: '$',
-  base: window.location.pathname,
+  base: (process.env.NODE_ENV === 'production') ? '/marvel-api-vuejs/' : `${window.location.origin}/`,
   lang: eng,
   api: {
     url: 'https://gateway.marvel.com/v1/public',

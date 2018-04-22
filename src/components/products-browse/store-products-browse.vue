@@ -56,6 +56,7 @@
     },
     data() {
       return {
+        location: this.$appConfig.base,
         langTitles: this.$appConfig.lang.TITLES,
         loadingStatus: false,
         getParameters: {},

@@ -5,6 +5,14 @@
 
 body {
   font-family: 'Roboto Condensed', sans-serif;
-  /* font-family: 'Roboto', sans-serif; */
   font-size: 14px;
 }
+
+// For Vue Components
+:root {
+  --site-color-primary: #f0141e;
+}
+
+// Local Styles
+$site-color-primary: var(--site-color-primary);
+

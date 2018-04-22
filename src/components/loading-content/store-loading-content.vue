@@ -4,7 +4,7 @@
 
 <template>
   <div class="store-loading-content flex-around">
-    <img src="/images/layout/loading.svg" :alt="loading">
+    <img :src="`${location}images/layout/loading.svg`" :alt="loading">
   </div>
 </template>
 
@@ -14,6 +14,7 @@
     name: 'StoreLoadingContent',
     data() {
       return {
+        location: this.$appConfig.base,
         loading: this.$appConfig.lang.loading
       }
     }
