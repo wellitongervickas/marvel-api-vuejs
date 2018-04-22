@@ -4,8 +4,14 @@
 
 <template>
   <div class="store-products-browse">
+    <div class="store-products-list--empty" v-show="!productsList.length">Products don't found!</div>
     <div class="store-products-list">
-      <div class="products-list-item flex-column-center" v-for="(item, index) in productsList" :key="index" :data-id="item.id">
+      <div
+        class="products-list-item flex-column-center"
+        v-for="(item, index) in filterdList(productsList)"
+        :key="index"
+        :data-id="item.id"
+        v-show="item.status">
         <div class="products-item-thumbnail flex-around-center">
           <router-link :to="{ name: 'product', params: { id: item.id }}">
             <img :src="item.image" :alt="item.title">
@@ -57,11 +63,19 @@
       }
     },
     computed: {
-      ...mapGetters(['getAvailableFilters']),
+
+      // Getters from vuex
+      ...mapGetters(['getAvailableFilters', 'getEnabledFilters']),
+
     },
     methods: {
 
+      // Actions from vuex
       ...mapActions(['updateAvailableFilters']),
+
+      filterdList(list) {
+        return list;
+      },
 
       /**
         * This method was created to search the list of products
@@ -123,6 +137,9 @@
 
           // Get products from api and return new list
           this.productsList = productHelper.createList(response.data.data.results);
+
+          // Verify enabled filters
+          this.verifyFilterList();
         })
         .catch(err => {
           console.error(err)
@@ -150,10 +167,42 @@
 
           // Update the list
           this.productsList = requestHelper.mergeUpdatedList(this.productsList, newProductList);
+
+          // Verify enabled filters
+          this.verifyFilterList()
         })
         .catch(err => {
           console.error(err)
         });
+      },
+
+      verifyFilterList() {
+        for (let i in this.productsList) {
+          let product = JSON.stringify(this.productsList[i]);
+          if (this.getEnabledFilters.length > 0) {
+            for (let x in this.getEnabledFilters) {
+              let filter = this.getEnabledFilters[x];
+
+              if (product.includes(filter)) {
+                this.productsList[i].status = true;
+                break;
+
+              } else {
+                this.productsList[i].status = false;
+              }
+            }
+          } else {
+
+            this.productsList[i].status = true;
+          }
+        }
+      }
+    },
+    watch: {
+      getEnabledFilters: function() {
+
+        // Verify enabled filters
+        this.verifyFilterList();
       }
     },
     created() {

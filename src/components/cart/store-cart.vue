@@ -9,7 +9,10 @@
       <img src="/images/icons/cart/shopping-cart.png" :alt="langTitles.shoppingCart">
     </div>
     <transition name="fade">
-      <div class="store-cart-details" v-show="showCartDetails" @mouseleave="showCartDetails = !showCartDetails">
+      <div
+        class="store-cart-details"
+        v-show="showCartDetails"
+        @mouseleave="showCartDetails = !showCartDetails;setStatusCart(showCartDetails)">
         <ul class="cart-details-list scrolled scrolled-y unstyled-list" v-show="cart.products.length">
           <li class="cart-details-item" v-for="(item, index) in cart.products" :key="item.id">
             <div class="item-image">
@@ -64,13 +67,15 @@
     },
     computed: {
 
-      // From vuex
+      // Getters From vuex
       ...mapGetters(['getCartProducts', 'getCartQtd']),
+
+      // States From vuex
       ...mapState(['cart'])
     },
     methods: {
 
-      // From vuex
+      // Actions From vuex
       ...mapActions([
         'updateCartQtd',
         'updateCartSubtotal',

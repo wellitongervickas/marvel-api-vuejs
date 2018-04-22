@@ -102,11 +102,16 @@
       }
     },
     computed: {
+
+      // Getters from vuex
       ...mapGetters(['getCartSubtotal']),
+
+      // States from vuex
       ...mapState(['cart'])
     },
     methods: {
 
+      // Actions from vuex
       ...mapActions([
         'deleteProduct',
         'updateProductQuantity',

@@ -23,10 +23,16 @@
   export default {
     name: 'StoreAlertsFloat',
     computed: {
+
+      // Getters from vuex
       ...mapGetters(['getAlertList']),
+
+      // States from vuex
       ...mapState(['aletsFloat'])
     },
     methods: {
+
+      // Actions from vuex
       ...mapActions([
         'updateAlertList'
       ])
