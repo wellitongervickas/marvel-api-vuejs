@@ -6,7 +6,7 @@
   <div class="store-checkout-details container">
     <div class="checkout-details-header flex-between-center">
       <div class="details-header-title flex">
-        <img src="/images/icons/cart/shopping-cart.png" :alt="langTitles.shoppingCart">
+        <img :src="`${location}images/icons/cart/shopping-cart.png`" :alt="langTitles.shoppingCart">
         <h1 class="text-red text-uppercase">{{langTitles.shoppingCart}}</h1>
       </div>
       <div class="details-header-keepshopping">

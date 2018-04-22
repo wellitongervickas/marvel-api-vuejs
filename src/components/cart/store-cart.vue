@@ -6,7 +6,7 @@
   <div class="store-cart relative">
     <div class="store-cart-icon pointer" @click="showCartDetails = !showCartDetails;setStatusCart(showCartDetails)">
       <div v-if="getCartQtd" class="cart-label-qtd flex-around-center text-white">{{getCartQtd}}</div>
-      <img src="/images/icons/cart/shopping-cart.png" :alt="langTitles.shoppingCart">
+      <img :src="`${location}images/icons/cart/shopping-cart.png`" :alt="langTitles.shoppingCart">
     </div>
     <transition name="fade">
       <div
@@ -59,6 +59,7 @@
     name: 'StoreCart',
     data() {
       return {
+        location: this.$appConfig.base,
         langTitles: this.$appConfig.lang.TITLES,
         currency: this.$appConfig.currency,
         showCartDetails: false,

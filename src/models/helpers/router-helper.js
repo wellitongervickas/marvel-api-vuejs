@@ -13,7 +13,10 @@ import Checkout from '../../views/checkout/checkout.vue';
 const routes = (() => {
   return [
     {
-      path: '*', component: Home, name: 'home'
+      path: '*', component: Home, name: 'home', props: false
+    },
+    {
+      path: '/', component: Home, name: 'default'
     },
     {
       path: '/product/:id', component: Product, name: 'product', props: true

@@ -25,7 +25,7 @@
             &:after {
               border-left: 7px solid transparent;
               border-right: 7px solid transparent;
-              border-top: 7px solid #f0141e;
+              border-top: 7px solid var(--site-color-primary);
             }
           }
 
@@ -84,7 +84,7 @@
             &.options-item--active {
               label {
                 &:before {
-                  background-color: #f0141e;
+                  background-color: var(--site-color-primary);
                   border: 1px solid transparent;
                 }
 

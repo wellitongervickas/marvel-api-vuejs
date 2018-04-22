@@ -14,10 +14,10 @@
     <div class="slideshow-control container user-select">
       <div class="slideshow-control-btn container">
         <div class="slideshow-control-prev pointer transition-slow" @click="changeActiveSlider('prev')">
-          <img src="/images/layout/prev.png" :alt="langTitles.prev">
+          <img :src="`${location}images/layout/prev.png`" :alt="langTitles.prev">
         </div>
         <div class="slideshow-control-next pointer transition-slow" @click="changeActiveSlider('next')">
-          <img src="/images/layout/next.png" :alt="langTitles.next">
+          <img :src="`${location}images/layout/next.png`" :alt="langTitles.next">
         </div>
       </div>
       <div class="slideshow-control-num container">
@@ -56,6 +56,7 @@
     name: 'StoreSlideshow',
     data() {
       return {
+        location: this.$appConfig.base,
         langTitles: this.$appConfig.lang.TITLES,
         timeToNextSlide: 5000,
         sliderList: [],
@@ -70,7 +71,7 @@
       */
 
       getSliderList() {
-        this.$http.get('/local-api/slideshow/slideshow.json')
+        this.$http.get(this.location + 'local-api/slideshow/slideshow.json')
         .then(response => {
 
           let list = response.data.sliders.map(item => new Slider(item));

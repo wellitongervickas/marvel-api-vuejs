@@ -12,7 +12,7 @@
 
       &:hover {
         color: #ccc;
-        border-bottom: 5px solid #f0141e;
+        border-bottom: 5px solid var(--site-color-primary);
         background-color: #222;
       }
     }

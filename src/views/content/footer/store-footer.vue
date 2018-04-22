@@ -16,7 +16,7 @@
       </ul>
     </div>
     <div class="store-footer-copyright flex-between-center container">
-      <div class="copyright-logo flex1"><img src="/images/layout/logo-footer.jpg" :alt="storeName"></div>
+      <div class="copyright-logo flex1"><img :src="`${location}images/layout/logo-footer.jpg`" :alt="storeName"></div>
       <div class="copyright-info flex10 flex-between">
         <div class="copyright-info-content flex10">
           <ul class="flex-around unstyled-list">
@@ -33,7 +33,7 @@
             <a href="#">
               <img
               width="25"
-              src="/images/icons/social/facebook.svg"
+              :src="`${location}images/icons/social/facebook.svg`"
               :alt="facebook">
             </a>
           </li>
@@ -41,7 +41,7 @@
             <a href="#">
               <img
               width="25"
-              src="/images/icons/social/youtube.svg"
+              :src="`${location}images/icons/social/youtube.svg`"
               :alt="youtube">
             </a>
           </li>
@@ -49,7 +49,7 @@
             <a href="#">
               <img
               width="25"
-              src="/images/icons/social/twitter.svg"
+              :src="`${location}images/icons/social/twitter.svg`"
               :alt="twitter">
             </a>
           </li>
@@ -73,6 +73,7 @@
     },
     data() {
       return {
+        location: this.$appConfig.base,
         storeName: this.$appConfig.lang.TITLES.storeName,
         storeInfo: this.$appConfig.lang.COPYRIGHT.info,
         facebook: this.$appConfig.lang.SOCIAL.facebook,
@@ -91,7 +92,7 @@
       */
 
       getMenuList() {
-        this.$http.get('/local-api/menu/menu-footer.json')
+        this.$http.get(this.location + 'local-api/menu/menu-footer.json')
         .then(response => {
           this.menuList = response.data;
         })
@@ -107,7 +108,7 @@
       */
 
       getMenuCopyrightList() {
-        this.$http.get('/local-api/menu/menu-copyright.json')
+        this.$http.get(this.location + 'local-api/menu/menu-copyright.json')
         .then(response => {
           this.menuCopyrightList = response.data;
         })

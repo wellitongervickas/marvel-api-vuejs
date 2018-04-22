@@ -32,7 +32,7 @@ $default-sm-height: 40px;
 
   &.btn-red {
     &, &:before, &:after {
-      background-color: #f0141e;
+      background-color: $site-color-primary;
     }
 
     &:hover {

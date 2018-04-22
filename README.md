@@ -49,6 +49,12 @@ index.html
 │   │    │
 │   │    └─── ads
 │   │    │
+│   │    └─── alerts
+│   │    │    │
+│   │    │    └─── content
+│   │    │    │
+│   │    │    └─── float
+│   │    │
 │   │    └─── cart
 │   │    │
 │   │    └─── checkout-details
