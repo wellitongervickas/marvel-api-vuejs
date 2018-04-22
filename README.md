@@ -4,6 +4,8 @@
 
 > I'm using closures in the helpers so that all system is not only coupled in the framework in use. Well, the entire system and its structure can easily be developed in any other framework that contains state system.
 
+## Layout (files of layput-psd folder)
+> Copyright of Inlog Group
 
 ## Project Structure
 

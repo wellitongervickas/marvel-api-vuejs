@@ -6,7 +6,9 @@
   <div class="store-products-filter user-select" v-show="getAvailableFilters">
     <div class="products-filter">
       <div class="filter-nav-list container flex-around-center text-uppercase">
-        <div class="filter-nav-item"><b>Browser By</b></div>
+        <div class="filter-nav-item">
+          <b>{{langTitles.browserBy}}</b>
+        </div>
         <div
           v-show="getAvailableFilters.series.length"
           class="filter-nav-item nav-item-dropdown"
@@ -56,6 +58,9 @@
               </label>
             </li>
           </ul>
+          <div class="filter-content-btn flex-around relative">
+            <button type="button" class="btn btn-red text-white" @click="filterSeriesStatus = !filterSeriesStatus">Ok</button>
+          </div>
         </div>
         <div
           class="filter-content-item text-white"
@@ -80,6 +85,9 @@
               </label>
             </li>
           </ul>
+          <div class="filter-content-btn flex-around relative">
+            <button type="button" class="btn btn-red text-white" @click="filterCharactersStatus = !filterCharactersStatus">Ok</button>
+          </div>
         </div>
         <div
           class="filter-content-item text-white"
@@ -104,6 +112,9 @@
               </label>
             </li>
           </ul>
+          <div class="filter-content-btn flex-around relative">
+            <button type="button" class="btn btn-red text-white" @click="filterCreatorsStatus = !filterCreatorsStatus">Ok</button>
+          </div>
         </div>
       </transition-group>
     </div>

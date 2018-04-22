@@ -29,6 +29,13 @@
         background-color: #4b4b4b;
         margin: 0 auto;
       }
+
+    }
+
+    &:hover {
+      .products-item-title-break {
+        background-color: #f0141e;
+      }
     }
 
     .products-item-thumbnail {

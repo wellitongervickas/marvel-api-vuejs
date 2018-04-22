@@ -4,7 +4,7 @@
 
 <template>
   <div class="store-products-browse">
-    <div class="store-products-list--empty" v-show="!productsList.length">Products don't found!</div>
+    <div class="store-products-list--empty align-center" v-show="!productsList.length">{{langTitles.noProductsYet}}</div>
     <div class="store-products-list">
       <div
         class="products-list-item flex-column-center"
@@ -24,7 +24,7 @@
             </router-link>
           </h3>
           <span class="products-item-title-creator text-uppercase" v-if="item.creator">{{item.creator | inverseCreator}}</span>
-          <div class="products-item-title-break"></div>
+          <div class="products-item-title-break transition-fast"></div>
         </div>
       </div>
     </div>

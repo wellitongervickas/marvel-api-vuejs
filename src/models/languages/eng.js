@@ -17,6 +17,8 @@ const eng = (() => {
       storeNameShort: 'Marvel',
       shoppingCart: 'Shopping Cart',
       keepShopping: 'Keep Shopping',
+      browserBy: 'Browser By',
+      noProductsYet: 'No products yet!',
       cartEmpty: 'Your shopping cart is empty!',
       moreDetails: 'More details',
       advertisement: 'Advertisement',
