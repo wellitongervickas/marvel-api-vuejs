@@ -176,6 +176,13 @@
         });
       },
 
+      /**
+        * Verify product list based in enableds filters
+        * is necessary change here why this list needs
+        * observable property of objects of data-binding
+        *
+      */
+
       verifyFilterList() {
         for (let i in this.productsList) {
           let product = JSON.stringify(this.productsList[i]);
