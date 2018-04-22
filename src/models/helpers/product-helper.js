@@ -47,6 +47,7 @@ const productHelper = (() => {
         image: validateImageNotFound(product.thumbnail.path, product.thumbnail.extension),
         title: product.title,
         creator: getCreator(product.creators, 'editor'),
+        creators: product.creators,
         penciler: getCreator(product.creators, 'penciller'),
         writer: getCreator(product.creators, 'writer'),
         coverArtist: getCreator(product.creators, 'penciller (cover)'),

@@ -52,7 +52,7 @@
                 :checked="item.status"
                 @change="changeEnabledFilters(item)"
                 type="checkbox">
-                {{item.name}}
+                {{item.name | cropFilter}}
               </label>
             </li>
           </ul>
@@ -76,7 +76,7 @@
                 :checked="item.status"
                 @change="changeEnabledFilters(item)"
                 type="checkbox">
-                {{item.name}}
+                {{item.name | cropFilter}}
               </label>
             </li>
           </ul>
@@ -100,7 +100,7 @@
                 :checked="item.status"
                 @change="changeEnabledFilters(item)"
                 type="checkbox">
-                {{item.name}}
+                {{item.name | cropFilter}}
               </label>
             </li>
           </ul>
@@ -217,6 +217,10 @@
     filters: {
       crop(text) {
         return textCropUtils.cropSimple(text, 12);
+      },
+
+      cropFilter(text) {
+        return textCropUtils.cropSimple(text, 50);
       }
     }
   };

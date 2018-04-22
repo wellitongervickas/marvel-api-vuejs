@@ -16,7 +16,7 @@ const productsFilterHelper = (() => {
     let tmpSeries = [];
 
     // Create objecto to return
-    let availablesFilters = {
+    let availableFilters = {
       characters: [],
       series: [],
       creators: [],
@@ -28,31 +28,29 @@ const productsFilterHelper = (() => {
       if (product.characters && product.characters.available > 0) {
 
         let allCharacters = listChangesUtils.appendStatusProperty(product.characters.items);
-        availablesFilters.characters = availablesFilters.characters.concat(allCharacters);
-        availablesFilters.characters = listUtils.uniqueValuesObject(availablesFilters.characters);
+        availableFilters.characters = listUtils.concatUniqueValuesObject(availableFilters.characters, allCharacters);
       }
 
       if (product.creators && product.creators.available > 0) {
 
         let allCreators = listChangesUtils.appendStatusProperty(product.creators.items);
-        availablesFilters.creators = availablesFilters.creators.concat(allCreators);
-        availablesFilters.creators = listUtils.uniqueValuesObject(availablesFilters.creators);
+        availableFilters.creators = listUtils.concatUniqueValuesObject(availableFilters.creators, allCreators);
       }
 
       if (product.series) {
 
         tmpSeries.push(product.series);
         tmpSeries = listChangesUtils.appendStatusProperty(tmpSeries);
-        availablesFilters.series = listUtils.uniqueValuesObject(tmpSeries);
+        availableFilters.series = listUtils.uniqueValuesObject(tmpSeries);
 
       }
     }
 
-    return availablesFilters;
-  }
+    return availableFilters;
+  };
 
   return {
-    getFilters
+    getFilters,
   };
 })();
 

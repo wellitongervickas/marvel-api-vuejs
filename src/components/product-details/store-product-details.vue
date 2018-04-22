@@ -142,6 +142,7 @@
     },
     methods: {
 
+      // Actions from vuex
       ...mapActions([
         'addTocart',
         'addAlert'

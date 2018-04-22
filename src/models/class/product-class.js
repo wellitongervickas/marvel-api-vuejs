@@ -6,6 +6,7 @@ export default class Product {
     this.image = product.image;
     this.title = product.title;
     this.creator = product.creator;
+    this.creators = product.creators;
     this.penciler = product.penciler;
     this.writer = product.writer;
     this.coverArtist = product.coverArtist;
@@ -19,5 +20,6 @@ export default class Product {
     this.stories = product.stories;
     this.characters = product.characters;
     this.series = product.series;
+    this.status = true;
   }
 };
