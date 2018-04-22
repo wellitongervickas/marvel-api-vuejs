@@ -1,6 +1,111 @@
-# front-end-test
+# Marvel API + VueJs
 
-> A vuejs front-end test marvel api
+> A front-end test with Marvel API + VueJs + Vuex
+
+> I'm using closures in the helpers so that all system is not only coupled in the framework in use. Well, the entire system and its structure can easily be developed in any other framework that contains state system.
+
+
+## Project Structure
+
+- Node 8.11.0
+- Npm 5.6.0
+- Vue 2.9.3 (with vue-cli)
+- Airbnb (Javascript style guide)
+
+```
+index.html
+│
+│─── local-api (Mocks)
+│   │
+│   └─── menu
+│   │
+│   └─── slideshow
+│
+│─── images
+│   │
+│   └─── icons
+│   │
+│   └─── layout
+│   │
+│   └─── slideshow
+│
+│─── src
+│   │
+│   └─── assets
+│   │    │
+│   │    └─── styles
+│   │         │
+│   │         └─── base
+│   │         │
+│   │         └─── components
+│   │         │
+│   │         └─── layout
+│   │         │
+│   │         └─── pages
+│   │
+│   └─── components
+│   │    │
+│   │    └─── ads
+│   │    │
+│   │    └─── cart
+│   │    │
+│   │    └─── checkout-details
+│   │    │
+│   │    └─── forms
+│   │    │
+│   │    └─── loading
+│   │    │
+│   │    └─── loading-content
+│   │    │
+│   │    └─── menu
+│   │    │
+│   │    └─── product-details
+│   │    │
+│   │    └─── product-details-related
+│   │    │
+│   │    └─── products-browse
+│   │    │
+│   │    └─── products-filter
+│   │    │
+│   │    └─── rating
+│   │    │
+│   │    └─── slideshow
+│   │
+│   └─── models
+│   │    │
+│   │    └─── class
+│   │    │
+│   │    └─── helpers
+│   │    │
+│   │    └─── utils
+│   │    │
+│   │    └─── languages
+│   │
+│   └─── stores (vuex)
+│   │    │
+│   │    └─── Modules
+│   │       │
+│   │       └─── alerts-float
+│   │       │
+│   │       └─── cart
+│   │       │
+│   │       └─── products-filter
+│   │
+│   └─── vendors
+│   │
+│   └─── views
+│       │
+│       └─── checkout
+│       │
+│       └─── content
+│       │
+│       └─── home
+│       │
+│       └─── product
+│
+└───────────────────────────────
+
+```
 
 ## Build Setup
 
