@@ -37,16 +37,6 @@ import './assets/styles/main.scss';
 Vue.use(VueRouter);
 Vue.use(VueAxios, axios);
 
-/**
-  * Router Configuration
-  *
-*/
-
-const router = new VueRouter({
-  mode: 'history',
-  linkExactActiveClass: 'active',
-  routes,
-});
 
 /**
   * Initialize Vue Configuration
@@ -55,7 +45,7 @@ const router = new VueRouter({
 
 Vue.prototype.$appConfig = {
   currency: '$',
-  base: (process.env.NODE_ENV === 'production') ? '/marvel-api-vuejs/' : `${window.location.origin}/`,
+  base: (process.env.NODE_ENV === 'production') ? '/marvel-api-vuejs/' : '',
   lang: eng,
   api: {
     url: 'https://gateway.marvel.com/v1/public',
@@ -63,6 +53,19 @@ Vue.prototype.$appConfig = {
     privateKey: '50be29f970818f112de8755b30b13cbecfb45144'
   }
 };
+
+
+/**
+  * Router Configuration
+  *
+*/
+
+const router = new VueRouter({
+  linkExactActiveClass: 'active',
+  routes,
+});
+
+
 
 /**
   * Initialize Vue Framework

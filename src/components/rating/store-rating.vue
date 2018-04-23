@@ -3,8 +3,13 @@
 </style>
 <template>
   <div class="store-rating flex-column-center relative">
-    <div class="store-rating-start store-rating-start-bg"></div>
-    <div class="store-rating-start store-rating-start-count" :style="{ width: counterWidth + 'px'}"></div>
+    <div
+    class="store-rating-start store-rating-start-bg"
+    :style="`background-image: url(${location + ratingBackground})`">
+    </div>
+    <div
+    class="store-rating-start store-rating-start-count"
+    :style="`background-image: url(${location + ratingCount}); width: ${counterWidth}px`"></div>
   </div>
 </template>
 <script>
@@ -16,8 +21,13 @@
     props: ['rating'],
     data() {
       return {
+        location: this.$appConfig.base,
         counterWidth: 0
       }
+    },
+    computed: {
+      ratingBackground: (() => require('../../assets/images/layout/start-rating-bg.png')),
+      ratingCount: (() => require('../../assets/images/layout/start-rating-count.png')),
     },
     methods: {
 

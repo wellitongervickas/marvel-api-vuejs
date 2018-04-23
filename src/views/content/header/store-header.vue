@@ -10,24 +10,24 @@
     <div class="store-header-top container flex-between">
       <div class="flex3 store-header-top-logo">
         <router-link :to="{ name: 'default'}" class="flex">
-          <img :src="`${location}images/layout/logo.jpg`" :title="storeName" :alt="storeName">
+          <img :src="location + mainLogo" :title="langTitles.storeName" :alt="langTitles.storeName">
         </router-link>
       </div>
       <div class="flex5 store-header-top-social">
         <ul class="unstyled-list top-social-icons flex-end-items">
           <li>
             <a href="#">
-              <img width="25" :src="`${location}images/icons/social/facebook.svg`" :alt="facebook" :title="facebook">
+              <img width="25" :src="`${location + facebookImage}`" :alt="langTitles.facebook" :title="langTitles.facebook">
             </a>
           </li>
           <li>
             <a href="#">
-              <img width="25" :src="`${location}images/icons/social/youtube.svg`" :alt="youtube" :title="youtube">
+              <img width="25" :src="`${location + youtubeImage}`" :alt="langTitles.youtube" :title="langTitles.youtube">
             </a>
           </li>
           <li>
             <a href="#">
-              <img width="25" :src="`${location}images/icons/social/twitter.svg`" :alt="twitter" :title="twitter">
+              <img width="25" :src="`${location + twitterImage}`" :alt="langTitles.twitter" :title="langTitles.twitter">
             </a>
           </li>
         </ul>
@@ -35,17 +35,17 @@
       <div class="flex4 store-header-top-bar flex-column-between">
         <div class="top-bar-nav-top">
           <ul class="unstyled-list flex-end-content">
-            <li>
-              <a href="#" class="unstyled-link text-uppercase">{{welcome}}</a>
+            <li :style="`background-image: url(${location + separatorSmallImage})`">
+              <a href="#" class="unstyled-link text-uppercase">{{langTitles.welcome}}</a>
             </li>
             <li>
-              <a href="#" class="unstyled-link text-uppercase">{{account}}</a>
+              <a href="#" class="unstyled-link text-uppercase">{{langTitles.account}}</a>
             </li>
           </ul>
         </div>
         <div class="top-bar-nav-bottom flex-end-content">
           <div class="top-bar-search flex11 inline-flex">
-            <input type="text" :placeholder="searchStore">
+            <input type="text" :placeholder="langTitles.searchStore" :style="`background-image: url(${location + searchImage})`">
           </div>
           <div class="top-bar-cart flex1">
             <store-cart></store-cart>
@@ -75,15 +75,17 @@
     data () {
       return {
         location: this.$appConfig.base,
-        storeName: this.$appConfig.lang.TITLES.storeName,
-        account: this.$appConfig.lang.TITLES.account,
-        welcome: this.$appConfig.lang.TITLES.welcome,
-        searchStore: this.$appConfig.lang.TITLES.searchStore,
-        cart: this.$appConfig.lang.TITLES.cart,
-        facebook: this.$appConfig.lang.SOCIAL.facebook,
-        youtube: this.$appConfig.lang.SOCIAL.youtube,
-        twitter: this.$appConfig.lang.SOCIAL.twitter,
+        langTitles: this.$appConfig.lang.TITLES,
       }
+    },
+    computed: {
+      mainLogo: (() => require('../../../assets/images/layout/logo.jpg')),
+      youtubeImage: (() => require('../../../assets/images/icons/social/youtube.svg')),
+      facebookImage: (() => require('../../../assets/images/icons/social/facebook.svg')),
+      twitterImage: (() => require('../../../assets/images/icons/social/twitter.svg')),
+      separatorSmallImage: (() => require('../../../assets/images/layout/separator-small.jpg')),
+      separatorMediumImage: (() => require('../../../assets/images/layout/separator-medium.jpg')),
+      searchImage: (() => require('../../../assets/images/icons/store/search.png')),
     }
   }
 </script>

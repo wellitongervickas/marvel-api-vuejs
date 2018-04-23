@@ -12,7 +12,9 @@
         :key="index"
         :data-id="item.id"
         v-show="item.status">
-        <div class="products-item-thumbnail flex-around-center">
+        <div
+          :style="`background-image: url(${location + notFoundImage})`"
+          class="products-item-thumbnail flex-around-center">
           <router-link :to="{ name: 'product', params: { id: item.id }}">
             <img :src="item.image" :alt="item.title">
           </router-link>
@@ -68,6 +70,7 @@
       // Getters from vuex
       ...mapGetters(['getAvailableFilters', 'getEnabledFilters']),
 
+      notFoundImage: (() => require('../../assets/images/layout/image_not_found.jpg')),
     },
     methods: {
 
@@ -137,7 +140,7 @@
           this.getParameters = requestHelper.getParameters(response.data.data);
 
           // Get products from api and return new list
-          this.productsList = productHelper.createList(response.data.data.results);
+          this.productsList = productHelper.createList(response.data.data.results, this.notFoundImage);
 
           // Verify enabled filters
           this.verifyFilterList();
@@ -164,7 +167,7 @@
         .then(response => {
 
           // Create product class
-          const newProductList = productHelper.createList(response.data.data.results);
+          const newProductList = productHelper.createList(response.data.data.results, this.notFoundImage);
 
           // Update the list
           this.productsList = requestHelper.mergeUpdatedList(this.productsList, newProductList);

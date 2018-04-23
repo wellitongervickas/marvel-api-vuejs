@@ -24,6 +24,7 @@
 
   .top-menu-item--hot {
     padding-right: 30px;
-    background: no-repeat url(/images/layout/separator-medium-white.png) right center;
+    background-repeat: no-repeat;
+    background-position: right center;
   }
 }

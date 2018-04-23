@@ -3,21 +3,21 @@
 </style>
 
 <template>
-  <div class="slideshow-content relative" v-if="sliderList.length">
+  <div class="slideshow-content relative" v-if="sliderList.length" :style="`background-image: url(${location + backgroundImage})`">
     <div class="slideshow-list container relative">
       <div v-for="(item, index) in sliderList" class="slideshow-item">
         <transition name="slide">
-          <img :src="item.image" :alt="item.title" v-show="item.status" :key="index">
+          <img :src="location + item.image" :alt="item.title" v-show="item.status" :key="index">
         </transition>
       </div>
     </div>
     <div class="slideshow-control container user-select">
       <div class="slideshow-control-btn container">
         <div class="slideshow-control-prev pointer transition-slow" @click="changeActiveSlider('prev')">
-          <img :src="`${location}images/layout/prev.png`" :alt="langTitles.prev">
+          <img :src="location + prevImage" :alt="langTitles.prev">
         </div>
         <div class="slideshow-control-next pointer transition-slow" @click="changeActiveSlider('next')">
-          <img :src="`${location}images/layout/next.png`" :alt="langTitles.next">
+          <img :src="location + nextImage" :alt="langTitles.next">
         </div>
       </div>
       <div class="slideshow-control-num container">
@@ -61,6 +61,11 @@
         timeToNextSlide: 5000,
         sliderList: [],
       }
+    },
+    computed: {
+      backgroundImage: (() => require('../../assets/images/layout/slideshow-background.jpg')),
+      nextImage: (() => require('../../assets/images/layout/next.png')),
+      prevImage: (() => require('../../assets/images/layout/prev.png')),
     },
     methods: {
 

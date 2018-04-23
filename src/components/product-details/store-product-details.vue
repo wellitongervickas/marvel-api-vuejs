@@ -7,7 +7,7 @@
     <div class="details-intro">
       <div class="intro-content container text-white">
         <div class="intro-content-img flex-around-center">
-          <img :src="details.image" :alt="details.title">
+          <img :src="details.image" :alt="details.title" :style="`background-image: url(${location + notFoundImage})`">
         </div>
         <div class="intro-content-description">
           <h1 class="description-title text-uppercase">{{details.title}}</h1>
@@ -134,11 +134,16 @@
     props: ['details'],
     data() {
       return {
+        location: this.$appConfig.base,
         langTitles: this.$appConfig.lang.TITLES,
         langSuccess: this.$appConfig.lang.SUCCESS,
         showMoreDescription: true,
         tabList: []
       }
+    },
+    computed: {
+
+      notFoundImage: (() => require('../../assets/images/layout/image_not_found.jpg')),
     },
     methods: {
 

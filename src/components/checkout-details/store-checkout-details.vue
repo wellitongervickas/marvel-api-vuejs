@@ -6,7 +6,7 @@
   <div class="store-checkout-details container">
     <div class="checkout-details-header flex-between-center">
       <div class="details-header-title flex">
-        <img :src="`${location}images/icons/cart/shopping-cart.png`" :alt="langTitles.shoppingCart">
+        <img :src="location + shoppingCartImage" :alt="langTitles.shoppingCart">
         <h1 class="text-red text-uppercase">{{langTitles.shoppingCart}}</h1>
       </div>
       <div class="details-header-keepshopping">
@@ -96,6 +96,7 @@
     name: 'StoreCheckoutDetails',
     data() {
       return {
+        location: this.$appConfig.base,
         langTitles: this.$appConfig.lang.TITLES,
         langSuccess: this.$appConfig.lang.SUCCESS,
         currency: this.$appConfig.currency,
@@ -107,7 +108,9 @@
       ...mapGetters(['getCartSubtotal']),
 
       // States from vuex
-      ...mapState(['cart'])
+      ...mapState(['cart']),
+
+      shoppingCartImage: (() => require('../../assets/images/icons/cart/shopping-cart.png'))
     },
     methods: {
 
