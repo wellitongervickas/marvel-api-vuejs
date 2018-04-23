@@ -36,7 +36,7 @@ const productHelper = (() => {
     *
   */
 
-  function createList (list) {
+  function createList (list, location) {
 
     let newList = [];
     for (let i in list) {
@@ -44,7 +44,7 @@ const productHelper = (() => {
       let product = list[i];
       let obj = new Product({
         id: product.id,
-        image: validateImageNotFound(product.thumbnail.path, product.thumbnail.extension),
+        image: validateImageNotFound(product.thumbnail.path, product.thumbnail.extension, location),
         title: product.title,
         creator: getCreator(product.creators, 'editor'),
         creators: product.creators,
@@ -169,15 +169,18 @@ const productHelper = (() => {
     *
   */
 
-  function validateImageNotFound (path, extension) {
+  function validateImageNotFound (path, extension, location) {
 
-    // Find image not available in path
-    const findInString = path.includes('image_not_available');
-    if (!findInString) {
-      return `${path}.${extension}`;
+    if (path && extension) {
+
+      // Find image not available in path
+      const findInString = path.includes('image_not_available');
+      if (!findInString) {
+        return `${path}.${extension}`;
+      }
     }
 
-    return '/images/layout/image_not_found.jpg'
+    return location;
   };
 
   return {

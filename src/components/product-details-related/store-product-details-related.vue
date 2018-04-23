@@ -17,7 +17,9 @@
           :key="item.id"
           :data-id="item.id"
           v-show="item.status">
-          <div class="related-item-thumbnail flex-around-center">
+          <div
+            :style="`background-image: url(${location + notFoundImage})`"
+            class="related-item-thumbnail flex-around-center">
             <router-link :to="{ name: 'product', params: { id: item.id }}">
               <img :src="item.image" :alt="item.title">
             </router-link>
@@ -37,10 +39,10 @@
       <div class="details-related-controls" v-show="relatedList.length">
         <div class="details-related-controls-btn container">
           <div class="related-controls--prev pointer transition-slow" @click.stop.prevent="prevSlide()">
-            <img :src="`${location}images/layout/prev.png`" :alt="langTitles.prev">
+            <img :src="location + prevImage" :alt="langTitles.prev">
           </div>
           <div class="related-controls--next pointer transition-slow" @click.stop.prevent="nextSlide()">
-            <img :src="`${location}images/layout/next.png`" :alt="langTitles.next">
+            <img :src="location + nextImage" :alt="langTitles.next">
           </div>
         </div>
       </div>
@@ -71,6 +73,11 @@
         privateKey: this.$appConfig.api.privateKey,
         timeToNextSlide: 5000,
       }
+    },
+    computed: {
+      notFoundImage: (() => require('../../assets/images/layout/image_not_found.jpg')),
+      nextImage: (() => require('../../assets/images/layout/next.png')),
+      prevImage: (() => require('../../assets/images/layout/prev.png')),
     },
     methods: {
 

@@ -6,7 +6,11 @@
   <nav>
     <div class="container">
       <ul class="top-menu flex-around-center unstyled-list">
-        <li class="top-menu-item--hot align-center text-uppercase">{{langTitles.shop}}</li>
+        <li
+        class="top-menu-item--hot align-center text-uppercase"
+        :style="`background-image: url(${location + linkHotImage})`">
+          {{langTitles.shop}}
+        </li>
         <li class="align-center " v-for="(item, index) in menuList" :key="index">
           <a class="text-white inline-flex-center" :href="item.url">{{item.name}}</a>
         </li>
@@ -35,7 +39,7 @@
       */
 
       getMenuList() {
-        this.$http.get(this.location + 'local-api/menu/menu-header.json')
+        this.$http.get(this.location + '/local-api/menu/menu-header.json')
         .then(response => {
           this.menuList = response.data;
         })
@@ -43,6 +47,9 @@
           console.error(err)
         })
       }
+    },
+    computed: {
+      linkHotImage: (() => require('../../assets/images/layout/separator-medium-white.png'))
     },
     created() {
 

@@ -34,7 +34,8 @@ $ads-width: 60%;
         &:nth-child(1) {
           padding-right: 20px;
           margin-right: 20px;
-          background: no-repeat url(/images/layout/separator-small.jpg) right center;
+          background-repeat: no-repeat;
+          background-position: right center;
         }
       }
     }
@@ -46,7 +47,8 @@ $ads-width: 60%;
     .top-bar-search {
       padding-right: 20px;
       margin-right: 20px;
-      background: no-repeat url(/images/layout/separator-medium.jpg) right center;
+      background-repeat: no-repeat;
+      background-position: right center;
 
       input {
         padding-left: 15px;
@@ -58,7 +60,8 @@ $ads-width: 60%;
         font-weight: 600;
         font-size: 18px;
         text-transform: uppercase;
-        background: no-repeat url(/images/icons/store/search.png) right center;
+        background-repeat: no-repeat;
+        background-position: right center;
       }
     }
   }

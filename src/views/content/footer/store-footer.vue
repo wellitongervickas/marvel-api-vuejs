@@ -16,7 +16,7 @@
       </ul>
     </div>
     <div class="store-footer-copyright flex-between-center container">
-      <div class="copyright-logo flex1"><img :src="`${location}images/layout/logo-footer.jpg`" :alt="storeName"></div>
+      <div class="copyright-logo flex1"><img :src="location + logoImage" :alt="langTitles.storeName"></div>
       <div class="copyright-info flex10 flex-between">
         <div class="copyright-info-content flex10">
           <ul class="flex-around unstyled-list">
@@ -25,7 +25,7 @@
             </li>
           </ul>
         </div>
-        <div class="copyright-info-copy text-gray flex1">&copy; {{storeInfo}}</div>
+        <div class="copyright-info-copy text-gray flex1">&copy; {{langTitles.storeInfo}}</div>
       </div>
       <div class="copyright-social flex1">
         <ul class="unstyled-list flex-between">
@@ -33,24 +33,24 @@
             <a href="#">
               <img
               width="25"
-              :src="`${location}images/icons/social/facebook.svg`"
-              :alt="facebook">
+              :src="location + facebookImage"
+              :alt="langTitles.facebook">
             </a>
           </li>
           <li>
             <a href="#">
               <img
               width="25"
-              :src="`${location}images/icons/social/youtube.svg`"
-              :alt="youtube">
+              :src="location + youtubeImage"
+              :alt="langTitles.youtube">
             </a>
           </li>
           <li>
             <a href="#">
               <img
               width="25"
-              :src="`${location}images/icons/social/twitter.svg`"
-              :alt="twitter">
+              :src="location + twitterImage"
+              :alt="langTitles.twitter">
             </a>
           </li>
         </ul>
@@ -74,14 +74,17 @@
     data() {
       return {
         location: this.$appConfig.base,
-        storeName: this.$appConfig.lang.TITLES.storeName,
-        storeInfo: this.$appConfig.lang.COPYRIGHT.info,
-        facebook: this.$appConfig.lang.SOCIAL.facebook,
-        youtube: this.$appConfig.lang.SOCIAL.youtube,
-        twitter: this.$appConfig.lang.SOCIAL.twitter,
+        langTitles: this.$appConfig.lang.TITLES,
         menuList: [],
         menuCopyrightList: [],
       }
+    },
+    computed: {
+
+      logoImage: (() => require('../../../assets/images/layout/logo-footer.jpg')),
+      youtubeImage: (() => require('../../../assets/images/icons/social/youtube.svg')),
+      facebookImage: (() => require('../../../assets/images/icons/social/facebook.svg')),
+      twitterImage: (() => require('../../../assets/images/icons/social/twitter.svg')),
     },
     methods: {
 
@@ -92,7 +95,7 @@
       */
 
       getMenuList() {
-        this.$http.get(this.location + 'local-api/menu/menu-footer.json')
+        this.$http.get(this.location + '/local-api/menu/menu-footer.json')
         .then(response => {
           this.menuList = response.data;
         })
@@ -108,7 +111,7 @@
       */
 
       getMenuCopyrightList() {
-        this.$http.get(this.location + 'local-api/menu/menu-copyright.json')
+        this.$http.get(this.location + '/local-api/menu/menu-copyright.json')
         .then(response => {
           this.menuCopyrightList = response.data;
         })

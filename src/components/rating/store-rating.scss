@@ -11,14 +11,12 @@ $default-width-rating: 160px;
 
     &.store-rating-start-bg {
       width: $default-width-rating;
-      background-image: url(/images/layout/start-rating-bg.png);
     }
 
     &.store-rating-start-count {
       left:0px;
       position: absolute;
       width: auto;
-      background-image: url(/images/layout/start-rating-count.png);
     }
   }
 }

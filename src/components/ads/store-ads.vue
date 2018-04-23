@@ -4,7 +4,9 @@
 
 <template>
   <div class="advertisement flex-center user-select">
-    <div class="advertisement-contents container flex-column-center">
+    <div
+      class="advertisement-contents container flex-column-center"
+      :style="`background-image: url(${location + backgroundAds})`">
       <div class="advertisement-titles align-right text-gray text-uppercase">{{langTitles.advertisement}}</div>
       <div class="advertisement-figure transition-slow"></div>
     </div>
@@ -16,8 +18,12 @@
     name: 'StoreAds',
     data () {
       return {
-        langTitles: this.$appConfig.lang.TITLES,
+        location: this.$appConfig.base,
+        langTitles: this.$appConfig.lang.TITLES
       }
+    },
+    computed: {
+      backgroundAds: (() => require('../../assets/images/layout/ads-background.png'))
     }
   }
 </script>

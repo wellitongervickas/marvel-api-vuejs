@@ -4,7 +4,7 @@
 
 <template>
   <div class="store-loading-content flex-around">
-    <img :src="`${location}images/layout/loading.svg`" :alt="loading">
+    <img :src="location + loadingImage" :alt="loading">
   </div>
 </template>
 
@@ -17,6 +17,9 @@
         location: this.$appConfig.base,
         loading: this.$appConfig.lang.loading
       }
+    },
+    computed: {
+      loadingImage: (() => require('../../assets/images/layout/loading.svg'))
     }
   };
 

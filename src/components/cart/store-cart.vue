@@ -6,7 +6,7 @@
   <div class="store-cart relative">
     <div class="store-cart-icon pointer" @click="showCartDetails = !showCartDetails;setStatusCart(showCartDetails)">
       <div v-if="getCartQtd" class="cart-label-qtd flex-around-center text-white">{{getCartQtd}}</div>
-      <img :src="`${location}images/icons/cart/shopping-cart.png`" :alt="langTitles.shoppingCart">
+      <img :src="location + shoppingCartImage" :alt="langTitles.shoppingCart">
     </div>
     <transition name="fade">
       <div
@@ -72,7 +72,9 @@
       ...mapGetters(['getCartProducts', 'getCartQtd']),
 
       // States From vuex
-      ...mapState(['cart'])
+      ...mapState(['cart']),
+
+      shoppingCartImage: (() => require('../../assets/images/icons/cart/shopping-cart.png'))
     },
     methods: {
 
