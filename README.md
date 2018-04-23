@@ -9,12 +9,27 @@ Github Pages: [See a demo](https://wellitongervickas.github.io/marvel-api-vuejs)
 ## Layout (files of layout-psd folder)
 > Copyright of Inlog Group
 
-## Project Structure
+## System
 
 - Node 8.11.0
 - Npm 5.6.0
 - Vue 2.9.3 (with vue-cli)
 - Airbnb (Javascript style guide)
+
+## Build Setup
+
+``` bash
+# install dependencies
+npm install
+
+# serve with hot reload at localhost:8080
+npm run dev
+
+# build for production with minification
+npm run build
+```
+
+## Project Structure
 
 ```
 index.html
@@ -117,17 +132,5 @@ index.html
 
 ```
 
-## Build Setup
-
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-```
 
 For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
