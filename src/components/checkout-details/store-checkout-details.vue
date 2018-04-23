@@ -71,7 +71,10 @@
             </div>
           </transition-group>
         </div>
-        <div class="products-list--empty" v-show="!cart.products.length">{{langTitles.cartEmpty}}</div>
+        <div class="products-list--empty flex-column-center" v-show="!cart.products.length">
+          <img :src="location + shoppingCartEmptyImage" :alt="langTitles.shoppingCart">
+          {{langTitles.cartEmpty}}
+        </div>
       </div>
       <div class="details-body-subtotal flex-between-center" v-show="cart.products.length">
         <div class="separator-subotal"></div>
@@ -79,7 +82,7 @@
       </div>
     </div>
     <div class="checkout-details-footer flex-end">
-      <button type="button" class="btn btn-red text-white">{{langTitles.proceedToCheckout}}</button>
+      <button type="button" class="btn btn-red text-white" :disabled="cart.products.length <= 0">{{langTitles.proceedToCheckout}}</button>
     </div>
   </div>
 </template>
@@ -110,7 +113,8 @@
       // States from vuex
       ...mapState(['cart']),
 
-      shoppingCartImage: (() => require('../../assets/images/icons/cart/shopping-cart.png'))
+      shoppingCartImage: (() => require('../../assets/images/icons/cart/shopping-cart.png')),
+      shoppingCartEmptyImage: (() => require('../../assets/images/icons/cart/cart-empty.png'))
     },
     methods: {
 

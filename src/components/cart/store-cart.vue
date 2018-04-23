@@ -33,7 +33,8 @@
             </div>
           </li>
         </ul>
-        <div class="cart-details-list--empty align-center" v-show="!cart.products.length">
+        <div class="cart-details-list--empty align-center flex-column-center" v-show="!cart.products.length">
+          <img :src="location + shoppingCartEmptyImage" :alt="langTitles.shoppingCart">
           {{langTitles.cartEmpty}}
         </div>
         <div class="cart-details-subtotal text-uppercase align-center" v-show="cart.products.length">
@@ -74,7 +75,8 @@
       // States From vuex
       ...mapState(['cart']),
 
-      shoppingCartImage: (() => require('../../assets/images/icons/cart/shopping-cart.png'))
+      shoppingCartImage: (() => require('../../assets/images/icons/cart/shopping-cart.png')),
+      shoppingCartEmptyImage: (() => require('../../assets/images/icons/cart/cart-empty.png'))
     },
     methods: {
 
